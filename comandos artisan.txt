@@ -1,0 +1,36 @@
+/*crear controlador*/
+php artisan make:controller FormacionAcademicaController --resource
+
+/*crear un archivo para crear una tabla*/
+php artisan make:migration create_users_table --create=users
+
+/*crear migraciones en la base de datos*/
+php artisan migrate
+
+/*vuelve a migrar todos los archivos en la base de datos(borra los datos de las tablas)*/
+php artisan migrate:fresh
+
+/*vuelve a migrar todos los archivos en la base de datos*/
+php artisan migrate:refresh
+
+/*crear un modelo */
+php artisan make:model Area
+
+/*crear un Archivo seeder para llenar con datos manualmente la bd*/
+php artisan make:seeder MenuTableSeeder
+/*para ejecutar el seeder creado*/
+php artisan db:seed --class=MenuTableSeeder
+
+
+/*ejecuta un seeder espesifico*/
+php artisan db:seed --class=MenuTableSeeder
+
+/*crear los datos en la bd del los siders*/
+php artisan migrate:fresh
+php artisan db:seed
+
+/*crear un archivos para los factory para llenar datos automaticos a la tabla*/
+php artisan make:factory AreaFactory --model=Area
+
+/*para validacion de formularios */
+php artisan make:request StoreArea
