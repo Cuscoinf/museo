@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\EditInvestigador;
 use App\Http\Requests\StoreInvestigador;
 use App\Models\Investigador;
+use App\Models\Area;
 use App\Models\Menu;
 use App\Models\User;
+use App\Models\FormacionAcademica;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -22,9 +24,12 @@ class InvestigadorController extends Controller
     public function index()
     {
         $investigadores=Investigador::orderBy('id','desc')->paginate();
+        $areas = Area::all();
+        $formacion = FormacionAcademica::all();
 
 
-        return view('investigador.index',compact('investigadores'))->with('i', (request()->input('page', 1) - 1) * 5);;
+
+        return view('investigador.index',compact('investigadores', 'areas', 'formacion'))->with('i', (request()->input('page', 1) - 1) * 5);;
     }
 
     /**
