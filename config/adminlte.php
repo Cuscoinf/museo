@@ -247,7 +247,7 @@ return [
             'route'  => 'home',
 
         ],
-        ['header' => 'USUARIOS'],
+        ['header' => 'USUARIOS', 'can'  => ['user-admin']],
         [
             'text' => 'Investigador',
             'route'  => 'investigador.index',
@@ -255,10 +255,16 @@ return [
             'can'  => ['user-admin','investigador-admin'],
         ],
         [
-            'text' => 'Areas',
+            'text' => 'jefe de area',
             'route'  => 'area.index',
-            'icon' => 'fas fa-fw fa-address-card',
+            'icon' => 'fas fa-fw fa-user',
             'can'  => ['user-admin','areas-admin'],
+        ],
+        [
+            'text' => 'Investigador temporal',
+            'route'  => 'investigador.create',
+            'icon' => 'fas fa-fw fa-user',
+            'can'  => ['user-admin','formacion-academica-admin'],
         ],
         [
             'text' => 'Formaciones Academicas',
@@ -266,14 +272,40 @@ return [
             'icon' => 'fas fa-fw fa-graduation-cap',
             'can'  => ['user-admin','formacion-academica-admin'],
         ],
+        
+        ['header' => 'SALIDA A CAMPO',  'can'  => ['user-admin']],
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
+            'text' => 'Solicitud de colecta',
+            'route'  => 'carta.index',
+            'icon' => 'fas fa-fw fa-user',
+            'can'  => ['user-admin'],
         ],
-        ['header' => 'AUTORIZACIONES'],
+        [
+            'text' => 'Permiso de colecta',
+            'url'  => '#',
+            'icon' => 'fas fa-fw fa-user',
+            'can'  => ['user-admin'],
+        ],
+        [
+            'text' => 'Registro de salida a campo',
+            'url'  => '#',
+            'icon' => 'fas fa-fw fa-file',
+            'can'  => ['user-admin'],
+        ],
+        ['header' => 'ZONA INVESTIGADOR',  'can'  => ['user-admin','investigador-admin']],
+        [
+            'text' => 'Registro de especimen',
+            'route'  => 'especimen.index',
+            'icon' => 'fas fa-fw fa-box',
+            'can'  => ['user-admin','investigador-admin'],
+        ],
+        [
+            'text' => 'Animales decomisados',
+            'url'  => 'decomisados.index',
+            'icon' => 'fas fa-fw fa-box',
+            'can'  => ['user-admin','investigador-admin'],
+        ],
+        ['header' => 'AUTORIZACIONES',  'can'  => ['user-admin','carta-admin']],
         [
             'text' => 'carta Presentación',
             'route'  => 'carta.index',

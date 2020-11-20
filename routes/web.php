@@ -36,6 +36,8 @@ Route::put('area/{area}',[AreaController::class,'update'])->name('area.update');
 Route::delete('area/{area}',[AreaController::class,'destroy'])->name('area.destroy');
 */
 Route::resource('area', AreaController::class);
+Route::resource('especimen', AreaController::class);
+Route::resource('decomisados', AreaController::class);
 Route::resource('formacion-academica', FormacionAcademicaController::class);
 
 Route::resource('investigador', InvestigadorController::class);

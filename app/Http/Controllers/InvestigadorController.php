@@ -64,7 +64,7 @@ class InvestigadorController extends Controller
      */
     public function show(Investigador $investigador)
     {
-        return view('investigador.index',compact('investigador'));
+        return view('investigador.show',compact('investigador'));
     }
 
     /**
