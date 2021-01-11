@@ -18,8 +18,6 @@ class AreaController extends Controller
     public function index(Request $request){
 
         $areas=Area::orderBy('id','desc')->paginate();
-
-
         //obtenemos los permisos de usuario en funcion al menu
         if(Auth::user()->rol!="investigador")
         {
@@ -35,10 +33,8 @@ class AreaController extends Controller
                 ->where('menu_id', '=', $idmenu->id)
                 ->where('user_id', '=', $idUsuario)
                 ->first();
-
         }
-
-
+        
         return view('area.index',compact('areas','menuPermisos'))->with('i', (request()->input('page', 1) - 1) * 5);
 
         /*if($request->ajax()){
@@ -48,8 +44,6 @@ class AreaController extends Controller
         }*/
 
     }
-
-
 
     public function create(){
 
@@ -66,7 +60,6 @@ class AreaController extends Controller
         /*$area=new Area();
         $area->nombre=$request->nombre;
         $area->save();*/
-
         $request->merge([
             'slug'=>Str::slug($request->nombre,'-')
         ]);
@@ -106,9 +99,11 @@ class AreaController extends Controller
 */
         $area = Area::findOrFail($id);
         $area->delete();
+        return redirect()->route('area.index');
+        /*
         return response()->json([
          'message' => 'User deleted successfully'
-        ]);
+        ]);*/
     }
 
     public function getAreas(Request $request){

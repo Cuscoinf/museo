@@ -28,7 +28,6 @@
         .presente {
             margin-top: 5px;
             font-style: normal;
-
         }
 
         .contenido {
@@ -79,41 +78,9 @@
         <br>
 
     </div>
-    <p class="contenido">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mediante
-        la presente certifico que la MSc. <strong> {{$investigador}}</strong>
-        identificada con DNI 42175705, es Investigadora Asociada del Museo de Historia Natural de
-        la Universidad Nacional de San Antonio Abad del Cusco. La Srta. Delgado participará como
-    investigador principal del proyecto <strong> “{{$proyecto}}” </strong>respaldado por el Museo de Historia Natural de la
-        Universidad Nacional de San Antonio Abad - MHNC (Cusco, Perú) en la que además participan los investigadores
-        asociados al MHNC, que se identifican a continuación:</p>
-
-    <div>
-        <table>
-            <tr>
-                <td class="nombres">Rosalbina Butrón Loayza</td>
-                <td class="dni">DNI 24003144</td>
-            </tr>
-            <tr>
-                <td class="nombres">José Alejandro Portillo Guizado</td>
-                <td class="dni">DNI 47706563</td>
-            </tr>
-            <tr>
-                <td class="nombres">Werner Albert Pinedo Malpartida</td>
-                <td class="dni">DNI 72420659</td>
-            </tr>
-        </table>
+    <div class="contenido">
+        {!! $contenido !!}
     </div>
-    <p class="contenido">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Estoy
-        convencida de que este proyecto de investigación contribuirá al conocimiento la fauna de vertebrados de la
-        región y brindará información relevante para su conservación. Por lo que suscribo este documento a petición de
-        los interesados para los tramites de permiso de investigación y colecta necesarios para la ejecución del
-        proyecto.
-    </p>
-
-    <p>Sin otro particular me despido renovando ante Ud. mi aprecio y estima personal.
-    </p>
-
-    <p class="despedida">Atentamente.</p>
 </body>
 
 </html>

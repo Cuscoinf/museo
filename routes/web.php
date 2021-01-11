@@ -7,7 +7,9 @@ use App\Http\Controllers\CartaPresentacionController;
 use App\Http\Controllers\FormacionAcademicaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvestigadorController;
+use App\Http\Controllers\SolicitudController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\EspecimenController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -36,12 +38,15 @@ Route::put('area/{area}',[AreaController::class,'update'])->name('area.update');
 Route::delete('area/{area}',[AreaController::class,'destroy'])->name('area.destroy');
 */
 Route::resource('area', AreaController::class);
-Route::resource('especimen', AreaController::class);
+Route::resource("especimen", EspecimenController::class);
 Route::resource('decomisados', AreaController::class);
 Route::resource('formacion-academica', FormacionAcademicaController::class);
+Route::resource('registro-solicitud', SolicitudController::class);
+
 
 Route::resource('investigador', InvestigadorController::class);
 Route::put('updateuser/{user}',[InvestigadorController::class,'updateUser'])->name('updateuser');
+Route::post('createuser',[InvestigadorController::class,'createUser'])->name('createuser');
 
 Route::resource('roles', RoleController::class);
 Route::apiResource('roles',RoleController::class);
@@ -50,6 +55,9 @@ Route::get('/asignar-roles/{id}', [RoleController::class, 'asignarRoles'])->name
 Route::get('/getmenus',[RoleController::class,'getMenus'])->name('getmenus');
 Route::get('/getmenuuser/{id}',[RoleController::class,'getMenuUser'])->name('getmenuuser');
 Route::put('actualizarpermiso/{menuuser}',[RoleController::class,'actualizarPermiso'])->name('actualizarpermiso');
+
+Route::get('registro-nombres', [NombreEspecimenController::class, 'index'])->name('nombreEspecimen');
+Route::post('registrar-nombre', [NombreEspecimenController::class, 'store'])->name('guardarNombreEspecimen');
 
 /*solo para contenido statico*/
 Route::view('nosotros', 'nosotros')->name('nosotros');

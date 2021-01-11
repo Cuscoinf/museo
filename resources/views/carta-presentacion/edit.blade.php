@@ -59,9 +59,10 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label for="investigador_id">Investigador:</label>
-                    <input type="text" class="form-control" id="investigador_id" placeholder="Ingrese investigador_id" name="investigador_id"
+                    <label for="investigador">Investigador:</label>
+                    <input type="text" class="form-control" id="investigador" placeholder="Ingrese investigador" name="investigador"
                     value="{{old('nombre',$investigador->nombre.' '.$investigador->apPaterno.' '.$investigador->apMaterno)}}">
+                    <input type="hidden" name="investigador_id" value="{{$investigador->id}}">
                     @error('investigador_id')
                     <br>
                     <small>*{{ $message }}</small>
@@ -89,23 +90,62 @@
                     @enderror
                 </div>
                 <div class="form-group">
+                    <label for="hojaVida">Adjuntar hoja de Vida </label>
+                    <input type="file" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="hojaVida">Adjuntar Plan de investigación </label>
+                    <input type="file" class="form-control">
+                </div>
+                <div class="form-group">
                     <label for="contenido">Contenido de la carta:</label>
-                    <p name="contenido" value="{{ old('contenido') }}">
-                        Mediante la presente certifico que la  MSc. <strong>Jackeline Amanda Delgado Cornejo</strong> identificada
-                        con DNI 42175705, es Investigadora Asociada del Museo de Historia Natural de la Universidad Nacional
-                        de San Antonio Abad del Cusco. La Srta. Delgado participará como investigador principal del proyecto
-                        <strong> “Estructura de la comunidad de vertebrados en los sistemas ecológicos de las A.C.P. Machusaniaca y A.C.P.
-                            Cadena: una comparación entre aves, mamíferos y anfibios”</strong> respaldado por el Museo de Historia
-                            Natural de la Universidad Nacional de San Antonio Abad - MHNC (Cusco, Perú) en la que además participan
-                            los investigadores asociados al MHNC, que se identifican a continuación:
-                    </p>
+                    <textarea name="contenido" id="contenido" class="form-control" style="height: 180px">
+                        <p class="contenido">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mediante
+                        la presente certifico que la MSc. <strong id="cNombre">{{$investigador->nombre.' '.$investigador->apPaterno.' '.$investigador->apMaterno}}</strong>
+                            identificada con <strong>DNI {{$investigador->nroDocumento}}</strong>, es Investigadora Asociada del Museo de Historia Natural de
+                            la Universidad Nacional de San Antonio Abad del Cusco. La Srta. Delgado participará como
+                        investigador principal del proyecto "<strong id="cProyecto"></strong>" respaldado por el Museo de Historia Natural de la
+                            Universidad Nacional de San Antonio Abad - MHNC (Cusco, Perú) en la que además participan los investigadores
+                            asociados al MHNC, que se identifican a continuación:</p>
+
+                        <table class="table table-bordered" style="width: 500px">
+                            <tbody>
+                                <tr>
+                                    <td>Nombres</td>
+                                    <td>DNI</td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p class="contenido">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Estoy
+                            convencida de que este proyecto de investigación contribuirá al conocimiento la fauna de vertebrados de la
+                            región y brindará información relevante para su conservación. Por lo que suscribo este documento a petición de
+                            los interesados para los tramites de permiso de investigación y colecta necesarios para la ejecución del
+                            proyecto.
+                        </p>
+                    
+                        <p>Sin otro particular me despido renovando ante Ud. mi aprecio y estima personal.
+                        </p>
+                    
+                        <p class="despedida">Atentamente.</p>
+                    </textarea>
                     @error('contenido')
                     <br>
                     <small>*{{ $message }}</small>
                     <br>
                     @enderror
                 </div>
-                <button type="submit" formtarget="_blank" class="btn btn-info">Generar Carta</button>
+                <div class="text-center">
+                    <button type="submit" formtarget="_blank" class="btn btn-info">Generar Carta</button>
+                </div>
 
             </div>
         </form>
@@ -118,9 +158,18 @@
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote.min.css" integrity="sha256-n3YISYddrZmGqrUgvpa3xzwZwcvvyaZco0PdOyUKA18=" crossorigin="anonymous" />
 @stop
 
 @section('js')
-    <script src="{{ asset('js/app.js') }}"></script>
-    <!--Añadimos el js generado con webpack, donde se encuentra nuestro componente vuejs-->
+<script src="{{asset('js/editor.js')}}"></script>
+
+<script>
+    $(function() {
+        $("#contenido").summernote();
+        $("#proyecto").on("input", function(){
+            $("#cProyecto").text($("#proyecto").val())
+        })
+    })
+  </script>
 @stop

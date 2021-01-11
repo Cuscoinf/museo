@@ -114,13 +114,25 @@ class CartaPresentacionController extends Controller
 
     public function generatePDF(Request $request)
     {
-
+        
         $data = [
             'investigador' => $request->investigador_id,
             'proyecto' => $request->proyecto
         ];
 
-        return PDF::loadView('carta-presentacion.generarpdf', $data)->stream('cartapresentacion.pdf');
+        $cartaPresentacion = new CartaPresentacion();
+        $cartaPresentacion->nro_carta = $request->nro_carta;
+        $cartaPresentacion->nro_solicitud = $request->nro_solicitud;
+        $cartaPresentacion->destinatario = $request->destinatario;
+        $cartaPresentacion->cargo = $request->cargo;
+        $cartaPresentacion->lugar = $request->lugar;
+        $cartaPresentacion->proyecto = $request->proyecto;
+        $cartaPresentacion->contenido = $request->contenido;
+        $cartaPresentacion->investigador_id = $request->investigador_id;
+
+        $cartaPresentacion->save();
+
+        return PDF::loadView('carta-presentacion.generarpdf', ["contenido"=>$request->contenido])->stream('cartapresentacion.pdf');
 
         //return $pdf->download('cartapresentacion.pdf');
     }

@@ -50,13 +50,10 @@ class InvestigadorController extends Controller
      */
     public function store(StoreInvestigador $request)
     {
-
         $slugGenerado=$request->apPaterno.$request->apMaterno.$request->nombre;
-
         $request->merge([
             'slug'=>Str::slug($slugGenerado,'-')
         ]);
-
         $investigador=Investigador::create($request->all());
         return redirect()->route('investigador.index');
     }
@@ -118,8 +115,23 @@ class InvestigadorController extends Controller
 
     public function storeUser(Request $request)
     {
-        $user=User::create($request->all());
-        return redirect()->route('roles.index');
+        $investigador = Investigador::find($request->id);
+
+        $user = new User();
+        $user->name = $investigador->nombre;
+        $user->rol = 'investigador';
+        $user->email = $investigador->email;
+        $user->password = bcrypt($request->password);
+        $mensaje = "";
+
+        if($user->save())
+        {
+            $mensaje = "Acceso generado";
+        }
+        else{
+            $mensaje = "Error";
+        }
+        return redirect()->route("investigador.index");
     }
 
     public function updateUser(Request $request,$usuario)

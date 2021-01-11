@@ -89,6 +89,14 @@
                     @enderror
                 </div>
                 <div class="form-group">
+                    <label for="hojaVida">Adjuntar hoja de Vida </label>
+                    <input type="file" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="hojaVida">Adjuntar Plan de investigación </label>
+                    <input type="file" class="form-control">
+                </div>
+                <div class="form-group">
                     <label for="contenido">Contenido de la carta:</label>
                     <p name="contenido" value="{{ old('contenido') }}">
                         Mediante la presente certifico que la  MSc. <strong>Jackeline Amanda Delgado Cornejo</strong> identificada

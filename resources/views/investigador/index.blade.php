@@ -70,10 +70,10 @@
                                  @enderror
                             </div>
                           </div>
-                          <div class="col-md-4">
+                          <div class="col-md-4" style="display:none">
                             <div class="form-group">
                                 <label for="tipoUsuario">Tipo Usuario del Sistema</label>
-                                <input type="text" class="form-control" id="tipoUsuario" placeholder="Ingrese tipo usuario" name="tipoUsuario" value="{{old('tipoUsuario')}}">
+                                <input type="text" class="form-control" id="tipoUsuario" placeholder="Ingrese tipo usuario" name="tipoUsuario" value="investigador">
                                 @error('tipoUsuario')
                                 <br>
                                 <small>*{{$message}}</small>
@@ -92,10 +92,14 @@
                                  @enderror
                             </div>
                           </div>
-                          <div class="col-md-4">
+                          <div class="col-md-2">
                             <div class="form-group">
                                 <label for="tipoDocumento">Tipo Documento</label>
-                                <input type="text" class="form-control" id="tipoDocumento" placeholder="Ingrese tipo documento" name="tipoDocumento" value="{{old('tipoDocumento')}}">
+                                <select name="tipoDocumento" id="tipoDocumento" class="form-control">
+                                    <option value="DNI" selected>DNI</option>
+                                    <option value="Pasaporte">Pasaporte</option>
+                                    <option value="CE">Carne de extranjeria</option>
+                                </select>
                                 @error('tipoDocumento')
                                 <br>
                                 <small>*{{$message}}</small>
@@ -103,7 +107,7 @@
                                  @enderror
                             </div>
                           </div>
-                          <div class="col-md-4">
+                          <div class="col-md-3">
                             <div class="form-group">
                                 <label for="nroDocumento">Nro de Documento</label>
                                 <input type="text" class="form-control" id="nroDocumento" placeholder="Ingrese nro de documento" name="nroDocumento" value="{{old('nroDocumento')}}">
@@ -114,7 +118,7 @@
                                  @enderror
                             </div>
                           </div>
-                          <div class="col-md-4">
+                          <div class="col-md-3">
                             <div class="form-group">
                                 <label for="pais">pais</label>
                                 <input type="text" class="form-control" id="pais" placeholder="Ingrese pais" name="pais" value="{{old('pais')}}">
@@ -125,10 +129,13 @@
                                  @enderror
                             </div>
                           </div>
-                          <div class="col-md-4">
+                          <div class="col-md-1">
                             <div class="form-group">
                                 <label for="genero">Genero</label>
-                                <input type="text" class="form-control" id="genero" placeholder="Ingrese genero" name="genero" value="{{old('genero')}}">
+                                <select name="genero" id="genero" class="form-control">
+                                    <option value="M">M</option>
+                                    <option value="F">F</option>
+                                </select>
                                 @error('genero')
                                 <br>
                                 <small>*{{$message}}</small>
@@ -136,7 +143,7 @@
                                  @enderror
                             </div>
                           </div>
-                          <div class="col-md-4">
+                          <div class="col-md-2">
                             <div class="form-group">
                                 <label for="estado">Estado</label>
                                 <input type="text" class="form-control" id="estado" placeholder="Ingrese estado" name="estado" value="{{old('estado')}}">
@@ -147,7 +154,7 @@
                                  @enderror
                             </div>
                           </div>
-                          <div class="col-md-4">
+                          <div class="col-md-3">
                             <div class="form-group">
                                 <label for="direccion">Direccion</label>
                                 <input type="text" class="form-control" id="direccion" placeholder="Ingrese direccion" name="direccion" value="{{old('direccion')}}">
@@ -158,7 +165,7 @@
                                  @enderror
                             </div>
                           </div>
-                          <div class="col-md-4">
+                          <div class="col-md-2">
                             <div class="form-group">
                                 <label for="telefono">Telefono</label>
                                 <input type="text" class="form-control" id="telefono" placeholder="Ingrese telefono" name="telefono" value="{{old('telefono')}}">
@@ -172,7 +179,7 @@
                           <div class="col-md-4">
                             <div class="form-group">
                                 <label for="formacion_academica_id">Formacion Academica</label>
-                                <select name="formacion_academica" id="" class="form-control">
+                                <select name="formacion_academica_id" id="formacion_academica_id" class="form-control">
                                     @foreach ($formacion as $f)
                                     <option value="{{$f->id}}">{{$f->gradoAcademico." - ".$f->universidad." - ".$f->anioTitulacion}}</option>
                                     @endforeach
@@ -221,7 +228,7 @@
                         <th>Nombre</th>
                         <th>Paterno</th>
                         <th>Materno</th>
-                        <th>Tipo Usuario</th>
+                        <th>Email</th>
                         <th>Tipo Documento</th>
                         <th>Nro Documento</th>
                       </tr>
@@ -233,7 +240,7 @@
                                 <td>{{$investigador->nombre}}</td>
                                 <td>{{$investigador->apPaterno}}</td>
                                 <td>{{$investigador->apMaterno}}</td>
-                                <td>{{$investigador->tipoUsuario}}</td>
+                                <td>{{$investigador->email}}</td>
                                 <td>{{$investigador->tipoDocumento}}</td>
                                 <td>{{$investigador->nroDocumento}}</td>
                                 <td>
@@ -257,6 +264,31 @@
             </div>
         </div>
         <div class="tab-pane fade" id="custom-tabs-one-messages" role="tabpanel" aria-labelledby="custom-tabs-one-messages-tab">
+            <div class="card col-md-4">
+                <div class="card-header">
+                    <h4>Asignar acceso al sistema</h4>
+                </div>
+                <div class="card-body">
+                    <form action="{{route('createuser')}}" method="POST">
+                        @csrf
+                        <div class="form-goup">
+                            <label for="investigador">Seleccione Investigador</label>
+                            <select name="id" class="form-control">
+                                @foreach ($investigadores as $investigador)
+                                <option value="{{$investigador->id}}">{{$investigador->nombre." ".$investigador->apPaterno}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Asignar/cambiar Contraseña de acceso</label>
+                            <input type="password" name="password" id="password" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary"><i class="fas fa-user-check"></i> Registrar acceso</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>
