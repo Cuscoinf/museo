@@ -6,6 +6,7 @@ use App\Http\Controllers\AreaController;
 use App\Http\Controllers\CartaPresentacionController;
 use App\Http\Controllers\FormacionAcademicaController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\NombreEspecimenController;
 use App\Http\Controllers\InvestigadorController;
 use App\Http\Controllers\SolicitudController;
 use App\Http\Controllers\RoleController;
@@ -58,6 +59,7 @@ Route::put('actualizarpermiso/{menuuser}',[RoleController::class,'actualizarPerm
 
 Route::get('registro-nombres', [NombreEspecimenController::class, 'index'])->name('nombreEspecimen');
 Route::post('registrar-nombre', [NombreEspecimenController::class, 'store'])->name('guardarNombreEspecimen');
+Route::delete('eliminar-nombre/{id}', [NombreEspecimenController::class, 'destroy'])->name('eliminarNombreEspecimen');
 
 /*solo para contenido statico*/
 Route::view('nosotros', 'nosotros')->name('nosotros');

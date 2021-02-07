@@ -14,7 +14,10 @@ class NombreEspecimenController extends Controller
      */
     public function index()
     {
-        return View('registroEspecimen.nombres');
+        $nombresCientificos = nombreEspecimen::all();
+        return View('registroEspecimen.nombres',[
+            "nombresCientificos" => $nombresCientificos
+        ]);
     }
 
     /**
@@ -36,12 +39,17 @@ class NombreEspecimenController extends Controller
     public function store(Request $request)
     {
         $nombreEspecimen = new nombreEspecimen();
-        $nombreEspecimen->especie = $request->especie;
-        $nombreEspecimen->nombres = $request->nombres;
+        $nombreEspecimen->nombreCientifico = $request->nombreCientifico;
+        $nombreEspecimen->autor = $request->autor;
+        $nombreEspecimen->familia = $request->familia;
+        $nombreEspecimen->clase = $request->clase;
+        $nombreEspecimen->nombreComunEsp = $request->nombreComunEsp;
+        $nombreEspecimen->nombreComunEng = $request->nombreComunEng;
+        $nombreEspecimen->fuente = $request->fuente;
 
         if($nombreEspecimen->save())
         {
-           return "1" ;
+           return redirect()->route("nombreEspecimen");
         }
     }
 
@@ -85,8 +93,10 @@ class NombreEspecimenController extends Controller
      * @param  \App\Models\nombreEspecimen  $nombreEspecimen
      * @return \Illuminate\Http\Response
      */
-    public function destroy(nombreEspecimen $nombreEspecimen)
+    public function destroy($id)
     {
-        //
+        $nombreEspecimen = nombreEspecimen::findOrFail($id);
+        $nombreEspecimen->delete();
+        return redirect()->route('nombreEspecimen');
     }
 }

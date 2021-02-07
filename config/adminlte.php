@@ -307,7 +307,7 @@ return [
         ],
         [
             'text' => 'Nombres especies',
-            'route' => 'registroEspecimen.nombres',
+            'route' => 'nombreEspecimen',
             'icon' => 'fas fa-list',
             'can'  => ['user-admin','investigador-admin'],
         ],
