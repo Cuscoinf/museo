@@ -255,16 +255,10 @@ return [
             'can'  => ['user-admin','investigador-admin'],
         ],
         [
-            'text' => 'jefe de area',
+            'text' => 'Áreas',
             'route'  => 'area.index',
             'icon' => 'fas fa-fw fa-user',
             'can'  => ['user-admin','areas-admin'],
-        ],
-        [
-            'text' => 'Investigador temporal',
-            'route'  => 'investigador.create',
-            'icon' => 'fas fa-fw fa-user',
-            'can'  => ['user-admin','formacion-academica-admin'],
         ],
         [
             'text' => 'Formaciones Academicas',
@@ -292,10 +286,41 @@ return [
             'icon' => 'fas fa-fw fa-user',
             'can'  => ['user-admin'],
         ],
-        ['header' => 'ZONA INVESTIGADOR',  'can'  => ['user-admin','investigador-admin']],
+        ['header' => 'REGISTRO DE ESPECIMEN',  'can'  => ['user-admin','investigador-admin']],
         [
-            'text' => 'Registro de especimen',
+            'text' => 'Herpetología',
             'route'  => 'especimen.index',
+            'icon' => 'fas fa-fw fa-box',
+            'can'  => ['user-admin','investigador-admin'],
+        ],
+        [
+            'text' => 'Ornitologia',
+            'route'  => 'especimen.ornitologia',
+            'icon' => 'fas fa-fw fa-box',
+            'can'  => ['user-admin','investigador-admin'],
+        ],
+        [
+            'text' => 'Maztozoología',
+            'route'  => 'especimen.maztozoologia',
+            'icon' => 'fas fa-fw fa-box',
+            'can'  => ['user-admin','investigador-admin'],
+        ],
+        ['header' => 'CONTROL DE ESPECIMEN',  'can'  => ['user-admin','investigador-admin']],
+        [
+            'text' => 'Lista Maztozoologia',
+            'url'  => 'lista-especimen/mazto',
+            'icon' => 'fas fa-fw fa-box',
+            'can'  => ['user-admin','investigador-admin'],
+        ],
+        [
+            'text' => 'Lista Ornitologia',
+            'url'  => 'lista-especimen/mazto',
+            'icon' => 'fas fa-fw fa-box',
+            'can'  => ['user-admin','investigador-admin'],
+        ],
+        [
+            'text' => 'Lista Herpetologia',
+            'url'  => 'lista-especimen/mazto',
             'icon' => 'fas fa-fw fa-box',
             'can'  => ['user-admin','investigador-admin'],
         ],
@@ -393,6 +418,26 @@ return [
                     'type' => 'css',
                     'asset' => false,
                     'location' => '//cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css',
+                ],
+            ],
+        ],
+        'Datepicker' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/daterangepicker/moment.min.js',
+                ],
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/daterangepicker/daterangepicker.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/daterangepicker/daterangepicker.css',
                 ],
             ],
         ],

@@ -45,6 +45,7 @@ class NombreEspecimenController extends Controller
         $nombreEspecimen->clase = $request->clase;
         $nombreEspecimen->nombreComunEsp = $request->nombreComunEsp;
         $nombreEspecimen->nombreComunEng = $request->nombreComunEng;
+        $nombreEspecimen->anioColecta = $request->anioColecta;
         $nombreEspecimen->fuente = $request->fuente;
 
         if($nombreEspecimen->save())

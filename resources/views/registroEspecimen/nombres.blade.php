@@ -69,6 +69,12 @@
                           </div>
                           <div class="col-md-4 col-xl-3">
                             <div class="form-group">
+                                <label for="nombreComunEng">Año</label>
+                                <input type="text" class="form-control" id="anioColecta" placeholder="Año de colecta" name="anioColecta" value="{{old('anioColecta')}}">
+                            </div>
+                          </div>
+                          <div class="col-md-4 col-xl-3">
+                            <div class="form-group">
                                 <label for="fuente">Fuente</label>
                                 <select name="fuente" id="fuente" class="form-control">
                                   <option value="Fuente Local">Fuente local</option>
@@ -92,6 +98,7 @@
                             <th>Clase</th>
                             <th>Nombre comun Español</th>
                             <th>Nombre comun Ingles</th>
+                            <th>Año de Colecta</th>
                             <th>Fuente</th>
                             <th></th>
                           </tr>
@@ -113,6 +120,9 @@
                                     </td>
                                     <td>
                                       {{$nombres->nombreComunEng}}
+                                    </td>
+                                    <td>
+                                      {{$nombres->anioColecta}}
                                     </td>
                                     <td>
                                       {{$nombres->fuente}}

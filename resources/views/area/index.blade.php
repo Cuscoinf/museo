@@ -16,12 +16,6 @@
             <li class="nav-item">
                 <a class="nav-link active" id="custom-tabs-one-home-tab" data-toggle="pill" href="#custom-tabs-one-home" role="tab" aria-controls="custom-tabs-one-home" aria-selected="true">Registrar Area</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" id="custom-tabs-one-profile-tab" data-toggle="pill" href="#custom-tabs-one-profile" role="tab" aria-controls="custom-tabs-one-profile" aria-selected="false">Registrar Jefe de Area</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="custom-tabs-one-messages-tab" data-toggle="pill" href="#custom-tabs-one-messages" role="tab" aria-controls="custom-tabs-one-messages" aria-selected="false">Acceso al sistema</a>
-            </li>
         </ul>
     </div>
     <div class="card-body">
@@ -29,13 +23,13 @@
         <div class="tab-pane fade show active" id="custom-tabs-one-home" role="tabpanel" aria-labelledby="custom-tabs-one-home-tab">
             <div class="card">
                 <div class="card-header">
-                  <h4 class="modal-title">Registrar Nueva Area</h4>
+                  <h4 class="modal-title">Registro de areas</h4>
                 </div>
                 <div class="card-body">
                     <form action="{{route('area.store')}}" method="POST">
                         @csrf
                         <label>
-                            Nombre:
+                            Nombre del área:
                             <br>
                             <input type="text" name="nombre" class="form-control" value="{{@$area->nombre}}">
                         </label>
@@ -44,7 +38,7 @@
                             <input type="text" name="slug" class="form-control" hidden>
                         </label>
                         <br>
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Guardar area</button>
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Registrar área</button>
                     </form>
                 </div>
                 <div class="card-body p-0">
@@ -74,50 +68,6 @@
                       </table>
                   </div>
             </div>
-        </div>
-        <div class="tab-pane fade" id="custom-tabs-one-profile" role="tabpanel" aria-labelledby="custom-tabs-one-profile-tab">
-            <div class="card">
-                <div class="card-header">
-                  <h4 class="modal-title">Registrar Jefe de Area</h4>
-                </div>
-                <div class="card-body">
-                    <form action="https://sistemacuscovf.com/area" method="POST">
-                        @csrf
-                        <label>
-                            Nombre:
-                            <br>
-                            <input type="text" name="nombre" value="">
-                        </label>
-                        <label>
-                            <br>
-                            <input type="text" name="slug" value="" hidden>
-                        </label>
-                        <br>
-                        <button type="submit">Guardar</button>
-                    </form>
-                </div>
-                <div class="card-body p-0">
-                    <table class="table table-striped">
-                      <thead>
-                        <tr>
-                          <th style="width: 10px">#</th>
-                          <th>Nombre</th>
-                          <th>Paterno</th>
-                          <th>Materno</th>
-                          <th>Tipo Usuario</th>
-                          <th>Tipo Documento</th>
-                          <th>Nro Documento</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                         
-                      </tbody>
-                    </table>
-                  </div>
-            </div>
-        </div>
-        <div class="tab-pane fade" id="custom-tabs-one-messages" role="tabpanel" aria-labelledby="custom-tabs-one-messages-tab">
-
         </div>
     </div>
 </div>

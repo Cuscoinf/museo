@@ -16,6 +16,16 @@ class EspecimenController extends Controller
     {
         return View('registroEspecimen.index');
     }
+    //ornitologia
+    public function ornitologia()
+    {
+        return View('registroEspecimen.ornitologia');
+    }
+    //maztozoologia
+    public function maztozoologia()
+    {
+        return View('registroEspecimen.maztozoologia');
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -36,6 +46,17 @@ class EspecimenController extends Controller
     public function store(Request $request)
     {
         //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function listarEspecimen($area)
+    {
+        return $area;
     }
 
     /**

@@ -16,13 +16,13 @@
     <div class="card-header p-0 pt-1">
         <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" id="herpetologia-tab" data-toggle="pill" href="#herpetologia" role="tab" aria-controls="herpetologia" aria-selected="true">HERPETOLOGIA</a>
+                <a class="nav-link active" id="ornitologia-tab" data-toggle="pill" href="#ornitologia" role="tab" aria-controls="ornitologia" aria-selected="true">ORNITOLOGIA</a>
             </li>
         </ul>
     </div>
     <div class="card-body">
         <div class="tab-content" id="custom-tabs-one-tabContent">
-          <div class="tab-pane fade show active" id="herpetologia" role="tabpanel" aria-labelledby="herpetologia-tab">
+          <div class="tab-pane fade show active" id="ornitologia" role="tabpanel" aria-labelledby="ornitologia-tab">
               <div class="card">
                   <form class="form-horizontal" action="{{route('investigador.store')}}" method="POST">
                         @csrf
@@ -41,22 +41,22 @@
                           ">Taxonomía</legend>
                           <div class="card-body row">
                             <div class="col-md-6">
-                              <label for="fauna">Fauna Silvestre</label>
-                              <input type="radio" id="fauna" value="fauna" name="dbespecimen">
+                              <label for="codMuseo">Fauna Silvestre</label>
+                              <input type="radio" value="fauna" name="dbespecimen">
                             </div>
                             <div class="col-md-6">
-                              <label for="local">Registro local</label>
-                              <input type="radio" id="local" value="local" name="dbespecimen">
+                              <label for="codMuseo">Registro local</label>
+                              <input type="radio" value="local" name="dbespecimen">
                             </div>                                
                             <div class="col-md-3">
                               <div class="form-group">
-                                  <label for="especie">Especie</label>
-                                  <input type="text" class="form-control" id="especie" name="especie" value="{{old('especie')}}">
+                                  <label for="codMuseo">Especie</label>
+                                  <input type="text" class="form-control" id="codMuseo" name="codMuseo" value="{{old('codMuseo')}}">
                               </div>
                             </div>
                             <div class="col-md-3">
                               <div class="form-group">
-                                  <label for="genero">Género</label>
+                                  <label for="genero">Genero</label>
                                   <input type="text" class="form-control" id="genero" name="genero" value="{{old('genero')}}">
                               </div>
                             </div>
@@ -68,40 +68,157 @@
                             </div>
                             <div class="col-md-3">
                               <div class="form-group">
-                                  <label for="familia">Familia</label>
-                                  <input type="text" class="form-control" id="familia" name="familia" value="{{old('familia')}}">
+                                  <label for="codMuseo">Familia</label>
+                                  <input type="text" class="form-control" id="codMuseo" name="codMuseo" value="{{old('codMuseo')}}">
                               </div>
                             </div>
                           </div>
                         </fieldset>
                       </div>
-                      <div class="card-body">
-                        <fieldset style="border: 1px solid #ccc">
-                          <legend style="
-                          display: inline-block;
-                          width: auto;
-                          padding: 1px 8px;
-                          border: 1px solid #ccc;
-                          border-radius: 5px;
-                          font-size: 14px;
-                          font-weight: 600;
-                          position: relative;
-                          left: -1px;
-                          ">Lugar de colecta</legend>
-                          <div class="card-body row">
-                            <div class="col-md-2">
-                              <div class="form-group">
-                                  <label for="codCampo">Cod. Campo</label>
-                                  <input type="text" class="form-control" id="codCampo" placeholder="Ingrese Codigo Campo" name="codCampo" value="{{old('codCampo')}}">
-                                  @error('codCampo')
-                                  <br>
-                                  <small>*{{$message}}</small>
-                                  <br>
-                                  @enderror
+                      <div class="card-body row">
+                        <div class="col-md-8">
+                          <fieldset style="border: 1px solid #ccc">
+                            <legend style="
+                            display: inline-block;
+                            width: auto;
+                            padding: 1px 8px;
+                            border: 1px solid #ccc;
+                            border-radius: 5px;
+                            font-size: 14px;
+                            font-weight: 600;
+                            position: relative;
+                            left: -1px;
+                            ">Registro de colecta</legend>
+                            <div class="card-body row">                                             
+                              <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="codMuseo">Codigo MHNC</label>
+                                    <input type="text" class="form-control" id="codMuseo"  name="codMuseo" value="{{old('codMuseo')}}">
+                                    @error('codMuseo')
+                                    <br>
+                                    <small>*{{$message}}</small>
+                                    <br>
+                                    @enderror
+                                </div>
+                              </div>
+                              <div class="col-md-8"></div>
+                              <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="colector">Colector</label>
+                                    <input type="text" class="form-control" id="colector" name="colector" value="{{old('colector')}}">
+                                </div>
+                              </div>
+                              <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="identificador">Identificador</label>
+                                    <input type="text" class="form-control" id="identificador" name="identificador" value="{{old('identificador')}}">
+                                </div>
+                              </div>
+                              
+                              <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="tMuestra">Tipo de muestra</label>
+                                    <input type="text" class="form-control" id="tMuestra" name="tMuestra" value="{{old('tMuestra')}}">
+                                </div>
+                              </div>
+
+                              <div class="col-md-3">
+                                <div class="form-group">
+                                  <label for="sexo">Sexo</label>
+                                  <select name="sexo" id="sexo" class="form-control">
+                                    <option value="M">Macho</option>
+                                    <option value="H">Hembra</option>
+                                    <option value="I">No definido</option>
+                                  </select>
+                                </div>
+                              </div>
+                              
+                              <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="cabeCuerpo">Cabeza-Cuerpo</label>
+                                    <input type="text" class="form-control" id="cabeCuerpo"  name="cabeCuerpo" value="{{old('cabeCuerpo')}}">
+                                </div>
+                              </div>
+                              <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="cola">Cola</label>
+                                    <input type="text" class="form-control" id="cola" name="cola" value="{{old('cola')}}">
+                                </div>
+                              </div>
+                              <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="oreja">Oreja</label>
+                                    <input type="text" class="form-control" id="oreja"  name="oreja" value="{{old('oreja')}}">
+                                </div>
+                              </div>
+                              <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="tarso">Tarso</label>
+                                    <input type="text" class="form-control" id="tarso"  name="tarso" value="{{old('tarso')}}">
+                                </div>
+                              </div>
+                              <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="trago">Trago</label>
+                                    <input type="text" class="form-control" id="trago"  name="trago" value="{{old('trago')}}">
+                                </div>
+                              </div>
+                              <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="antebrazo">Antebrazo</label>
+                                    <input type="text" class="form-control" id="antebrazo"  name="antebrazo" value="{{old('antebrazo')}}">
+                                </div>
+                              </div>
+                              <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="ala">Ala</label>
+                                    <input type="text" class="form-control" id="ala"  name="ala" value="{{old('ala')}}">
+                                </div>
+                              </div>
+                              <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="pie">Pie</label>
+                                    <input type="text" class="form-control" id="pie"  name="pie" value="{{old('pie')}}">
+                                </div>
+                              </div>
+                              <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="peso">Peso</label>
+                                    <input type="text" class="form-control" id="peso"  name="peso" value="{{old('peso')}}">
+                                </div>
+                              </div>
+                              <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="observaciones">Observaciones</label>
+                                    <textarea class="form-control" id="observaciones"  name="observaciones">{{old('observaciones')}}</textarea>
+                                </div>
+                              </div>
+                              <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="foto">Foto</label>
+                                    <input type="file" id="foto" placeholder="Ingrese Foto" name="foto" value="{{old('foto')}}" style="display: none">
+                                    <button class="btn btn-primary" style="display: block"><i class="fa fa-upload"></i> Cargar Foto</button>
+                                </div>
                               </div>
                             </div>
-                            <div class="col-md-2">
-                              <div class="form-group">
+                          </fieldset>
+                        </div>
+                        <div class="col-md-4">
+                          <fieldset style="border: 1px solid #ccc">
+                            <legend style="
+                            display: inline-block;
+                            width: auto;
+                            padding: 1px 8px;
+                            border: 1px solid #ccc;
+                            border-radius: 5px;
+                            font-size: 14px;
+                            font-weight: 600;
+                            position: relative;
+                            left: -1px;
+                            ">Lugar de colecta</legend>
+                            <div class="card-body row">
+                              <div class="col-md-6">
+                                <div class="form-group">
                                   <label for="pais">Pais</label>
                                   <select name="pais" class="form-control" id="pais" name="pais">
                                     <option value="Afganistán" id="AF">Afganistán</option>
@@ -342,142 +459,54 @@
                                     <option value="Zambia" id="ZM">Zambia</option>
                                     <option value="Zimbabue" id="ZW">Zimbabue</option>
                                   </select>
-                              </div>
-                            </div>
-                            <div class="col-md-2">
-                              <div class="form-group">
-                                  <label for="departamento">Departamento</label>
-                                  <input type="text" class="form-control" id="departamento" placeholder="Ingrese Departamento" name="departamento" value="{{old('departamento')}}">
-                              </div>
-                            </div>
-                            <div class="col-md-2">
-                              <div class="form-group">
-                                  <label for="provincia">Provincia</label>
-                                  <input type="text" class="form-control" id="provincia" placeholder="Ingrese Provincia" name="provincia" value="{{old('provincia')}}">
-                              </div>
-                            </div>
-                            <div class="col-md-3">
-                              <div class="form-group">
-                                  <label for="dLocalidad">Localidad</label>
-                                  <input type="text" class="form-control" id="dLocalidad" placeholder="Ingrese Localidad" name="dLocalidad" value="{{old('dLocalidad')}}">
-                              </div>
-                            </div>
-                            <div class="col-md-3">
-                              <div class="form-group">
-                                  <label for="utmn">UTM N</label>
-                                  <input type="text" class="form-control" id="utmn" placeholder="Ingrese UTM N" name="utmn" value="{{old('utmn')}}">
-                              </div>
-                            </div>
-                            <div class="col-md-3">
-                              <div class="form-group">
-                                  <label for="utme">UTM E</label>
-                                  <input type="text" class="form-control" id="utme" placeholder="Ingrese UTM E" name="utme" value="{{old('utme')}}">
-                              </div>
-                            </div>
-                            <div class="col-md-3">
-                              <div class="form-group">
-                                  <label for="fColecta">Fecha Colecta</label>
-                                  <input type="text" class="form-control" id="fColecta" placeholder="Ingrese Fecha Colecta" name="fColecta" value="{{old('fColecta')}}">
-                              </div>
-                            </div>
-                          </div>
-                        </fieldset>
-                      </div>
-                      <div class="card-body">
-                        <fieldset style="border: 1px solid #ccc">
-                          <legend style="
-                          display: inline-block;
-                          width: auto;
-                          padding: 1px 8px;
-                          border: 1px solid #ccc;
-                          border-radius: 5px;
-                          font-size: 14px;
-                          font-weight: 600;
-                          position: relative;
-                          left: -1px;
-                          ">Registro de colecta</legend>
-                          <div class="card-body row">                                             
-                            <div class="col-md-2">
-                              <div class="form-group">
-                                  <label for="codMuseo">Codigo MHNC</label>
-                                  <input type="text" class="form-control" id="codMuseo" placeholder="Ingrese Codigo Museo MHNC" name="codMuseo" value="{{old('codMuseo')}}">
-                                  @error('codMuseo')
-                                  <br>
-                                  <small>*{{$message}}</small>
-                                  <br>
-                                  @enderror
-                              </div>
-                            </div>
-                            <div class="col-md-4">
-                              <div class="form-group">
-                                  <label for="proyecto">Proyecto</label>
-                                  <input type="text" class="form-control" id="proyecto" placeholder="Ingrese proyecto" name="proyecto" value="{{old('proyecto')}}">
-                              </div>
-                            </div>
-                          </div>
-                          <div class="card-body row">
-                            <div class="col-md-3">
-                              <div class="form-group">
-                                  <label for="clase">Clase</label>
-                                  <input type="text" class="form-control" id="clase" placeholder="Ingrese clase" name="clase" value="{{old('clase')}}">
-                              </div>
-                            </div>
-                            <div class="col-md-2">
-                              <div class="form-group">
-                                  <label for="sexo">Sexo</label>
-                                  <select name="sexo" id="sexo" class="form-control">
-                                    <option value="M">Macho</option>
-                                    <option value="H">Hembra</option>
-                                    <option value="I">No definido</option>
-                                  </select>
-                              </div>
-                            </div>
+                                </div>
 
-                            <div class="col-md-2">
-                              <div class="form-group">
-                                  <label for="tejidoAdn">Tejido ADN</label>
-                                  <input type="text" class="form-control" id="tejidoAdn" placeholder="Ingrese tejidoAdn" name="tejidoAdn" value="{{old('tejidoAdn')}}">
+                                <div class="form-group">
+                                  <label for="departamento">Departamento</label>
+                                  <input type="text" class="form-control" id="departamento" name="departamento" value="{{old('departamento')}}">
+                                </div>
+
+                                <div class="form-group">
+                                  <label for="provincia">Provincia</label>
+                                  <input type="text" class="form-control" id="provincia"  name="provincia" value="{{old('provincia')}}">
+                                </div>
+                                
+                                <div class="form-group">
+                                  <label for="distrito">Distrito</label>
+                                  <input type="text" class="form-control" id="distrito" name="distrito" value="{{old('distrito')}}">
+                                </div>
+                                <div class="form-group">
+                                  <label for="localidad">Localidad</label>
+                                  <input type="text" class="form-control" id="localidad" name="localidad" value="{{old('localidad')}}">
+                                </div>
+
                               </div>
-                            </div>
-                            <div class="col-md-2">
-                              <div class="form-group">
-                                  <label for="tejidoCod">Tejido COD</label>
-                                  <input type="text" class="form-control" id="tejidoCod" placeholder="Ingrese tejidoCod" name="tejidoCod" value="{{old('tejidoCod')}}">
+                              
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="utmn">UTM N</label>
+                                    <input type="text" class="form-control" id="utmn" name="utmn" value="{{old('utmn')}}">
+                                </div>
+
+                                <div class="form-group">
+                                  <label for="utme">UTM E</label>
+                                  <input type="text" class="form-control" id="utme" name="utme" value="{{old('utme')}}">
+                                </div>
+                                <div class="form-group">
+                                  <label for="altitud">Altitud</label>
+                                  <input type="text" class="form-control" id="altitud" name="altitud" value="{{old('altitud')}}">
+                                </div>
+                                
+                                <div class="form-group">
+                                  <label for="fColecta">Fecha Colecta</label>
+                                  <input type="text" class="form-control" id="fColecta" name="fColecta" value="{{old('fColecta')}}">
+                                </div>
+
                               </div>
+                              
                             </div>
-                            <div class="col-md-5">
-                              <div class="form-group">
-                                  <label for="preservacion">Preservación</label>
-                                  <input type="text" class="form-control" id="preservacion" placeholder="Ingrese preservacion" name="preservacion" value="{{old('preservacion')}}">
-                              </div>
-                            </div>
-                            <div class="col-md-2">
-                              <div class="form-group">
-                                  <label for="colector">Colector</label>
-                                  <input type="text" class="form-control" id="colector" placeholder="Ingrese colector" name="colector" value="{{old('colector')}}">
-                              </div>
-                            </div>
-                            <div class="col-md-3">
-                              <div class="form-group">
-                                  <label for="autor">Autor</label>
-                                  <input type="text" class="form-control" id="autor" placeholder="Ingrese tipo de preservacion" name="autor" value="{{old('autor')}}">
-                              </div>
-                            </div>
-                            <div class="col-md-5">
-                              <div class="form-group">
-                                  <label for="colector">Observacion</label>
-                                  <textarea type="text" class="form-control" id="colector" placeholder="Ingrese Colector" name="colector">{{old('colector')}} </textarea>
-                              </div>
-                            </div>
-                            <div class="col-md-4">
-                              <div class="form-group">
-                                  <label for="foto">Foto</label>
-                                  <input type="file" id="foto" placeholder="Ingrese Foto" name="foto" value="{{old('foto')}}" style="display: none">
-                                  <button class="btn btn-primary" style="display: block"><i class="fa fa-upload"></i> Cargar Foto</button>
-                              </div>
-                            </div>
-                          </div>
-                        </fieldset>
+                          </fieldset>
+                        </div>
                       </div>
                       <div class="card-footer text-center">
                         <button class="btn btn-success">REGISTRAR ESPECIMEN</button>

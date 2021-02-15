@@ -57,9 +57,14 @@ Route::get('/getmenus',[RoleController::class,'getMenus'])->name('getmenus');
 Route::get('/getmenuuser/{id}',[RoleController::class,'getMenuUser'])->name('getmenuuser');
 Route::put('actualizarpermiso/{menuuser}',[RoleController::class,'actualizarPermiso'])->name('actualizarpermiso');
 
+Route::get('registro-maztozoologia', [EspecimenController::class, 'maztozoologia'])->name('especimen.maztozoologia');
+Route::get('registro-ornitologia', [EspecimenController::class, 'ornitologia'])->name('especimen.ornitologia');
+
 Route::get('registro-nombres', [NombreEspecimenController::class, 'index'])->name('nombreEspecimen');
 Route::post('registrar-nombre', [NombreEspecimenController::class, 'store'])->name('guardarNombreEspecimen');
 Route::delete('eliminar-nombre/{id}', [NombreEspecimenController::class, 'destroy'])->name('eliminarNombreEspecimen');
+
+Route::get('lista-especimen/{area}',[EspecimenController::class, 'listarEspecimen'])->name('listarEspecimen');
 
 /*solo para contenido statico*/
 Route::view('nosotros', 'nosotros')->name('nosotros');

@@ -13,7 +13,8 @@ class Investigador extends Model
     protected $table = "investigador";
 
     /*para asignacion masiva para eloquent*/
-    //protected $fillable=['gradoAcademico'];
+    protected $fillable=['nombre','apPaterno','apMaterno','tipoUsuario','email','tipoDocumento','nroDocumento','pais','genero','estado','direccion','telefono','formacion_academica_id','area_id','slug'];
+
     protected $guarded=[];
 
     public function getRouteKeyName()
