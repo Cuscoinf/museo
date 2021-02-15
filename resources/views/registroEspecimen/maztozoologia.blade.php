@@ -50,26 +50,32 @@
                             </div>                                
                             <div class="col-md-3">
                               <div class="form-group">
-                                  <label for="codMuseo">Especie</label>
-                                  <input type="text" class="form-control" id="codMuseo" name="codMuseo" value="{{old('codMuseo')}}">
+                                  <label for="especie">Especie</label>
+                                  <input type="text" class="form-control" id="especie" name="especie" value="{{old('especie')}}">
                               </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                               <div class="form-group">
-                                  <label for="genero">Genero</label>
+                                  <label for="genero">Género</label>
                                   <input type="text" class="form-control" id="genero" name="genero" value="{{old('genero')}}">
                               </div>
                             </div>
                             <div class="col-md-3">
                               <div class="form-group">
+                                  <label for="familia">Familia</label>
+                                  <input type="text" class="form-control" id="familia" name="familia" value="{{old('familia')}}">
+                              </div>
+                            </div>
+                            <div class="col-md-2">
+                              <div class="form-group">
                                   <label for="orden">Orden</label>
                                   <input type="text" class="form-control" id="orden" name="orden" value="{{old('orden')}}">
                               </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                               <div class="form-group">
-                                  <label for="codMuseo">Familia</label>
-                                  <input type="text" class="form-control" id="codMuseo" name="codMuseo" value="{{old('codMuseo')}}">
+                                  <label for="clase">Clase</label>
+                                  <input type="text" class="form-control" id="clase" name="clase" value="{{old('clase')}}">
                               </div>
                             </div>
                           </div>

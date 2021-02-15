@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Especimen;
+use App\Models\ornitologia;
 use Illuminate\Http\Request;
 
 class EspecimenController extends Controller
@@ -25,6 +26,116 @@ class EspecimenController extends Controller
     public function maztozoologia()
     {
         return View('registroEspecimen.maztozoologia');
+    }
+    
+    /**
+     * carga de data a herpetologia
+     */
+    public function storeHerpetologia(Request $request)
+    {
+        $especimen = new Herpetologia();
+        $especimen->codigo = $request->codigo;
+        $especimen->orden = $request->orden;
+        $especimen->familia = $request->familia;
+        $especimen->genero = $request->genero;
+        $especimen->clase = $request->clase;
+        $especimen->especie = $request->especie;
+        $especimen->campo = $request->campo;
+        $especimen->proyecto = $request->proyecto;
+        $especimen->foto = $request->foto;
+        $especimen->fechaColecta = $request->fechaColecta;
+        $especimen->pais = $request->pais;
+        $especimen->departamento = $request->departamento;
+        $especimen->provincia = $request->provincia;
+        $especimen->distrito = $request->distrito;
+        $especimen->localidad = $request->localidad;
+        $especimen->coordenadaA = $request->coordenadaA;
+        $especimen->coordenadaB = $request->coordenadaB;
+        $especimen->colector = $request->colector;
+        $especimen->autor = $request->autor;
+        $especimen->sexo = $request->sexo;
+        $especimen->preservacion = $request->preservacion;
+        $especimen->tejidoAdn = $request->tejidoAdn;
+        $especimen->tejidoCod = $request->tejidoCod;
+        $especimen->observacion = $request->observacion;
+        if($especimen->save())
+        {
+            return "1";
+        }
+        else{
+            return "0";
+        }
+    }
+
+    /**
+     * carga de data a ornitologia
+     */
+    public function storeOrnitologia(Request $request)
+    {
+        $especimen = new ornitologia();
+        $especimen->codigo = $request->codigo;
+        $especimen->orden = $request->orden;
+        $especimen->familia = $request->familia;
+        $especimen->genero = $request->genero;
+        $especimen->especie = $request->especie;
+        $especimen->foto = $request->foto;
+        $especimen->fechaColecta = $request->fechaColecta;
+        $especimen->pais = $request->pais;
+        $especimen->departamento = $request->departamento;
+        $especimen->provincia = $request->provincia;
+        $especimen->distrito = $request->distrito;
+        $especimen->localidad = $request->localidad;
+        $especimen->coordenadaA = $request->coordenadaA;
+        $especimen->coordenadaB = $request->coordenadaB;
+        $especimen->colector = $request->colector;
+        $especimen->identificador = $request->identificador;
+        $especimen->caracteristicas = $request->caracteristicas;
+        $especimen->nIngreso = $request->nIngreso;
+        $especimen->nColecta = $request->nColecta;
+        $especimen->estadoActual = $request->estadoActual;
+        $especimen->tipoPreparacion = $request->tipoPreparacion;
+        if($especimen->save())
+        {
+            return "1";
+        }
+        else{
+            return "0";
+        }
+    }
+    /**
+     * carga de data a Maztozoologia
+     */
+    public function storeMaztozoologia(Request $request)
+    {
+        $especimen = new Maztozoologia();
+        $especimen->codigo = $request->codigo;
+        $especimen->orden = $request->orden;
+        $especimen->familia = $request->familia;
+        $especimen->genero = $request->genero;
+        $especimen->especie = $request->especie;
+        $especimen->foto = $request->foto;
+        $especimen->fechaColecta = $request->fechaColecta;
+        $especimen->pais = $request->pais;
+        $especimen->departamento = $request->departamento;
+        $especimen->provincia = $request->provincia;
+        $especimen->distrito = $request->distrito;
+        $especimen->localidad = $request->localidad;
+        $especimen->coordenadaA = $request->coordenadaA;
+        $especimen->coordenadaB = $request->coordenadaB;
+        $especimen->colector = $request->colector;
+        $especimen->identificador = $request->identificador;
+        $especimen->caracteristicas = $request->caracteristicas;
+        $especimen->nIngreso = $request->nIngreso;
+        $especimen->nColecta = $request->nColecta;
+        $especimen->estadoActual = $request->estadoActual;
+        $especimen->tipoPreparacion = $request->tipoPreparacion;
+        if($ornitologia->save())
+        {
+            return "1";
+        }
+        else{
+            return "0";
+        }
     }
 
     /**

@@ -66,6 +66,8 @@ Route::delete('eliminar-nombre/{id}', [NombreEspecimenController::class, 'destro
 
 Route::get('lista-especimen/{area}',[EspecimenController::class, 'listarEspecimen'])->name('listarEspecimen');
 
+Route::get('/ornitologia',[EspecimenController::class, 'storeOrnitologia'])->name('ornitologia');
+
 /*solo para contenido statico*/
 Route::view('nosotros', 'nosotros')->name('nosotros');
 
