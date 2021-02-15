@@ -107,7 +107,6 @@
                                     @enderror
                                 </div>
                               </div>
-                              <div class="col-md-8"></div>
                               <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="colector">Colector</label>
@@ -128,7 +127,7 @@
                                 </div>
                               </div>
 
-                              <div class="col-md-3">
+                              <div class="col-md-4">
                                 <div class="form-group">
                                   <label for="sexo">Sexo</label>
                                   <select name="sexo" id="sexo" class="form-control">
@@ -139,7 +138,7 @@
                                 </div>
                               </div>
                               
-                              <div class="col-md-3">
+                              <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="cabeCuerpo">Cabeza-Cuerpo</label>
                                     <input type="text" class="form-control" id="cabeCuerpo"  name="cabeCuerpo" value="{{old('cabeCuerpo')}}">

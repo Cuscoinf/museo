@@ -308,19 +308,19 @@ return [
         ['header' => 'CONTROL DE ESPECIMEN',  'can'  => ['user-admin','investigador-admin']],
         [
             'text' => 'Lista Maztozoologia',
-            'url'  => 'lista-especimen/mazto',
+            'url'  => 'lista-especimen/maztozoologia',
             'icon' => 'fas fa-fw fa-box',
             'can'  => ['user-admin','investigador-admin'],
         ],
         [
             'text' => 'Lista Ornitologia',
-            'url'  => 'lista-especimen/mazto',
+            'url'  => 'lista-especimen/ornitologia',
             'icon' => 'fas fa-fw fa-box',
             'can'  => ['user-admin','investigador-admin'],
         ],
         [
             'text' => 'Lista Herpetologia',
-            'url'  => 'lista-especimen/mazto',
+            'url'  => 'lista-especimen/herpetologia',
             'icon' => 'fas fa-fw fa-box',
             'can'  => ['user-admin','investigador-admin'],
         ],

@@ -167,7 +167,7 @@ class EspecimenController extends Controller
      */
     public function listarEspecimen($area)
     {
-        return $area;
+        return View("controlEspecimen.$area");
     }
 
     /**

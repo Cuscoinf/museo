@@ -96,10 +96,10 @@
                             left: -1px;
                             ">Registro de colecta</legend>
                             <div class="card-body row">                                             
-                              <div class="col-md-2">
+                              <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="codMuseo">Codigo MHNC</label>
-                                    <input type="text" class="form-control" id="codMuseo" placeholder="Ingrese Codigo Museo MHNC" name="codMuseo" value="{{old('codMuseo')}}">
+                                    <input type="text" class="form-control" id="codMuseo" name="codMuseo" value="{{old('codMuseo')}}">
                                     @error('codMuseo')
                                     <br>
                                     <small>*{{$message}}</small>
@@ -110,7 +110,7 @@
                               <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="proyecto">Proyecto</label>
-                                    <input type="text" class="form-control" id="proyecto" placeholder="Ingrese proyecto" name="proyecto" value="{{old('proyecto')}}">
+                                    <input type="text" class="form-control" id="proyecto" name="proyecto" value="{{old('proyecto')}}">
                                 </div>
                               </div>
                             </div>
@@ -126,40 +126,40 @@
                                 </div>
                               </div>
   
-                              <div class="col-md-2">
+                              <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="tejidoAdn">Tejido ADN</label>
-                                    <input type="text" class="form-control" id="tejidoAdn" placeholder="Ingrese tejidoAdn" name="tejidoAdn" value="{{old('tejidoAdn')}}">
-                                </div>
-                              </div>
-                              <div class="col-md-2">
-                                <div class="form-group">
-                                    <label for="tejidoCod">Tejido COD</label>
-                                    <input type="text" class="form-control" id="tejidoCod" placeholder="Ingrese tejidoCod" name="tejidoCod" value="{{old('tejidoCod')}}">
-                                </div>
-                              </div>
-                              <div class="col-md-5">
-                                <div class="form-group">
-                                    <label for="preservacion">Preservación</label>
-                                    <input type="text" class="form-control" id="preservacion" placeholder="Ingrese preservacion" name="preservacion" value="{{old('preservacion')}}">
-                                </div>
-                              </div>
-                              <div class="col-md-2">
-                                <div class="form-group">
-                                    <label for="colector">Colector</label>
-                                    <input type="text" class="form-control" id="colector" placeholder="Ingrese colector" name="colector" value="{{old('colector')}}">
+                                    <input type="text" class="form-control" id="tejidoAdn" name="tejidoAdn" value="{{old('tejidoAdn')}}">
                                 </div>
                               </div>
                               <div class="col-md-3">
                                 <div class="form-group">
+                                    <label for="tejidoCod">Tejido COD</label>
+                                    <input type="text" class="form-control" id="tejidoCod" name="tejidoCod" value="{{old('tejidoCod')}}">
+                                </div>
+                              </div>
+                              <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="preservacion">Preservación</label>
+                                    <input type="text" class="form-control" id="preservacion" name="preservacion" value="{{old('preservacion')}}">
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="colector">Colector</label>
+                                    <input type="text" class="form-control" id="colector" name="colector" value="{{old('colector')}}">
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group">
                                     <label for="autor">Autor</label>
-                                    <input type="text" class="form-control" id="autor" placeholder="Ingrese tipo de preservacion" name="autor" value="{{old('autor')}}">
+                                    <input type="text" class="form-control" id="autor" name="autor" value="{{old('autor')}}">
                                 </div>
                               </div>
                               <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="colector">Observacion</label>
-                                    <textarea type="text" class="form-control" id="colector" placeholder="Ingrese Colector" name="colector">{{old('colector')}} </textarea>
+                                    <textarea type="text" class="form-control" id="colector" name="colector">{{old('colector')}} </textarea>
                                 </div>
                               </div>
                               <div class="col-md-12">

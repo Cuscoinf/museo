@@ -19,8 +19,6 @@ window.Vue = require('vue');
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('form-create-area', require('./components/area/FormCreateArea.vue').default);
 Vue.component('form-Edit-area', require('./components/area/FormEditArea.vue').default);
 Vue.component('list-area', require('./components/area/ListArea.vue').default);
@@ -29,6 +27,7 @@ Vue.component('form-roles', require('./components/roles/FormRoles.vue').default)
 Vue.component('select-menu', require('./components/roles/SelectMenu.vue').default);
 Vue.component('list-permisos', require('./components/roles/ListPermisos.vue').default);
 Vue.component('form-permisos', require('./components/roles/FormPermisos.vue').default);
+Vue.component('lista-especimen', require('./components/especimen/listaEspecimen.vue').default);
 
 
 /**
@@ -39,4 +38,7 @@ Vue.component('form-permisos', require('./components/roles/FormPermisos.vue').de
 
 const app = new Vue({
     el: '#app',
+    methods:{
+        
+    }
 });
