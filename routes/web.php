@@ -47,7 +47,7 @@ Route::resource('registro-solicitud', SolicitudController::class);
 
 Route::resource('investigador', InvestigadorController::class);
 Route::put('updateuser/{user}',[InvestigadorController::class,'updateUser'])->name('updateuser');
-Route::post('createuser',[InvestigadorController::class,'createUser'])->name('createuser');
+Route::post('createuser',[InvestigadorController::class,'storeUser'])->name('createuser');
 
 Route::resource('roles', RoleController::class);
 Route::apiResource('roles',RoleController::class);
@@ -65,6 +65,7 @@ Route::post('registrar-nombre', [NombreEspecimenController::class, 'store'])->na
 Route::delete('eliminar-nombre/{id}', [NombreEspecimenController::class, 'destroy'])->name('eliminarNombreEspecimen');
 
 Route::get('lista-especimen/{area}',[EspecimenController::class, 'listarEspecimen'])->name('listarEspecimen');
+Route::get('especimen-data/{area}',[EspecimenController::class, 'dataEspecimen'])->name("dataEspecimen");
 
 Route::get('/ornitologia',[EspecimenController::class, 'storeOrnitologia'])->name('ornitologia');
 

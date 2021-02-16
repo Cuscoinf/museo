@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Especimen;
 use App\Models\ornitologia;
+use App\Models\Maztozoologia;
+use App\Models\Herpetologia;
 use Illuminate\Http\Request;
 
 class EspecimenController extends Controller
@@ -167,7 +169,31 @@ class EspecimenController extends Controller
      */
     public function listarEspecimen($area)
     {
-        return View("controlEspecimen.$area");
+        return View("controlEspecimen.ornitologia",[
+            "area" => $area
+        ]);
+    }
+
+    /**
+     * registros de especimen segun el area
+     */
+    public function dataEspecimen($area)
+    {
+        if($area == "ornitologia")
+        {
+            $data = ornitologia::all();
+            return $data;
+        }
+        if($area == "herpetologia")
+        {
+            $data = Herpetologia::all();
+            return $data;
+        }
+        if($area == "maztozoologia")
+        {
+            $data = Maztozoologia::all();
+            return $data;
+        }
     }
 
     /**

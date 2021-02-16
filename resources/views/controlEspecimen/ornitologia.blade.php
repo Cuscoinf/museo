@@ -6,7 +6,7 @@
 
 
 @section('content_header')
-    <h1>Registro Especimen</h1>
+    <h1>CONTROL DE ESPECIMEN</h1>
 @stop
 
 @section('content')
@@ -15,12 +15,12 @@
     <div class="card-header p-0 pt-1">
         <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" id="ornitologia-tab" data-toggle="pill" href="#ornitologia" role="tab" aria-controls="ornitologia" aria-selected="true">REGISTROS ORNITOLOGIA</a>
+                <a class="nav-link active" style="text-transform:uppercase; font-weight:bolder" id="ornitologia-tab" data-toggle="pill" href="#ornitologia" role="tab" aria-controls="ornitologia" aria-selected="true">REGISTROS {{$area}}</a>
             </li>
         </ul>
     </div>
     <div class="card-body">
-        <lista-especimen></lista-especimen>
+        <lista-especimen area="{{$area}}"></lista-especimen>
     </div>
 </div>
 </section>
@@ -28,27 +28,4 @@
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
-@stop
-
-@section('js')
-    <script>
-        $('#button-delete').on('click',function(e){
-        e.preventDefault();
-        var form = $(this).parents('form');
-        Swal.fire({
-            title: '¿Seguro que quiere eliminar?',
-            text: "¡No podrás revertir esto!",
-            type: 'Cuidado',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Si, Eliminar'
-        }).then((result) => {
-            if (result.value) {
-
-                form.submit();
-            }
-        });
-    });
-    </script>    
 @stop
