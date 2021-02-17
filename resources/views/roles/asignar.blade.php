@@ -60,7 +60,7 @@
 @stop
 
 @section('js')
-    <script src="{{ asset('js/app.js') }}"></script>
+    {{--<script src="{{ asset('js/app.js') }}"></script>--}}
     <!--Añadimos el js generado con webpack, donde se encuentra nuestro componente vuejs-->
     <script>
         const Toast = Swal.mixin({

@@ -30,7 +30,7 @@ export default {
     props: ['usuarioR'],
   data() {
     return {
-      menus: {},
+      menus: [],
       idmenu: "",
     };
   },
@@ -38,6 +38,7 @@ export default {
     console.log("Component Select Menu Montado.");
     axios.get("/getmenus").then((data) => {
       this.menus = data.data;
+      console.log(data.data)
     });
   },
   methods:{
