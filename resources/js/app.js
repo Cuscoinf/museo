@@ -39,6 +39,8 @@ Vue.component('lista-especimen', require('./components/especimen/listaEspecimen.
 const app = new Vue({
     el: '#app',
     methods:{
-        
+        guardarHerpetologia(){
+            alert("test");
+        }
     }
 });

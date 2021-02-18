@@ -67,7 +67,7 @@
 @section('adminlte_js')
     @stack('js')
     @yield('js')
-    {{--<script>
+    <script>
         $(function() {
             $('input[name="fColecta"]').daterangepicker({
                 singleDatePicker: true,
@@ -75,5 +75,5 @@
                 minYear: 1901,
             });
         });
-    </script>--}}
+    </script>
 @stop

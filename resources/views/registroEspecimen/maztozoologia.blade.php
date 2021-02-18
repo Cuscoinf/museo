@@ -16,15 +16,20 @@
     <div class="card-header p-0 pt-1">
         <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" id="ornitologia-tab" data-toggle="pill" href="#ornitologia" role="tab" aria-controls="ornitologia" aria-selected="true">ORNITOLOGIA</a>
+                <a class="nav-link active" id="ornitologia-tab" data-toggle="pill" href="#ornitologia" role="tab" aria-controls="ornitologia" aria-selected="true">MAZTOZOOLOGIA</a>
             </li>
         </ul>
     </div>
+    @if(Session::has('mensaje'))
+    <div class="alert alert-success "><button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">×</span></button>{{Session::get('mensaje')}}
+    </div>
+    @endif
     <div class="card-body">
         <div class="tab-content" id="custom-tabs-one-tabContent">
           <div class="tab-pane fade show active" id="ornitologia" role="tabpanel" aria-labelledby="ornitologia-tab">
               <div class="card">
-                  <form class="form-horizontal" action="{{route('investigador.store')}}" method="POST">
+                  <form class="form-horizontal" action="{{route('guardar.Maztozoologia')}}" method="POST">
                         @csrf
                       <div class="card-body">
                           <fieldset style="border: 1px solid #ccc">
@@ -122,8 +127,8 @@
                               
                               <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="tMuestra">Tipo de muestra</label>
-                                    <input type="text" class="form-control" id="tMuestra" name="tMuestra" value="{{old('tMuestra')}}">
+                                    <label for="tipoMuestra">Tipo de muestra</label>
+                                    <input type="text" class="form-control" id="tipoMuestra" name="tipoMuestra" value="{{old('tipoMuestra')}}">
                                 </div>
                               </div>
 
@@ -140,8 +145,8 @@
                               
                               <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="cabeCuerpo">Cabeza-Cuerpo</label>
-                                    <input type="text" class="form-control" id="cabeCuerpo"  name="cabeCuerpo" value="{{old('cabeCuerpo')}}">
+                                    <label for="cabezaCuerpo">Cabeza-Cuerpo</label>
+                                    <input type="text" class="form-control" id="cabezaCuerpo"  name="cabezaCuerpo" value="{{old('cabezaCuerpo')}}">
                                 </div>
                               </div>
                               <div class="col-md-3">

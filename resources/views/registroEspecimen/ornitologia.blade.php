@@ -20,11 +20,16 @@
             </li>
         </ul>
     </div>
+    @if(Session::has('mensaje'))
+    <div class="alert alert-success "><button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">×</span></button>{{Session::get('mensaje')}}
+    </div>
+    @endif
     <div class="card-body">
         <div class="tab-content" id="custom-tabs-one-tabContent">
           <div class="tab-pane fade show active" id="ornitologia" role="tabpanel" aria-labelledby="ornitologia-tab">
               <div class="card">
-                  <form class="form-horizontal" action="{{route('investigador.store')}}" method="POST">
+                  <form class="form-horizontal" action="{{route('guardar.ornitologia')}}" method="POST">
                         @csrf
                       <div class="card-body">
                           <fieldset style="border: 1px solid #ccc">
@@ -121,8 +126,8 @@
                               </div>
                               <div class="col-md-4">
                                 <div class="form-group">
-                                    <label for="determinadopor">Determinado por</label>
-                                    <input type="text" class="form-control" id="determinadopor"  name="determinadopor" value="{{old('determinadopor')}}">
+                                    <label for="determinadopor">Identificador</label>
+                                    <input type="text" class="form-control" id="identificador"  name="identificador" value="{{old('identificador')}}">
                                     @error('determinadopor')
                                     <br>
                                     <small>*{{$message}}</small>
@@ -153,8 +158,8 @@
                               </div>
                               <div class="col-md-4">
                                   <div class="form-group">
-                                      <label for="tPreparacion">Tipo de preparacion</label>
-                                      <input type="text" class="form-control" id="tPreparacion" name="tPreparacion" value="{{old('tPreparacion')}}">
+                                      <label for="tipoPreparacion">Tipo de preparacion</label>
+                                      <input type="text" class="form-control" id="tipoPreparacion" name="tipoPreparacion" value="{{old('tipoPreparacion')}}">
                                   </div>
                               </div>
                               <div class="col-md-12">
@@ -491,27 +496,4 @@
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
-@stop
-
-@section('js')
-    <script>
-        $('#button-delete').on('click',function(e){
-        e.preventDefault();
-        var form = $(this).parents('form');
-        Swal.fire({
-            title: '¿Seguro que quiere eliminar?',
-            text: "¡No podrás revertir esto!",
-            type: 'Cuidado',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Si, Eliminar'
-        }).then((result) => {
-            if (result.value) {
-
-                form.submit();
-            }
-        });
-    });
-    </script>
 @stop

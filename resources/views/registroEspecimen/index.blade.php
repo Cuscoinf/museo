@@ -11,7 +11,11 @@
 
 @section('content')
 
-
+@if(Session::has('mensaje'))
+<div class="alert alert-success "><button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">×</span></button>{{Session::get('mensaje')}}
+</div>
+@endif
 <div class="card card-dark card-tabs">
     <div class="card-header p-0 pt-1">
         <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
@@ -24,7 +28,7 @@
         <div class="tab-content" id="custom-tabs-one-tabContent">
           <div class="tab-pane fade show active" id="herpetologia" role="tabpanel" aria-labelledby="herpetologia-tab">
               <div class="card">
-                  <form class="form-horizontal" action="{{route('investigador.store')}}" method="POST">
+                  <form class="form-horizontal" action="{{route('guardar.herpetologia')}}" method="POST">
                         @csrf
                       <div class="card-body">
                           <fieldset style="border: 1px solid #ccc">
@@ -100,11 +104,12 @@
                                 <div class="form-group">
                                     <label for="codMuseo">Codigo MHNC</label>
                                     <input type="text" class="form-control" id="codMuseo" name="codMuseo" value="{{old('codMuseo')}}">
-                                    @error('codMuseo')
-                                    <br>
-                                    <small>*{{$message}}</small>
-                                    <br>
-                                    @enderror
+                                </div>
+                              </div>
+                              <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="campo">Cod. Campo</label>
+                                    <input type="text" class="form-control" id="campo" name="campo" value="{{old('campo')}}">
                                 </div>
                               </div>
                               <div class="col-md-4">
@@ -478,7 +483,7 @@
                         </div>
                       </div>
                       <div class="card-footer text-center">
-                        <button class="btn btn-success">REGISTRAR ESPECIMEN</button>
+                        <button class="btn btn-success" type="submit" v-on:click="guardarHerpetologia()">REGISTRAR ESPECIMEN</button>
                       </div>
                   </form>
               </div>
@@ -490,27 +495,4 @@
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
-@stop
-
-@section('js')
-    <script>
-        $('#button-delete').on('click',function(e){
-        e.preventDefault();
-        var form = $(this).parents('form');
-        Swal.fire({
-            title: '¿Seguro que quiere eliminar?',
-            text: "¡No podrás revertir esto!",
-            type: 'Cuidado',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Si, Eliminar'
-        }).then((result) => {
-            if (result.value) {
-
-                form.submit();
-            }
-        });
-    });
-    </script>
 @stop

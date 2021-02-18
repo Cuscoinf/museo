@@ -7,6 +7,7 @@ use App\Models\ornitologia;
 use App\Models\Maztozoologia;
 use App\Models\Herpetologia;
 use Illuminate\Http\Request;
+use Session;
 
 class EspecimenController extends Controller
 {
@@ -36,7 +37,7 @@ class EspecimenController extends Controller
     public function storeHerpetologia(Request $request)
     {
         $especimen = new Herpetologia();
-        $especimen->codigo = $request->codigo;
+        $especimen->codigo = $request->codMuseo;
         $especimen->orden = $request->orden;
         $especimen->familia = $request->familia;
         $especimen->genero = $request->genero;
@@ -45,14 +46,14 @@ class EspecimenController extends Controller
         $especimen->campo = $request->campo;
         $especimen->proyecto = $request->proyecto;
         $especimen->foto = $request->foto;
-        $especimen->fechaColecta = $request->fechaColecta;
+        $especimen->fechaColecta = date('Y-m-d',strtotime($request->fColecta));
         $especimen->pais = $request->pais;
         $especimen->departamento = $request->departamento;
         $especimen->provincia = $request->provincia;
         $especimen->distrito = $request->distrito;
         $especimen->localidad = $request->localidad;
-        $especimen->coordenadaA = $request->coordenadaA;
-        $especimen->coordenadaB = $request->coordenadaB;
+        $especimen->coordenadaA = $request->utmn;
+        $especimen->coordenadaB = $request->utme;
         $especimen->colector = $request->colector;
         $especimen->autor = $request->autor;
         $especimen->sexo = $request->sexo;
@@ -62,10 +63,11 @@ class EspecimenController extends Controller
         $especimen->observacion = $request->observacion;
         if($especimen->save())
         {
-            return "1";
+            Session::flash('mensaje', "Especimen registrado");
+            return redirect()->route('especimen.index');
         }
         else{
-            return "0";
+            $request->session()->flash('mensaje', "Error en el registro, vuelva a intentar mas tarde");
         }
     }
 
@@ -75,20 +77,20 @@ class EspecimenController extends Controller
     public function storeOrnitologia(Request $request)
     {
         $especimen = new ornitologia();
-        $especimen->codigo = $request->codigo;
+        $especimen->codigo = $request->codMuseo;
         $especimen->orden = $request->orden;
         $especimen->familia = $request->familia;
         $especimen->genero = $request->genero;
         $especimen->especie = $request->especie;
         $especimen->foto = $request->foto;
-        $especimen->fechaColecta = $request->fechaColecta;
+        $especimen->fechaColecta = date('Y-m-d',strtotime($request->fColecta));
         $especimen->pais = $request->pais;
         $especimen->departamento = $request->departamento;
         $especimen->provincia = $request->provincia;
         $especimen->distrito = $request->distrito;
         $especimen->localidad = $request->localidad;
-        $especimen->coordenadaA = $request->coordenadaA;
-        $especimen->coordenadaB = $request->coordenadaB;
+        $especimen->coordenadaA = $request->utmn;
+        $especimen->coordenadaB = $request->utme;
         $especimen->colector = $request->colector;
         $especimen->identificador = $request->identificador;
         $especimen->caracteristicas = $request->caracteristicas;
@@ -98,10 +100,11 @@ class EspecimenController extends Controller
         $especimen->tipoPreparacion = $request->tipoPreparacion;
         if($especimen->save())
         {
-            return "1";
+            Session::flash('mensaje', "Especimen registrado");
+            return redirect()->route('especimen.index');
         }
         else{
-            return "0";
+            $request->session()->flash('mensaje', "Error en el registro, vuelva a intentar mas tarde");
         }
     }
     /**
@@ -110,33 +113,44 @@ class EspecimenController extends Controller
     public function storeMaztozoologia(Request $request)
     {
         $especimen = new Maztozoologia();
-        $especimen->codigo = $request->codigo;
+        $especimen->codigo = $request->codMuseo;
         $especimen->orden = $request->orden;
         $especimen->familia = $request->familia;
+        $especimen->subFamilia = "";
         $especimen->genero = $request->genero;
         $especimen->especie = $request->especie;
         $especimen->foto = $request->foto;
-        $especimen->fechaColecta = $request->fechaColecta;
+        $especimen->fechaColecta = date('Y-m-d',strtotime($request->fColecta));
         $especimen->pais = $request->pais;
         $especimen->departamento = $request->departamento;
         $especimen->provincia = $request->provincia;
         $especimen->distrito = $request->distrito;
         $especimen->localidad = $request->localidad;
-        $especimen->coordenadaA = $request->coordenadaA;
-        $especimen->coordenadaB = $request->coordenadaB;
+        $especimen->coordenadaA = $request->utmn;
+        $especimen->coordenadaB = $request->utme;
+        $especimen->altitud = "";
         $especimen->colector = $request->colector;
         $especimen->identificador = $request->identificador;
-        $especimen->caracteristicas = $request->caracteristicas;
-        $especimen->nIngreso = $request->nIngreso;
-        $especimen->nColecta = $request->nColecta;
-        $especimen->estadoActual = $request->estadoActual;
-        $especimen->tipoPreparacion = $request->tipoPreparacion;
-        if($ornitologia->save())
+        $especimen->observaciones = $request->observaciones;
+        $especimen->tipoMuestra = $request->tipoMuestra;
+        $especimen->sexo = $request->sexo;
+        $especimen->cabeza = $request->cabezaCuerpo;
+        $especimen->cola = $request->cola;
+        $especimen->oreja = $request->oreja;
+        $especimen->tarso = $request->tarso;
+        $especimen->trago = $request->trago;
+        $especimen->ala = $request->ala;
+        $especimen->antebrazo = $request->antebrazo;
+        $especimen->pie = $request->pie;
+        $especimen->peso = $request->peso;
+        
+        if($especimen->save())
         {
-            return "1";
+            Session::flash('mensaje', "Especimen registrado");
+            return redirect()->route('especimen.index');
         }
         else{
-            return "0";
+            $request->session()->flash('mensaje', "Error en el registro, vuelva a intentar mas tarde");
         }
     }
 

@@ -45,13 +45,9 @@
         </div>
         <!-- /.row -->
     </div>
-
-
     <div id="app" class="content">
         <form-permisos :usuario="{{ $usuario }}"></form-permisos>
     </div>
-
-
 @stop
 
 @section('css')

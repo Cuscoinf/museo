@@ -60,6 +60,10 @@ Route::put('actualizarpermiso/{menuuser}',[RoleController::class,'actualizarPerm
 Route::get('registro-maztozoologia', [EspecimenController::class, 'maztozoologia'])->name('especimen.maztozoologia');
 Route::get('registro-ornitologia', [EspecimenController::class, 'ornitologia'])->name('especimen.ornitologia');
 
+Route::post('guardar-herpetologia', [EspecimenController::class, 'storeHerpetologia'])->name('guardar.herpetologia');
+Route::post('guardar-maztozoologia', [EspecimenController::class, 'storeMaztozoologia'])->name('guardar.Maztozoologia');
+Route::post('guardar-ornitologia', [EspecimenController::class, 'storeornitologia'])->name('guardar.ornitologia');
+
 Route::get('registro-nombres', [NombreEspecimenController::class, 'index'])->name('nombreEspecimen');
 Route::post('registrar-nombre', [NombreEspecimenController::class, 'store'])->name('guardarNombreEspecimen');
 Route::delete('eliminar-nombre/{id}', [NombreEspecimenController::class, 'destroy'])->name('eliminarNombreEspecimen');
@@ -85,7 +89,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::apiResource('area',AreaController::class);
 Route::get('/getArea/{id}',[AreaController::class,'getArea'])->name('getArea');
 Route::get('/getAreas',[AreaController::class,'getAreas'])->name('getAreas');
-
 
 //carta presentacion
 Route::resource('carta', CartaPresentacionController::class);
