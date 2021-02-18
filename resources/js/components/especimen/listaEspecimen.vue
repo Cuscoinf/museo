@@ -34,7 +34,7 @@
                     <td>{{especimen.autor}}</td>
                     <td>{{especimen.observacion}}</td>
                     <td>{{especimen.foto}}</td>
-                    <td><a href="" class="btn btn-primary">Revisar</a></td>
+                    <td><a :href="url+'especimen/'+area+'/'+especimen.id" class="btn btn-primary">Revisar</a></td>
                 </tr>
             </tbody>
         </table>
@@ -72,7 +72,8 @@
                     <td>{{especimen.cola}}</td>
                     <td>{{especimen.oreja}}</td>
                     <td>{{especimen.tarzo}}</td>
-                    <td><a href="" class="btn btn-primary">Revisar</a></td>
+                    <td><a :href="url+'especimen/'+area+'/'+especimen.id" class="btn btn-primary">Revisar</a></td>
+
                 </tr>
             </tbody>
         </table>
@@ -110,7 +111,7 @@
                     <td>{{especimen.tipoPreparacion}}</td>
                     <td>{{especimen.fechaColecta}}</td>
                     <td>{{especimen.foto}}</td>
-                    <td><a href="" class="btn btn-primary">Revisar</a></td>
+                    <td><a :href="url+'especimen/'+area+'/'+especimen.id" class="btn btn-primary">Revisar</a></td>
                 </tr>
             </tbody>
         </table>

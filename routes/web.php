@@ -71,6 +71,8 @@ Route::delete('eliminar-nombre/{id}', [NombreEspecimenController::class, 'destro
 Route::get('lista-especimen/{area}',[EspecimenController::class, 'listarEspecimen'])->name('listarEspecimen');
 Route::get('especimen-data/{area}',[EspecimenController::class, 'dataEspecimen'])->name("dataEspecimen");
 
+Route::get('especimen/{area}/{id}',[EspecimenController::class, 'show'])->name('muestra.especimen');
+
 Route::get('/ornitologia',[EspecimenController::class, 'storeOrnitologia'])->name('ornitologia');
 
 /*solo para contenido statico*/

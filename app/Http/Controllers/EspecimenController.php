@@ -216,9 +216,26 @@ class EspecimenController extends Controller
      * @param  \App\Models\Especimen  $especimen
      * @return \Illuminate\Http\Response
      */
-    public function show(Especimen $especimen)
+    public function show($area, $id)
     {
-        //
+        if($area=="ornitologia")
+        {
+            $especimen = ornitologia::find($id);
+        }
+        if($area=="maztozzologia")
+        {
+            $especimen = Maztozoologia::find($id);
+        }
+        if($area=="herpetologia")
+        {
+            $especimen = Herpetologia::find($id);
+        }
+
+        return View("controlEspecimen.muestraEspecimen", [
+            "area" => $area,
+            "especimen" => $especimen,
+        ]);
+
     }
 
     /**
