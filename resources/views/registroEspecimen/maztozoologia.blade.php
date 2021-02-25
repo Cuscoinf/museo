@@ -46,12 +46,12 @@
                           ">Taxonomía</legend>
                           <div class="card-body row">
                             <div class="col-md-6">
-                              <label for="codMuseo">Fauna Silvestre</label>
-                              <input type="radio" value="fauna" name="dbespecimen">
+                              <label for="fauna">Fauna Silvestre</label>
+                              <input type="radio" id="fauna" value="fauna" name="dbespecimen">
                             </div>
                             <div class="col-md-6">
-                              <label for="codMuseo">Registro local</label>
-                              <input type="radio" value="local" name="dbespecimen">
+                              <label for="local">Registro local</label>
+                              <input type="radio" value="local" id="local" name="dbespecimen">
                             </div>                                
                             <div class="col-md-3">
                               <div class="form-group">
@@ -100,39 +100,44 @@
                             position: relative;
                             left: -1px;
                             ">Registro de colecta</legend>
-                            <div class="card-body row">                                             
-                              <div class="col-md-4">
+                            <div class="card-body row">
+                              <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="tipoCaptura">Tipo de captura</label>
+                                    <select name="tipoCaptura" id="tipoCaptura" class="form-control">
+                                      <option value="Temporal">Captura temporal</option>
+                                      <option value="Con captura">Con captura</option>
+                                      <option value="Sin Captura">Sin captura</option>
+                                    </select>
+                                </div>
+                              </div>                                      
+                              <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="codMuseo">Codigo MHNC</label>
                                     <input type="text" class="form-control" id="codMuseo"  name="codMuseo" value="{{old('codMuseo')}}">
-                                    @error('codMuseo')
-                                    <br>
-                                    <small>*{{$message}}</small>
-                                    <br>
-                                    @enderror
                                 </div>
                               </div>
-                              <div class="col-md-4">
+                              <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="colector">Colector</label>
                                     <input type="text" class="form-control" id="colector" name="colector" value="{{old('colector')}}">
                                 </div>
                               </div>
-                              <div class="col-md-4">
+                              <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="identificador">Identificador</label>
                                     <input type="text" class="form-control" id="identificador" name="identificador" value="{{old('identificador')}}">
                                 </div>
                               </div>
                               
-                              <div class="col-md-4">
+                              <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="tipoMuestra">Tipo de muestra</label>
                                     <input type="text" class="form-control" id="tipoMuestra" name="tipoMuestra" value="{{old('tipoMuestra')}}">
                                 </div>
                               </div>
 
-                              <div class="col-md-4">
+                              <div class="col-md-3">
                                 <div class="form-group">
                                   <label for="sexo">Sexo</label>
                                   <select name="sexo" id="sexo" class="form-control">
@@ -143,7 +148,7 @@
                                 </div>
                               </div>
                               
-                              <div class="col-md-4">
+                              <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="cabezaCuerpo">Cabeza-Cuerpo</label>
                                     <input type="text" class="form-control" id="cabezaCuerpo"  name="cabezaCuerpo" value="{{old('cabezaCuerpo')}}">
@@ -179,19 +184,19 @@
                                     <input type="text" class="form-control" id="antebrazo"  name="antebrazo" value="{{old('antebrazo')}}">
                                 </div>
                               </div>
-                              <div class="col-md-3">
+                              <div class="col-md-2">
                                 <div class="form-group">
                                     <label for="ala">Ala</label>
                                     <input type="text" class="form-control" id="ala"  name="ala" value="{{old('ala')}}">
                                 </div>
                               </div>
-                              <div class="col-md-3">
+                              <div class="col-md-2">
                                 <div class="form-group">
                                     <label for="pie">Pie</label>
                                     <input type="text" class="form-control" id="pie"  name="pie" value="{{old('pie')}}">
                                 </div>
                               </div>
-                              <div class="col-md-3">
+                              <div class="col-md-2">
                                 <div class="form-group">
                                     <label for="peso">Peso</label>
                                     <input type="text" class="form-control" id="peso"  name="peso" value="{{old('peso')}}">

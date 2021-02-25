@@ -100,20 +100,25 @@
                             position: relative;
                             left: -1px;
                             ">Registro de colecta</legend>
-                            <div class="card-body row">                                             
+                            <div class="card-body row">
+                              <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="tipoCaptura">Tipo de captura</label>
+                                    <select name="tipoCaptura" id="tipoCaptura" class="form-control">
+                                      <option value="Temporal">Captura temporal</option>
+                                      <option value="Con captura">Con captura</option>
+                                      <option value="Sin captura">Sin Captura</option>
+                                    </select>
+                                </div>
+                              </div>                                 
                               <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="codMuseo">Codigo MHNC</label>
                                     <input type="text" class="form-control" id="codMuseo" name="codMuseo" value="{{old('codMuseo')}}">
-                                    @error('codMuseo')
-                                    <br>
-                                    <small>*{{$message}}</small>
-                                    <br>
-                                    @enderror
                                 </div>
                               </div>
   
-                              <div class="col-md-5">
+                              <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="colector">Colector</label>
                                     <input type="text" class="form-control" id="colector" name="colector" value="{{old('colector')}}">
@@ -124,7 +129,7 @@
                                     @enderror
                                 </div>
                               </div>
-                              <div class="col-md-4">
+                              <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="determinadopor">Identificador</label>
                                     <input type="text" class="form-control" id="identificador"  name="identificador" value="{{old('identificador')}}">
@@ -136,27 +141,27 @@
                                 </div>
                               </div>
   
-                              <div class="col-md-2">
+                              <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="nIngreso">Nro. Ingreso</label>
                                     <input type="text" class="form-control" id="nIngreso" name="nIngreso" value="{{old('nIngreso')}}">
                                 </div>
                               </div>
                               
-                              <div class="col-md-2">
+                              <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="nColecta">Nro. Colecta</label>
                                     <input type="text" class="form-control" id="nColecta" name="nColecta" value="{{old('nColecta')}}">
                                 </div>
                               </div>
   
-                              <div class="col-md-4">
+                              <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="estadoActual">Estado actual</label>
                                     <input type="text" class="form-control" id="estadoActual" name="estadoActual" value="{{old('estadoActual')}}">
                                 </div>
                               </div>
-                              <div class="col-md-4">
+                              <div class="col-md-6">
                                   <div class="form-group">
                                       <label for="tipoPreparacion">Tipo de preparacion</label>
                                       <input type="text" class="form-control" id="tipoPreparacion" name="tipoPreparacion" value="{{old('tipoPreparacion')}}">

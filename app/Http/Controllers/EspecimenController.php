@@ -6,6 +6,7 @@ use App\Models\Especimen;
 use App\Models\ornitologia;
 use App\Models\Maztozoologia;
 use App\Models\Herpetologia;
+use App\Models\Decomisados;
 use Illuminate\Http\Request;
 use Session;
 
@@ -30,6 +31,12 @@ class EspecimenController extends Controller
     {
         return View('registroEspecimen.maztozoologia');
     }
+
+    //decomisados
+    public function decomisados()
+    {
+        return View('registroEspecimen.decomisados');
+    }
     
     /**
      * carga de data a herpetologia
@@ -38,6 +45,7 @@ class EspecimenController extends Controller
     {
         $especimen = new Herpetologia();
         $especimen->codigo = $request->codMuseo;
+        $especimen->tipoCaptura = $request->tipoCaptura;
         $especimen->orden = $request->orden;
         $especimen->familia = $request->familia;
         $especimen->genero = $request->genero;
@@ -78,10 +86,12 @@ class EspecimenController extends Controller
     {
         $especimen = new ornitologia();
         $especimen->codigo = $request->codMuseo;
+        $especimen->tipoCaptura = $request->tipoCaptura;
         $especimen->orden = $request->orden;
         $especimen->familia = $request->familia;
         $especimen->genero = $request->genero;
         $especimen->especie = $request->especie;
+        $especimen->clase = $request->clase;
         $especimen->foto = $request->foto;
         $especimen->fechaColecta = date('Y-m-d',strtotime($request->fColecta));
         $especimen->pais = $request->pais;
@@ -114,9 +124,11 @@ class EspecimenController extends Controller
     {
         $especimen = new Maztozoologia();
         $especimen->codigo = $request->codMuseo;
+        $especimen->tipoCaptura = $request->tipoCaptura;
         $especimen->orden = $request->orden;
         $especimen->familia = $request->familia;
         $especimen->subFamilia = "";
+        $especimen->clase = $request->clase;
         $especimen->genero = $request->genero;
         $especimen->especie = $request->especie;
         $especimen->foto = $request->foto;
@@ -143,6 +155,43 @@ class EspecimenController extends Controller
         $especimen->antebrazo = $request->antebrazo;
         $especimen->pie = $request->pie;
         $especimen->peso = $request->peso;
+        
+        if($especimen->save())
+        {
+            Session::flash('mensaje', "Especimen registrado");
+            return redirect()->route('especimen.index');
+        }
+        else{
+            $request->session()->flash('mensaje', "Error en el registro, vuelva a intentar mas tarde");
+        }
+    }
+
+    /**
+     * carga de animales decomisados
+     */
+    public function storeDecomisados(Request $request)
+    {
+        $especimen = new Decomisados();
+        $especimen->codigo = $request->codMuseo;
+        $especimen->tipoCaptura = $request->tipoCaptura;
+        $especimen->orden = $request->orden;
+        $especimen->familia = $request->familia;
+        $especimen->genero = $request->genero;
+        $especimen->especie = $request->especie;
+        $especimen->clase = $request->clase;
+        $especimen->foto = $request->foto;
+        $especimen->fechaColecta = date('Y-m-d',strtotime($request->fColecta));
+        $especimen->pais = $request->pais;
+        $especimen->departamento = $request->departamento;
+        $especimen->provincia = $request->provincia;
+        $especimen->distrito = $request->distrito;
+        $especimen->localidad = $request->localidad;
+        $especimen->coordenadaA = $request->utmn;
+        $especimen->coordenadaB = $request->utme;
+        $especimen->colector = $request->colector;
+        $especimen->identificador = $request->identificador;
+        $especimen->observacion = $request->observaciones;
+        $especimen->sexo = $request->sexo;
         
         if($especimen->save())
         {
@@ -208,6 +257,11 @@ class EspecimenController extends Controller
             $data = Maztozoologia::all();
             return $data;
         }
+        if($area == "decomisados")
+        {
+            $data = Decomisados::all();
+            return $data;
+        }
     }
 
     /**
@@ -222,13 +276,17 @@ class EspecimenController extends Controller
         {
             $especimen = ornitologia::find($id);
         }
-        if($area=="maztozzologia")
+        if($area=="maztozoologia")
         {
             $especimen = Maztozoologia::find($id);
         }
         if($area=="herpetologia")
         {
             $especimen = Herpetologia::find($id);
+        }
+        if($area=="decomisados")
+        {
+            $especimen = Decomisados::find($id);
         }
 
         return View("controlEspecimen.muestraEspecimen", [

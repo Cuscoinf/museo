@@ -6,29 +6,30 @@
 
 
 @section('content_header')
-    <h1>Registro Especimen</h1>
+    <h1>Registro de animales decomisados</h1>
 @stop
 
 @section('content')
 
-@if(Session::has('mensaje'))
-<div class="alert alert-success "><button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">×</span></button>{{Session::get('mensaje')}}
-</div>
-@endif
+
 <div class="card card-dark card-tabs">
     <div class="card-header p-0 pt-1">
         <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
             <li class="nav-item">
-                <a class="nav-link active" id="herpetologia-tab" data-toggle="pill" href="#herpetologia" role="tab" aria-controls="herpetologia" aria-selected="true">HERPETOLOGIA</a>
+                <a class="nav-link active" id="decomisados-tab" data-toggle="pill" href="#decomisados" role="tab" aria-controls="decomisados" aria-selected="true">ANIMALES DECOMISADOS</a>
             </li>
         </ul>
     </div>
+    @if(Session::has('mensaje'))
+    <div class="alert alert-success "><button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">×</span></button>{{Session::get('mensaje')}}
+    </div>
+    @endif
     <div class="card-body">
         <div class="tab-content" id="custom-tabs-one-tabContent">
-          <div class="tab-pane fade show active" id="herpetologia" role="tabpanel" aria-labelledby="herpetologia-tab">
+          <div class="tab-pane fade show active" id="decomisados" role="tabpanel" aria-labelledby="decomisados-tab">
               <div class="card">
-                  <form class="form-horizontal" action="{{route('guardar.herpetologia')}}" method="POST">
+                  <form class="form-horizontal" action="{{route('guardar.decomisados')}}" method="POST">
                         @csrf
                       <div class="card-body">
                           <fieldset style="border: 1px solid #ccc">
@@ -109,54 +110,11 @@
                                       <option value="Sin captura">Sin Captura</option>
                                     </select>
                                 </div>
-                              </div>                                       
+                              </div>                                      
                               <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="codMuseo">Codigo MHNC</label>
-                                    <input type="text" class="form-control" id="codMuseo" name="codMuseo" value="{{old('codMuseo')}}">
-                                </div>
-                              </div>
-                              <div class="col-md-3">
-                                <div class="form-group">
-                                    <label for="campo">Cod. Campo</label>
-                                    <input type="text" class="form-control" id="campo" name="campo" value="{{old('campo')}}">
-                                </div>
-                              </div>
-                              <div class="col-md-3">
-                                <div class="form-group">
-                                    <label for="proyecto">Proyecto</label>
-                                    <input type="text" class="form-control" id="proyecto" name="proyecto" value="{{old('proyecto')}}">
-                                </div>
-                              </div>
-                            </div>
-                            <div class="card-body row">
-                              <div class="col-md-2">
-                                <div class="form-group">
-                                    <label for="sexo">Sexo</label>
-                                    <select name="sexo" id="sexo" class="form-control">
-                                      <option value="M">Macho</option>
-                                      <option value="H">Hembra</option>
-                                      <option value="I">No definido</option>
-                                    </select>
-                                </div>
-                              </div>
-  
-                              <div class="col-md-3">
-                                <div class="form-group">
-                                    <label for="tejidoAdn">Tejido ADN</label>
-                                    <input type="text" class="form-control" id="tejidoAdn" name="tejidoAdn" value="{{old('tejidoAdn')}}">
-                                </div>
-                              </div>
-                              <div class="col-md-3">
-                                <div class="form-group">
-                                    <label for="tejidoCod">Tejido COD</label>
-                                    <input type="text" class="form-control" id="tejidoCod" name="tejidoCod" value="{{old('tejidoCod')}}">
-                                </div>
-                              </div>
-                              <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="preservacion">Preservación</label>
-                                    <input type="text" class="form-control" id="preservacion" name="preservacion" value="{{old('preservacion')}}">
+                                    <input type="text" class="form-control" id="codMuseo"  name="codMuseo" value="{{old('codMuseo')}}">
                                 </div>
                               </div>
                               <div class="col-md-6">
@@ -167,14 +125,32 @@
                               </div>
                               <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="autor">Autor</label>
-                                    <input type="text" class="form-control" id="autor" name="autor" value="{{old('autor')}}">
+                                    <label for="identificador">Identificador</label>
+                                    <input type="text" class="form-control" id="identificador" name="identificador" value="{{old('identificador')}}">
+                                </div>
+                              </div>
+                              
+                              <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="tipoMuestra">Tipo de muestra</label>
+                                    <input type="text" class="form-control" id="tipoMuestra" name="tipoMuestra" value="{{old('tipoMuestra')}}">
+                                </div>
+                              </div>
+
+                              <div class="col-md-3">
+                                <div class="form-group">
+                                  <label for="sexo">Sexo</label>
+                                  <select name="sexo" id="sexo" class="form-control">
+                                    <option value="M">Macho</option>
+                                    <option value="H">Hembra</option>
+                                    <option value="I">No definido</option>
+                                  </select>
                                 </div>
                               </div>
                               <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="colector">Observacion</label>
-                                    <textarea type="text" class="form-control" id="colector" name="colector">{{old('colector')}} </textarea>
+                                    <label for="observaciones">Observaciones</label>
+                                    <textarea class="form-control" id="observaciones"  name="observaciones">{{old('observaciones')}}</textarea>
                                 </div>
                               </div>
                               <div class="col-md-12">
@@ -493,7 +469,7 @@
                         </div>
                       </div>
                       <div class="card-footer text-center">
-                        <button class="btn btn-success" type="submit" v-on:click="guardarHerpetologia()">REGISTRAR ESPECIMEN</button>
+                        <button class="btn btn-success">REGISTRAR ESPECIMEN</button>
                       </div>
                   </form>
               </div>

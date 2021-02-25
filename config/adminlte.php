@@ -305,6 +305,12 @@ return [
             'icon' => 'fas fa-fw fa-box',
             'can'  => ['user-admin','investigador-admin'],
         ],
+        [
+            'text' => 'Animales decomisados',
+            'route'  => 'especimen.decomisados',
+            'icon' => 'fas fa-fw fa-box',
+            'can'  => ['user-admin','investigador-admin'],
+        ],
         ['header' => 'CONTROL DE ESPECIMEN',  'can'  => ['user-admin','investigador-admin']],
         [
             'text' => 'Lista Maztozoologia',
@@ -326,17 +332,11 @@ return [
         ],
         [
             'text' => 'Animales decomisados',
-            'url'  => 'decomisados.index',
+            'url'  => 'lista-especimen/decomisados',
             'icon' => 'fas fa-fw fa-box',
             'can'  => ['user-admin','investigador-admin'],
         ],
-        [
-            'text' => 'Nombres especies',
-            'route' => 'nombreEspecimen',
-            'icon' => 'fas fa-list',
-            'can'  => ['user-admin','investigador-admin'],
-        ],
-        ['header' => 'account_settings'],
+        ['header' => 'PREFERENCIAS'],
         [
             'text' => 'Roles de Usuario',
             'route'  => 'roles.index',
@@ -349,6 +349,12 @@ return [
             'url'  => 'auth.register',
             'icon' => 'fas fa-fw fa-user',
 
+        ],
+        [
+            'text' => 'Nombres especies',
+            'route' => 'nombreEspecimen',
+            'icon' => 'fas fa-list',
+            'can'  => ['user-admin','investigador-admin'],
         ],
         [
             'text' => 'Cerrar Session',

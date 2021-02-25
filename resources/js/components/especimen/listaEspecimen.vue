@@ -42,6 +42,7 @@
             <thead>
                 <tr>
                     <th>Codigo MHNC</th>
+                    <th>Captura</th>
                     <th>Especie</th>
                     <th>Genero</th>
                     <th>Familia</th>
@@ -60,6 +61,7 @@
             <tbody>
                 <tr v-for="(especimen, index) in especimenes" :key="index">
                     <td>{{especimen.codigo}}</td>
+                    <td>{{especimen.captura}}</td>
                     <td>{{especimen.especie}}</td>
                     <td>{{especimen.genero}}</td>
                     <td>{{especimen.familia}}</td>
@@ -81,6 +83,7 @@
             <thead>
                 <tr>
                     <th>Codigo MHNC</th>
+                    <th>Captura</th>
                     <th>Especie</th>
                     <th>Genero</th>
                     <th>Familia</th>
@@ -99,6 +102,7 @@
             <tbody>
                 <tr v-for="(especimen, index) in especimenes" :key="index">
                     <td>{{especimen.codigo}}</td>
+                    <td>{{especimen.tipoCaptura}}</td>
                     <td>{{especimen.especie}}</td>
                     <td>{{especimen.genero}}</td>
                     <td>{{especimen.familia}}</td>
@@ -109,6 +113,38 @@
                     <td>{{especimen.identificador}}</td>
                     <td>{{especimen.estadoActual}}</td>
                     <td>{{especimen.tipoPreparacion}}</td>
+                    <td>{{especimen.fechaColecta}}</td>
+                    <td>{{especimen.foto}}</td>
+                    <td><a :href="url+'especimen/'+area+'/'+especimen.id" class="btn btn-primary">Revisar</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table" v-if="(this.area=='decomisados')">
+            <thead>
+                <tr>
+                    <th>Codigo MHNC</th>
+                    <th>Captura</th>
+                    <th>Especie</th>
+                    <th>Genero</th>
+                    <th>Familia</th>
+                    <th>Orden</th>
+                    <th>Colector</th>
+                    <th>Identificador</th>
+                    <th>Fecha colecta</th>
+                    <th>Foto</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(especimen, index) in especimenes" :key="index">
+                    <td>{{especimen.codigo}}</td>
+                    <td>{{especimen.tipoCaptura}}</td>
+                    <td>{{especimen.especie}}</td>
+                    <td>{{especimen.genero}}</td>
+                    <td>{{especimen.familia}}</td>
+                    <td>{{especimen.orden}}</td>
+                    <td>{{especimen.colector}}</td>
+                    <td>{{especimen.identificador}}</td>
                     <td>{{especimen.fechaColecta}}</td>
                     <td>{{especimen.foto}}</td>
                     <td><a :href="url+'especimen/'+area+'/'+especimen.id" class="btn btn-primary">Revisar</a></td>
