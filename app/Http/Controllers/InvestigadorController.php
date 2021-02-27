@@ -117,20 +117,39 @@ class InvestigadorController extends Controller
     {
         $investigador = Investigador::find($request->id);
 
-        $user = new User();
-        $user->name = $investigador->nombre;
-        $user->rol = 'investigador';
-        $user->email = $investigador->email;
-        $user->password = bcrypt($request->password);
-        $mensaje = "";
+        $userExistente = User::Where("email", $investigador->email)->first();
 
-        if($user->save())
+        if($userExistente == null)
         {
-            $mensaje = "Acceso generado";
+            $user = new User();
+            $user->name = $investigador->nombre;
+            $user->rol = 'investigador';
+            $user->email = $investigador->email;
+            $user->password = bcrypt($request->password);
+            $mensaje = "";
+            
+            if($user->save())
+            {
+                $mensaje = "Acceso generado";
+            }
+            else{
+                $mensaje = "Error";
+            }
+
         }
         else{
-            $mensaje = "Error";
+            $userExistente->password = bcrypt($request->password);
+            if($userExistente->save())
+            {
+                $mensaje = "Acceso generado";
+            }
+            else{
+                $mensaje = "Error";
+            }
         }
+       
+
+      
         return redirect()->route("investigador.index");
     }
 

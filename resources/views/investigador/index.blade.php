@@ -275,7 +275,7 @@
                             <label for="investigador">Seleccione Investigador</label>
                             <select name="id" class="form-control">
                                 @foreach ($investigadores as $investigador)
-                                <option value="{{$investigador->id}}">{{$investigador->nombre." ".$investigador->apPaterno}}</option>
+                                <option value="{{$investigador->id}}">{{$investigador->email." (".$investigador->nombre." ".$investigador->apPaterno.")"}}</option>
                                 @endforeach
                             </select>
                         </div>
