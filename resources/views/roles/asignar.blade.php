@@ -31,10 +31,11 @@
                             <br>
                             <label>Cambiar a:</label>
                             <select name="rol" class="form-control select2 select2-hidden-accessible" style="width: 100%;" aria-hidden="true">
-                                <option>curador</option>
-                                <option>investigador</option>
-                                <option>director</option>
-                                <option>administrador</option>
+                                <option>Curador</option>
+                                <option>Investigador</option>
+                                <option>Director</option>
+                                <option>Jefe de Area</option>
+                                <option>Administrador</option>
                             </select>
                         </div>
                         <button type="submit" class="btn btn-info">Guardar Cambios</button>

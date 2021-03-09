@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Menu;
 use App\Models\User;
+use App\Models\Investigador;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Contracts\Events\Dispatcher;
@@ -36,6 +37,15 @@ class AuthServiceProvider extends ServiceProvider
             }
             return false;
         }
+    }
+
+    public function investigadorArea($user)
+    {
+        $resp = Investigador::join("users", "users.email", "investigador.email")
+        ->join("area", "area.id", "investigador.area_id")
+        ->where("users.email", $user->email)
+        ->select("area.nombre")->first();
+        return $resp->nombre;
     }
 
     /**
@@ -90,6 +100,35 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('investigador-admin', function ($user) {
 
             return $this->existeMenuInvestigador('investigador', $user);
+        });
+
+        Gate::define('investigador-h', function ($user) {
+
+            if($this->investigadorArea($user)=="Herpetologia")
+            {
+                return true;
+            }
+            return false;
+        });
+
+        Gate::define('investigador-o', function ($user) {
+            if($this->investigadorArea($user)=="Ornitologia")
+            {
+                return true;
+            }
+            return false;
+        });
+
+        Gate::define('investigador-m', function ($user) {
+            if($this->investigadorArea($user)=="Maztozoologia")
+            {
+                return true;
+            }
+            return false;
+        });
+
+        Gate::define("jefe-area", function($user){
+            return $this->existeMenuInvestigador('Jefe de Area', $user);
         });
 
         Gate::define('formacion-academica-admin', function ($user) {

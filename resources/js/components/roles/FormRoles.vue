@@ -21,6 +21,7 @@
                         <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" data-select2-id="1" tabindex="-1" aria-hidden="true">
                             <option selected="selected" data-select2-id="3">CURADOR</option>
                             <option>ADMINISTRADOR</option>
+                            <option>JEFE DE AREA</option>
                             <option>INVESTIGADOR</option>
                             <option>DIRECTOR</option>
                         </select>
