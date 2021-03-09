@@ -26,10 +26,7 @@ class InvestigadorController extends Controller
         $investigadores=Investigador::orderBy('id','desc')->paginate();
         $areas = Area::all();
         $formacion = FormacionAcademica::all();
-
-
-
-        return view('investigador.index',compact('investigadores', 'areas', 'formacion'))->with('i', (request()->input('page', 1) - 1) * 5);;
+        return view('investigador.index',compact('investigadores', 'areas', 'formacion'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -111,8 +108,6 @@ class InvestigadorController extends Controller
         return redirect()->route('investigador.index');
     }
 
-
-
     public function storeUser(Request $request)
     {
         $investigador = Investigador::find($request->id);
@@ -147,9 +142,6 @@ class InvestigadorController extends Controller
                 $mensaje = "Error";
             }
         }
-       
-
-      
         return redirect()->route("investigador.index");
     }
 

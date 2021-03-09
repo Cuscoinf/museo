@@ -121,6 +121,10 @@
                                 <td>...carga del mapa de ubicacion...</td>
                             </tr>
                         </tbody>
+                        <div>
+                            <a href="" class="btn btn-success">Verificar y aprobar</a>
+                            <a href="" class="btn btn-danger">Observar</a>
+                        </div>
                         @endif
                         @if($area == "herpetologia")
                         <tbody style="border:1px solid #ccc">
