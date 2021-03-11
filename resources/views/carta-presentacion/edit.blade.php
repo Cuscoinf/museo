@@ -60,14 +60,8 @@
                 </div>
                 <div class="form-group">
                     <label for="investigador">Investigador:</label>
-                    <input type="text" class="form-control" id="investigador" placeholder="Ingrese investigador" name="investigador"
-                    value="{{old('nombre',$investigador->nombre.' '.$investigador->apPaterno.' '.$investigador->apMaterno)}}">
+                    <span class="form-control" id="investigador" name="investigador">{{$investigador->nombre.' '.$investigador->apPaterno.' '.$investigador->apMaterno}}</span>
                     <input type="hidden" name="investigador_id" value="{{$investigador->id}}">
-                    @error('investigador_id')
-                    <br>
-                    <small>*{{ $message }}</small>
-                    <br>
-                    @enderror
                 </div>
                 <div class="form-group">
                     <label for="proyecto">Proyecto:</label>
