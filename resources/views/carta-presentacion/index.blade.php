@@ -13,7 +13,7 @@
 
     <div class="card">
         <div class="card-header">
-          <h3 class="card-title">Cartas generadas</h3>
+          <h3 class="card-title">Salida a campo</h3>
         </div>
         <!-- /.card-header -->
         <div class="card-body p-0">
@@ -24,6 +24,8 @@
                 <th>Nombre</th>
                 <th>Paterno</th>
                 <th>Materno</th>
+                <th>Usuario</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -35,7 +37,7 @@
                         <td>{{$investigador->apMaterno}}</td>
                         <td>{{$investigador->tipoUsuario}}</td>
                         <td>
-                                <a class="btn btn-primary" href="{{ route('carta.edit',$investigador->id) }}">Generar Carta de Presentacion</a>
+                                <a class="btn btn-primary" href="{{ route('carta.edit',$investigador->id) }}">Generar carta de presentacion</a>
                         </td>
                     </tr>
                 @endforeach
