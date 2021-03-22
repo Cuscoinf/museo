@@ -24,9 +24,6 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return redirect('login');
-});
 
 //Route::get('/', HomeController::class)->name('home');
 
@@ -38,65 +35,76 @@ Route::get('area/{area}/edit',[AreaController::class,'edit'])->name('area.edit')
 Route::put('area/{area}',[AreaController::class,'update'])->name('area.update');
 Route::delete('area/{area}',[AreaController::class,'destroy'])->name('area.destroy');
 */
-Route::resource('area', AreaController::class);
-Route::resource("especimen", EspecimenController::class);
-Route::resource('formacion-academica', FormacionAcademicaController::class);
-Route::resource('registro-solicitud', SolicitudController::class);
+
+Route::group(['domain' => 'museo.sistemacuscovf.com'], function () {
+    Route::get('/', function () {
+        return redirect('login');
+    });
+});
+
+Route::group(['domain' => 'museo.sistemacuscovf.com'], function () {
+
+    Route::resource('area', AreaController::class);
+    Route::resource("especimen", EspecimenController::class);
+    Route::resource('formacion-academica', FormacionAcademicaController::class);
+    Route::resource('registro-solicitud', SolicitudController::class);
 
 
-Route::resource('investigador', InvestigadorController::class);
-Route::put('updateuser/{user}',[InvestigadorController::class,'updateUser'])->name('updateuser');
-Route::post('createuser',[InvestigadorController::class,'storeUser'])->name('createuser');
+    Route::resource('investigador', InvestigadorController::class);
+    Route::put('updateuser/{user}',[InvestigadorController::class,'updateUser'])->name('updateuser');
+    Route::post('createuser',[InvestigadorController::class,'storeUser'])->name('createuser');
 
-Route::resource('roles', RoleController::class);
-Route::apiResource('roles',RoleController::class);
-Route::get('/asignar-roles/{id}', [RoleController::class, 'asignarRoles'])->name('asignar-roles');
+    Route::resource('roles', RoleController::class);
+    Route::apiResource('roles',RoleController::class);
+    Route::get('/asignar-roles/{id}', [RoleController::class, 'asignarRoles'])->name('asignar-roles');
 
-Route::get('/getmenus',[RoleController::class,'getMenus'])->name('getmenus');
-Route::get('/getmenuuser/{id}',[RoleController::class,'getMenuUser'])->name('getmenuuser');
-Route::put('actualizarpermiso/{menuuser}',[RoleController::class,'actualizarPermiso'])->name('actualizarpermiso');
+    Route::get('/getmenus',[RoleController::class,'getMenus'])->name('getmenus');
+    Route::get('/getmenuuser/{id}',[RoleController::class,'getMenuUser'])->name('getmenuuser');
+    Route::put('actualizarpermiso/{menuuser}',[RoleController::class,'actualizarPermiso'])->name('actualizarpermiso');
 
-Route::get('registro-maztozoologia', [EspecimenController::class, 'maztozoologia'])->name('especimen.maztozoologia');
-Route::get('registro-ornitologia', [EspecimenController::class, 'ornitologia'])->name('especimen.ornitologia');
+    Route::get('registro-maztozoologia', [EspecimenController::class, 'maztozoologia'])->name('especimen.maztozoologia');
+    Route::get('registro-ornitologia', [EspecimenController::class, 'ornitologia'])->name('especimen.ornitologia');
 
-Route::post('guardar-herpetologia', [EspecimenController::class, 'storeHerpetologia'])->name('guardar.herpetologia');
-Route::post('guardar-maztozoologia', [EspecimenController::class, 'storeMaztozoologia'])->name('guardar.Maztozoologia');
-Route::post('guardar-ornitologia', [EspecimenController::class, 'storeornitologia'])->name('guardar.ornitologia');
+    Route::post('guardar-herpetologia', [EspecimenController::class, 'storeHerpetologia'])->name('guardar.herpetologia');
+    Route::post('guardar-maztozoologia', [EspecimenController::class, 'storeMaztozoologia'])->name('guardar.Maztozoologia');
+    Route::post('guardar-ornitologia', [EspecimenController::class, 'storeornitologia'])->name('guardar.ornitologia');
 
-Route::get('registro-nombres', [NombreEspecimenController::class, 'index'])->name('nombreEspecimen');
-Route::post('registrar-nombre', [NombreEspecimenController::class, 'store'])->name('guardarNombreEspecimen');
-Route::delete('eliminar-nombre/{id}', [NombreEspecimenController::class, 'destroy'])->name('eliminarNombreEspecimen');
+    Route::get('registro-nombres', [NombreEspecimenController::class, 'index'])->name('nombreEspecimen');
+    Route::post('registrar-nombre', [NombreEspecimenController::class, 'store'])->name('guardarNombreEspecimen');
+    Route::delete('eliminar-nombre/{id}', [NombreEspecimenController::class, 'destroy'])->name('eliminarNombreEspecimen');
 
-Route::get('lista-especimen/{area}',[EspecimenController::class, 'listarEspecimen'])->name('listarEspecimen');
-Route::get('especimen-data/{area}',[EspecimenController::class, 'dataEspecimen'])->name("dataEspecimen");
+    Route::get('lista-especimen/{area}',[EspecimenController::class, 'listarEspecimen'])->name('listarEspecimen');
+    Route::get('especimen-data/{area}',[EspecimenController::class, 'dataEspecimen'])->name("dataEspecimen");
 
-Route::get('registro-decomisados', [EspecimenController::class, 'decomisados'])->name("especimen.decomisados");
-Route::post('registro-decomisados', [EspecimenController::class, 'storeDecomisados'])->name("guardar.decomisados");
+    Route::get('registro-decomisados', [EspecimenController::class, 'decomisados'])->name("especimen.decomisados");
+    Route::post('registro-decomisados', [EspecimenController::class, 'storeDecomisados'])->name("guardar.decomisados");
 
 
-Route::get('especimen/{area}/{id}',[EspecimenController::class, 'show'])->name('muestra.especimen');
+    Route::get('especimen/{area}/{id}',[EspecimenController::class, 'show'])->name('muestra.especimen');
 
-Route::get('/ornitologia',[EspecimenController::class, 'storeOrnitologia'])->name('ornitologia');
+    Route::get('/ornitologia',[EspecimenController::class, 'storeOrnitologia'])->name('ornitologia');
 
-/*solo para contenido statico*/
-Route::view('nosotros', 'nosotros')->name('nosotros');
+    /*solo para contenido statico*/
+    Route::view('nosotros', 'nosotros')->name('nosotros');
 
-//Auth::routes();
-Auth::routes();
-Route::get('/logout', function(){
-    Auth::logout();
-    //return Redirect::to('login');
-    return redirect('login');
- });
+    //Auth::routes();
+    Auth::routes();
+    Route::get('/logout', function(){
+        Auth::logout();
+        //return Redirect::to('login');
+        return redirect('login');
+    });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::apiResource('area',AreaController::class);
-Route::get('/getArea/{id}',[AreaController::class,'getArea'])->name('getArea');
-Route::get('/getAreas',[AreaController::class,'getAreas'])->name('getAreas');
+    Route::apiResource('area',AreaController::class);
+    Route::get('/getArea/{id}',[AreaController::class,'getArea'])->name('getArea');
+    Route::get('/getAreas',[AreaController::class,'getAreas'])->name('getAreas');
 
-//carta presentacion
-Route::resource('carta', CartaPresentacionController::class);
+    //carta presentacion
+    Route::resource('carta', CartaPresentacionController::class);
 
-//PDF
-Route::post('generarpdf', [CartaPresentacionController::class,'generatePDF'])->name('carta.generarpdf');
+    //PDF
+    Route::post('generarpdf', [CartaPresentacionController::class,'generatePDF'])->name('carta.generarpdf');
+
+});
