@@ -11,6 +11,7 @@ use App\Http\Controllers\InvestigadorController;
 use App\Http\Controllers\SolicitudController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\EspecimenController;
+use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -37,7 +38,7 @@ Route::delete('area/{area}',[AreaController::class,'destroy'])->name('area.destr
 */
 
 Route::domain('sistemacuscovf.com')->group(function () {
-    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/', [WebController::class, "index"])->name("web");
 });
 
 Auth::routes();
