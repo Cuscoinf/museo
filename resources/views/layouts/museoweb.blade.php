@@ -200,7 +200,7 @@
                 <div class="row">
                     <div class="active-exibition-carusel">
                         <div class="single-exibition item">
-                            <img src="img/e1.jpg" alt="">
+                            <img src="{{asset('img')}}/museo1.jpg" alt="">
                             <ul class="tags">
                                 <li><a href="#">Especimen</a></li>
                                 <li><a href="#">clase de especimen</a></li>
@@ -213,7 +213,7 @@
                         </div>
 
                         <div class="single-exibition item">
-                            <img src="img/e1.jpg" alt="">
+                            <img src="{{asset('img')}}/museo2.jpg" alt="">
                             <ul class="tags">
                                 <li><a href="#">Especimen</a></li>
                                 <li><a href="#">clase de especimen</a></li>
@@ -226,7 +226,7 @@
                         </div>
 
                         <div class="single-exibition item">
-                            <img src="img/e1.jpg" alt="">
+                            <img src="{{asset('img')}}/museo3.jpg" alt="">
                             <ul class="tags">
                                 <li><a href="#">Especimen</a></li>
                                 <li><a href="#">clase de especimen</a></li>
@@ -239,7 +239,7 @@
                         </div>
 
                         <div class="single-exibition item">
-                            <img src="img/e1.jpg" alt="">
+                            <img src="{{asset('img')}}/museo4.jpg" alt="">
                             <ul class="tags">
                                 <li><a href="#">Especimen</a></li>
                                 <li><a href="#">clase de especimen</a></li>
@@ -252,7 +252,7 @@
                         </div>
 
                         <div class="single-exibition item">
-                            <img src="img/e1.jpg" alt="">
+                            <img src="{{asset('img')}}/museo5.jpg" alt="">
                             <ul class="tags">
                                 <li><a href="#">Especimen</a></li>
                                 <li><a href="#">clase de especimen</a></li>
@@ -265,7 +265,7 @@
                         </div>
 
                         <div class="single-exibition item">
-                            <img src="img/e1.jpg" alt="">
+                            <img src="{{asset('img')}}/museo6.jpg" alt="">
                             <ul class="tags">
                                 <li><a href="#">Especimen</a></li>
                                 <li><a href="#">clase de especimen</a></li>
@@ -278,7 +278,7 @@
                         </div>
 
                         <div class="single-exibition item">
-                            <img src="img/e1.jpg" alt="">
+                            <img src="{{asset('img')}}/museo7.jpg" alt="">
                             <ul class="tags">
                                 <li><a href="#">Especimen</a></li>
                                 <li><a href="#">clase de especimen</a></li>
@@ -291,7 +291,7 @@
                         </div>
 
                         <div class="single-exibition item">
-                            <img src="img/e1.jpg" alt="">
+                            <img src="{{asset('img')}}/museo8.jpg" alt="">
                             <ul class="tags">
                                 <li><a href="#">Especimen</a></li>
                                 <li><a href="#">clase de especimen</a></li>
@@ -304,7 +304,7 @@
                         </div>
 
                         <div class="single-exibition item">
-                            <img src="img/e1.jpg" alt="">
+                            <img src="{{asset('img')}}/museo9.jpg" alt="">
                             <ul class="tags">
                                 <li><a href="#">Especimen</a></li>
                                 <li><a href="#">clase de especimen</a></li>
@@ -467,20 +467,19 @@
                     </div>
                 </div>						
                 <div id="grid-container" class="row">
-                    <a class="single-gallery" href="img/g1.jpg"><img class="grid-item" src="img/g1.jpg"></a>
-                    <a class="single-gallery" href="img/g2.jpg"><img class="grid-item" src="img/g2.jpg"></a>
-                    <a class="single-gallery" href="img/g3.jpg"><img class="grid-item" src="img/g3.jpg"></a>
-                    <a class="single-gallery" href="img/g4.jpg"><img class="grid-item" src="img/g4.jpg"></a>
-                    <a class="single-gallery" href="img/g5.jpg"><img class="grid-item" src="img/g5.jpg"></a>
-                    <a class="single-gallery" href="img/g6.jpg"><img class="grid-item" src="img/g6.jpg"></a>
-                    <a class="single-gallery" href="img/g7.jpg"><img class="grid-item" src="img/g7.jpg"></a>
-                    <a class="single-gallery" href="img/g8.jpg"><img class="grid-item" src="img/g8.jpg"></a>
-                    <a class="single-gallery" href="img/g9.jpg"><img class="grid-item" src="img/g9.jpg"></a>
-                    <a class="single-gallery" href="img/g10.jpg"><img class="grid-item" src="img/g10.jpg"></a>
-                    <a class="single-gallery" href="img/g11.jpg"><img class="grid-item" src="img/g11.jpg"></a>
-                    <a class="single-gallery" href="img/g12.jpg"><img class="grid-item" src="img/g12.jpg"></a>
-                    <a class="single-gallery" href="img/g4.jpg"><img class="grid-item" src="img/g4.jpg"></a>
-                    <a class="single-gallery" href="img/g5.jpg"><img class="grid-item" src="img/g5.jpg"></a>						
+                    <a class="single-gallery" href="{{asset('img')}}/museo1.jpg"><img class="grid-item" src="{{asset('img')}}/museo1.jpg"></a>
+                    <a class="single-gallery" href="{{asset('img')}}/museo2.jpg"><img class="grid-item" src="{{asset('img')}}/museo2.jpg"></a>
+                    <a class="single-gallery" href="{{asset('img')}}/museo3.jpg"><img class="grid-item" src="{{asset('img')}}/museo3.jpg"></a>
+                    <a class="single-gallery" href="{{asset('img')}}/museo4.jpg"><img class="grid-item" src="{{asset('img')}}/museo4.jpg"></a>
+                    <a class="single-gallery" href="{{asset('img')}}/museo5.jpg"><img class="grid-item" src="{{asset('img')}}/museo5.jpg"></a>
+                    <a class="single-gallery" href="{{asset('img')}}/museo6.jpg"><img class="grid-item" src="{{asset('img')}}/museo6.jpg"></a>
+                    <a class="single-gallery" href="{{asset('img')}}/museo7.jpg"><img class="grid-item" src="{{asset('img')}}/museo7.jpg"></a>
+                    <a class="single-gallery" href="{{asset('img')}}/museo8.jpg"><img class="grid-item" src="{{asset('img')}}/museo8.jpg"></a>
+                    <a class="single-gallery" href="{{asset('img')}}/museo9.jpg"><img class="grid-item" src="{{asset('img')}}/museo9.jpg"></a>
+                    <a class="single-gallery" href="{{asset('img')}}/museo10.jpg"><img class="grid-item" src="{{asset('img')}}/museo10.jpg"></a>
+                    <a class="single-gallery" href="{{asset('img')}}/museo11.jpg"><img class="grid-item" src="{{asset('img')}}/museo11.jpg"></a>
+                    <a class="single-gallery" href="{{asset('img')}}/museo12.jpg"><img class="grid-item" src="{{asset('img')}}/museo12.jpg"></a>
+                    <a class="single-gallery" href="{{asset('img')}}/museo13.jpg"><img class="grid-item" src="{{asset('img')}}/museo13.jpg"></a>
                 </div>	
             </div>	
         </section>
