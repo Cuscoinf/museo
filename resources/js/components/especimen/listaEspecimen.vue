@@ -161,7 +161,7 @@
         data(){
             return{
                 especimenes:[],
-                url: "https://sistemacuscovf.com/",
+                url: "https://museo.sistemacuscovf.com/",
             }
         },
         methods:{
