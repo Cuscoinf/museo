@@ -53,10 +53,8 @@ export default {
                 areas: {},
                 area:'',
                 editMode: false
-
             }
         },
-
         mounted() {
 
             console.log('montado List areas');
