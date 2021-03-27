@@ -39,18 +39,21 @@ Route::delete('area/{area}',[AreaController::class,'destroy'])->name('area.destr
 
 Route::domain('sistemacuscovf.com')->group(function () {
     Route::get('/', [WebController::class, "index"])->name("web");
+    Route::get('/solicitud-investigacion',[WebController::class, "solicitudes"])->name("solicitud-investigacion");
 });
 
 Auth::routes();
 Route::domain('museo.sistemacuscovf.com')->group( function () {
     Route::group(['middleware' => 'auth'], function (){
         
-        Route::get('/', [HomeController::class, 'index'])->name('sistema');
+        Route::get('/', [HomeController::class, 'index'])->name('home');
         
         Route::resource('area', AreaController::class);
         Route::resource("especimen", EspecimenController::class);
         Route::resource('formacion-academica', FormacionAcademicaController::class);
         Route::resource('registro-solicitud', SolicitudController::class);
+        
+        Route::get('solicitudes', [SolicitudController::class, "solicitudes"])->name("solicitudes");
 
 
         Route::resource('investigador', InvestigadorController::class);

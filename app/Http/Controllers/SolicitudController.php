@@ -30,6 +30,11 @@ class SolicitudController extends Controller
         //
     }
 
+    public function solicitudes()
+    {
+        return View("carta-presentacion.solicitudes");
+    }
+
     /**
      * Store a newly created resource in storage.
      *

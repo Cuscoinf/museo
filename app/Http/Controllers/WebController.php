@@ -10,4 +10,8 @@ class WebController extends Controller
     {
         return View('web.index',["titulo"=>"Museo UNSAAC"]);
     }
+    public function solicitudes()
+    {
+        return View('web.solicitud');
+    }
 }
