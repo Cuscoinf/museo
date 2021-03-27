@@ -84,12 +84,9 @@ Route::domain('museo.sistemacuscovf.com')->group( function () {
 
         Route::get('registro-decomisados', [EspecimenController::class, 'decomisados'])->name("especimen.decomisados");
         Route::post('registro-decomisados', [EspecimenController::class, 'storeDecomisados'])->name("guardar.decomisados");
-
-
         Route::get('especimen/{area}/{id}',[EspecimenController::class, 'show'])->name('muestra.especimen');
-
         Route::get('/ornitologia',[EspecimenController::class, 'storeOrnitologia'])->name('ornitologia');
-
+        
         /*solo para contenido statico*/
         Route::view('nosotros', 'nosotros')->name('nosotros');
 
