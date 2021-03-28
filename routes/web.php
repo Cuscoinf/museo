@@ -40,6 +40,8 @@ Route::delete('area/{area}',[AreaController::class,'destroy'])->name('area.destr
 Route::domain('sistemacuscovf.com')->group(function () {
     Route::get('/', [WebController::class, "index"])->name("web");
     Route::get('/solicitud-investigacion',[WebController::class, "solicitudes"])->name("solicitud-investigacion");
+    Route::post('generar-solicitud', [WebController::class, 'generarSolicitud'])->name('generar.solicitud');
+
 });
 
 Auth::routes();

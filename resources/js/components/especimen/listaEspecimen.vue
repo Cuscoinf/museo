@@ -155,6 +155,7 @@
 </template>
 <script>
     export default {
+        name:"lista-espcimen",
         props:{
             area:{}
         },

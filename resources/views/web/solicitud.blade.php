@@ -15,11 +15,20 @@
 </section>
 <section class="container">
     <div class="form-solicitud" style="padding: 25px">
-        <h3 style="padding: 35px 0 45px 0">Para solicitar una investigacion ingrese los siguientes datos</h3>
-        <form action="" style="margin: auto; width: 500px">
+        <h3 style="padding: 35px 0 45px 0">Solicitud para proyecto de investigación</h3>
+        <form action="{{route('generar.solicitud')}}" style="margin: auto; width: 500px">
+            @csrf
             <div class="form-group">
-                <label for="Nombres">Nombre Completo</label>
+                <label for="Nombres">Nombres</label>
                 <input type="text" class="form-control" id="nombre" name="nombre">
+            </div>
+            <div class="form-group">
+                <label for="apPaterno">Apellido Paterno</label>
+                <input type="text" class="form-control" id="apPaterno" name="apPaterno">
+            </div>
+            <div class="form-group">
+                <label for="apMaterno">Apellido Materno</label>
+                <input type="text" class="form-control" id="apMaterno" name="apMaterno">
             </div>
             <div class="form-group">
                 <label for="dni">DNI</label>
@@ -30,12 +39,15 @@
                 <input type="text" class="form-control" id="email" name="email">
             </div>
             <div class="form-group">
-                <label for="domicilio">Domicilio</label>
-                <input type="text" class="form-control" id="domicilio" name="domicilio">
+                <label for="telefono">Telefono</label>
+                <input type="text" class="form-control" id="telefono" name="telefono">
             </div>
             <div class="form-group">
-                <label for="profesion">Profesion</label>
-                <input type="text" class="form-control" id="profesion" name="profesion">
+                <label for="estado">Estado civil</label>
+                <select name="estado" id="estado" class="form-control">
+                    <option value="M">M</option>
+                    <option value="F">F</option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="condicion">Condicion</label>
@@ -45,16 +57,20 @@
                 </select>
             </div>
             <div class="form-group">
+                <label for="proyecto">Nombre del Proyecto</label>
+                <input type="text" class="form-control" id="proyecto" name="proyecto">
+            </div>
+            <div class="form-group">
+                <label for="planinvestigacion" class="btn btn-success"><i class="fa fa-file"></i> Plan de investigacion</label>
+                <input type="file" id="planinvestigacion" style="display: none">
+            </div>
+            <div class="form-group">
                 <label for="hojadevida" class="btn btn-success"><i class="fa fa-file"></i> Adjuntar hoja de vida</label>
                 <input type="file" id="hojadevida" style="display:none">
             </div>
             <div class="form-group">
                 <label for="fichadatos" class="btn btn-success"><i class="fa fa-file"></i> Adjunte ficha de datos de los colaboradores</label>
                 <input type="file" id="fichadatos" style="display: none">
-            </div>
-            <div class="form-group">
-                <label for="planinvestigacion" class="btn btn-success"><i class="fa fa-file"></i> Plan de investigacion</label>
-                <input type="file" id="planinvestigacion" style="display: none">
             </div>
             <div class="form-group text-center">
                 <button class="btn btn-primary"><i class="fa fa-upload"></i> ENVIAR SOLICITUD</button>
