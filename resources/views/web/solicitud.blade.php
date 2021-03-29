@@ -61,16 +61,20 @@
                 <input type="text" class="form-control" id="proyecto" name="proyecto">
             </div>
             <div class="form-group">
+                <label for="lugar">Lugar de investigacion</label>
+                <input type="text" class="form-control" id="lugar" name="lugar">
+            </div>
+            <div class="form-group">
                 <label for="planinvestigacion" class="btn btn-success"><i class="fa fa-file"></i> Plan de investigacion</label>
-                <input type="file" id="planinvestigacion" style="display: none">
+                <input type="file" id="planinvestigacion" name="planinvestigacion" style="display: none">
             </div>
             <div class="form-group">
                 <label for="hojadevida" class="btn btn-success"><i class="fa fa-file"></i> Adjuntar hoja de vida</label>
-                <input type="file" id="hojadevida" style="display:none">
+                <input type="file" id="hojadevida" style="display:none" name="hojadevida">
             </div>
             <div class="form-group">
                 <label for="fichadatos" class="btn btn-success"><i class="fa fa-file"></i> Adjunte ficha de datos de los colaboradores</label>
-                <input type="file" id="fichadatos" style="display: none">
+                <input type="file" id="fichadatos" name="fichadatos" style="display: none">
             </div>
             <div class="form-group text-center">
                 <button class="btn btn-primary"><i class="fa fa-upload"></i> ENVIAR SOLICITUD</button>
