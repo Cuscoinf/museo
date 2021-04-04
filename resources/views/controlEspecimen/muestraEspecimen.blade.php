@@ -10,7 +10,7 @@
 @stop
 
 @section('content')
-
+<div id="app"></div>
 
 <div class="card card-dark card-tabs">
     <div class="card-header p-0 pt-1">
@@ -121,10 +121,6 @@
                                 <td>...carga del mapa de ubicacion...</td>
                             </tr>
                         </tbody>
-                        <div>
-                            <a href="" class="btn btn-success">Verificar y aprobar</a>
-                            <a href="" class="btn btn-danger">Observar</a>
-                        </div>
                         @endif
                         @if($area == "herpetologia")
                         <tbody style="border:1px solid #ccc">
@@ -426,15 +422,71 @@
                   </div>
               </div>
               <div class="card-footer">
-                  <a href="" class="btn btn-success">Verificar y aprobar</a>
-                  <a href="" class="btn btn-danger">Observar</a>
+                  <button class="btn btn-success estado" data-estado="Aprobado">Verificar y aprobar</button>
+                  <button class="btn btn-danger estado" data-estado="Observado">Observar</button>
               </div>
           </div>
         </div>
     </div>
 </div>
 @stop
+@section('js')
+<script>
+    $(document).ready(function(){
+        $(".estado").on("click", async function(){
+            let $this = $(this)
+            var obser = "sin Observacion";
+            let titulo = "APROBADO";
 
-@section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+            if($this.data('estado')=="Observado")
+            {
+                const { value: ob } = await Swal.fire({
+                    title: 'OBSERVACIÓN',
+                    input: 'textarea',
+                    inputLabel: 'observacion',
+                    inputPlaceholder: 'Describa la observación...',
+                    showCancelButton:true,
+                    confirmButtonText:"Guardar",
+                    cancelButtonText:"Cerrar"
+                })
+
+                obser = ob
+
+                titulo = "DEPOSITO OBSERVADO"
+            }
+            
+            $.ajax({
+                type: "post",
+                url: "https://museo.sistemacuscovf.com/depositar",
+                data: {
+                    area: "ornitologia",
+                    especimenId: "{{$especimen->id}}",
+                    estado:$this.data('estado'),
+                    observacion:obser
+                },
+                headers: {
+                    'X-CSRF-TOKEN' : "{{csrf_token()}}"
+                },
+                dataType: 'JSON',
+                success: function (response) {
+                    if(response=="1")
+                    {
+                        Swal.fire({
+                            title: titulo,
+                            text: "Se ha guardado el deposito, satisfactoriamente",
+                            type: 'Exito',
+                            showCancelButton: false,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Aceptar',
+
+                        }).then((result)=>{
+                            window.location = document.referrer
+                        })
+                    }
+                }
+            });
+        })
+    })
+</script>
 @stop

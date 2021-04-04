@@ -11,6 +11,7 @@ use App\Http\Controllers\InvestigadorController;
 use App\Http\Controllers\SolicitudController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\EspecimenController;
+use App\Http\Controllers\DepositoController;
 use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Auth;
 
@@ -56,7 +57,9 @@ Route::domain('museo.sistemacuscovf.com')->group( function () {
         Route::resource('registro-solicitud', SolicitudController::class);
         
         Route::get('solicitudes', [SolicitudController::class, "solicitudes"])->name("solicitudes");
-
+        Route::get('muestra-solicitud/{id}', [SolicitudController::class, "mostrar"])->name("muestra.solicitud");
+        //depositos
+        Route::post('depositar',[DepositoController::class, "store"])->name("depositar");
 
         Route::resource('investigador', InvestigadorController::class);
         Route::put('updateuser/{user}',[InvestigadorController::class,'updateUser'])->name('updateuser');

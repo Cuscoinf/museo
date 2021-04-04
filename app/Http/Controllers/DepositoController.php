@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Deposito;
 use Illuminate\Http\Request;
+use Auth;
 
 class DepositoController extends Controller
 {
@@ -35,7 +36,20 @@ class DepositoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $deposito = new Deposito();
+        $deposito->usuario_id = Auth::user()->id;
+        $deposito->area = $request->area;
+        $deposito->especimen_id = $request->especimenId;
+        $deposito->estado = $request->estado;
+        $deposito->observacion = $request->observacion;
+
+        if($deposito->save())
+        {
+            return "1";
+        }
+        else{
+            return "0";
+        }
     }
 
     /**

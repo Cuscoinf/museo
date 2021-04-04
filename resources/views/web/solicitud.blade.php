@@ -16,7 +16,7 @@
 <section class="container">
     <div class="form-solicitud" style="padding: 25px">
         <h3 style="padding: 35px 0 45px 0">Solicitud para proyecto de investigación</h3>
-        <form action="{{route('generar.solicitud')}}" style="margin: auto; width: 500px">
+        <form action="{{route('generar.solicitud')}}" method="POST" style="margin: auto; width: 500px">
             @csrf
             <div class="form-group">
                 <label for="Nombres">Nombres</label>
@@ -43,8 +43,8 @@
                 <input type="text" class="form-control" id="telefono" name="telefono">
             </div>
             <div class="form-group">
-                <label for="estado">Estado civil</label>
-                <select name="estado" id="estado" class="form-control">
+                <label for="genero">Genero</label>
+                <select name="genero" id="genero" class="form-control">
                     <option value="M">M</option>
                     <option value="F">F</option>
                 </select>
@@ -75,6 +75,10 @@
             <div class="form-group">
                 <label for="fichadatos" class="btn btn-success"><i class="fa fa-file"></i> Adjunte ficha de datos de los colaboradores</label>
                 <input type="file" id="fichadatos" name="fichadatos" style="display: none">
+            </div>
+            <div class="form-group">
+                <label for="contenido">Descripcion de la solicitud</label>
+                <textarea id="contenido" name="contenido" rows="5" class="form-control"></textarea>
             </div>
             <div class="form-group text-center">
                 <button class="btn btn-primary"><i class="fa fa-upload"></i> ENVIAR SOLICITUD</button>

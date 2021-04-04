@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Investigador;
 use App\Models\Area;
+use App\Models\Solicitud;
 
 use Illuminate\Http\Request;
 
@@ -32,7 +33,13 @@ class SolicitudController extends Controller
 
     public function solicitudes()
     {
-        return View("carta-presentacion.solicitudes");
+        $solicitudes = Solicitud::join("proyectoInvestigacion", "proyectoInvestigacion.id","=","solicitud.proyectoInvestigacion_id")
+        ->join("investigador", "investigador.id","=", "proyectoInvestigacion.investigador_id")
+        ->select("solicitud.id","proyectoInvestigacion.serfor","solicitud.updated_at","investigador.nombre", "investigador.apPaterno","proyectoInvestigacion.titulo")
+        ->get();
+        return View("carta-presentacion.solicitudes",[
+            "solicitudes" => $solicitudes
+        ]);
     }
 
     /**
@@ -52,9 +59,19 @@ class SolicitudController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function mostrar($id)
     {
-        //
+        $solicitud = Solicitud::join("proyectoInvestigacion", "proyectoInvestigacion.id","=","solicitud.proyectoInvestigacion_id")
+        ->join("investigador", "investigador.id","=", "proyectoInvestigacion.investigador_id")
+        ->where("solicitud.id","=",$id)
+        ->first();
+
+        //dd($solicitud);
+
+        return View("carta-presentacion.muestraSolicitud",[
+            "solicitud" => $solicitud
+        ]);
+
     }
 
     /**

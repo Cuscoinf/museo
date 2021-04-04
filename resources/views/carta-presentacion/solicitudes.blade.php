@@ -29,14 +29,16 @@
               </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td style="width: 10px">#</td>
-                    <td>S0001</td>
-                    <td>22/03/2021</td>
-                    <td>Cristiand Romero</td>
-                    <td>Aves del peru</td>
-                    <td><button class="btn btn-primary">Revisar</button></td>
-                  </tr>
+              @foreach ($solicitudes as $solicitud)
+              <tr>
+                <td style="width: 10px"></td>
+                <td>{{$solicitud->id}}</td>
+                <td>{{$solicitud->updated_at}}</td>
+                <td>{{$solicitud->nombre." ".$solicitud->apPaterno}}</td>
+                <td>{{$solicitud->titulo}}</td>
+                <td><a href="{{route('muestra.solicitud', $solicitud->id)}}" class="btn btn-primary">Revisar</a></td>
+              </tr>
+              @endforeach
             </tbody>
           </table>
         </div>
