@@ -1,6 +1,6 @@
 <template>
     <div class="table-responsive">
-        <table class="table" v-if="(this.area=='herpetologia')">
+        <table class="table datatable" v-if="(this.area=='herpetologia')">
             <thead>
                 <tr>
                     <th>Codigo MHNC</th>
@@ -9,12 +9,9 @@
                     <th>Familia</th>
                     <th>Orden</th>
                     <th>Sexo</th>
-                    <th>Tejido ADN</th>
-                    <th>Tejido COD</th>
                     <th>Preservacion</th>
                     <th>Colector</th>
                     <th>Autor</th>
-                    <th>Observacion</th>
                     <th>Foto</th>
                     <th>Acciones</th>
                 </tr>
@@ -27,18 +24,15 @@
                     <td>{{especimen.familia}}</td>
                     <td>{{especimen.orden}}</td>
                     <td>{{especimen.sexo}}</td>
-                    <td>{{especimen.tejidoAnd}}</td>
-                    <td>{{especimen.tejidoCod}}</td>
                     <td>{{especimen.preservacion}}</td>
                     <td>{{especimen.colector}}</td>
                     <td>{{especimen.autor}}</td>
-                    <td>{{especimen.observacion}}</td>
                     <td>{{especimen.foto}}</td>
                     <td><a :href="url+'especimen/'+area+'/'+especimen.id" class="btn btn-primary">Revisar</a></td>
                 </tr>
             </tbody>
         </table>
-        <table class="table" v-if="(this.area=='maztozoologia')">
+        <table class="table datatable" v-if="(this.area=='maztozoologia')">
             <thead>
                 <tr>
                     <th>Codigo MHNC</th>
@@ -51,10 +45,6 @@
                     <th>Colector</th>
                     <th>Identificador</th>
                     <th>Tipo muestra</th>
-                    <th>Cabeza cuerpo</th>
-                    <th>Cola</th>
-                    <th>Oreja</th>
-                    <th>Tarzo</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -70,16 +60,12 @@
                     <td>{{especimen.colector}}</td>
                     <td>{{especimen.identificador}}</td>
                     <td>{{especimen.tMuestra}}</td>
-                    <td>{{especimen.cabezaCuerpo}}</td>
-                    <td>{{especimen.cola}}</td>
-                    <td>{{especimen.oreja}}</td>
-                    <td>{{especimen.tarzo}}</td>
                     <td><a :href="url+'especimen/'+area+'/'+especimen.id" class="btn btn-primary">Revisar</a></td>
 
                 </tr>
             </tbody>
         </table>
-        <table class="table" v-if="(this.area=='ornitologia')">
+        <table class="table datatable" v-if="(this.area=='ornitologia')">
             <thead>
                 <tr>
                     <th>Codigo MHNC</th>
@@ -119,7 +105,7 @@
                 </tr>
             </tbody>
         </table>
-        <table class="table" v-if="(this.area=='decomisados')">
+        <table class="table datatable" v-if="(this.area=='decomisados')">
             <thead>
                 <tr>
                     <th>Codigo MHNC</th>
@@ -170,12 +156,18 @@
                 axios.get(this.url+"especimen-data/"+this.area).then(resp=>{
                     console.log(resp.data)
                     this.especimenes = resp.data
+                    this.table()
                 })
             },  
+            table(){
+                $(function(){
+                    $('.datatable').DataTable();
+                })
+            }
         },
         mounted() {
             this.listar()
             console.log("area: "+this.area)
-        }
+        },
     }
 </script>
