@@ -40,17 +40,28 @@ Route::delete('area/{area}',[AreaController::class,'destroy'])->name('area.destr
 
 Route::domain('sistemacuscovf.com')->group(function () {
     Route::get('/', [WebController::class, "index"])->name("web");
-    Route::get('/solicitud-investigacion',[WebController::class, "solicitudes"])->name("solicitud-investigacion");
-    Route::post('generar-solicitud', [WebController::class, 'generarSolicitud'])->name('generar.solicitud');
+    Route::get('/registrarse',[InvestigadorController::class, "registroInvestigador"])->name("registro.investigador");
+    Route::post('registro-investigador', [InvestigadorController::class, 'registroInvestigador'])->name('guardar.investigador');
 
 });
 
-Auth::routes();
+
+Route::domain('investigadores.sistemacuscovf.com')->group(function(){
+    
+    Route::get('login',[InvestigadorController::class, 'login'])->name('investigador.login');
+
+    Route::group(['middleware' => 'investigadores'], function (){
+        Route::get('/', [InvestigadorController::class, 'dashboard'])->name('dashboard');
+    });
+});
+//Auth::routes();
 Route::domain('museo.sistemacuscovf.com')->group( function () {
+    
+    
+
     Route::group(['middleware' => 'auth'], function (){
-        
+
         Route::get('/', [HomeController::class, 'index'])->name('home');
-        
         Route::resource('area', AreaController::class);
         Route::resource("especimen", EspecimenController::class);
         Route::resource('formacion-academica', FormacionAcademicaController::class);

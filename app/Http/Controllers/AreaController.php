@@ -71,6 +71,18 @@ class AreaController extends Controller
 
     }
 
+    public function storeApi(StoreArea $request)
+    {
+        $request->merge([
+            'slug'=>Str::slug($request->nombre,'-')
+        ]);
+
+        if(Area::create($request->all()))
+        {
+            return response()->json(["respuesta"=>"1"]);
+        }
+    }
+
     public function edit(Area $area){
         //return view('area.edit',compact('area'));
         $areas=Area::orderBy('id','desc')->paginate();

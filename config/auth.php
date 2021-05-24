@@ -41,6 +41,11 @@ return [
             'provider' => 'users',
         ],
 
+        'investigadores' => [
+            'driver' => 'session',
+            'provider' => 'investigadores',
+        ],
+
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -69,6 +74,10 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+        'investigadores' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Investigador::class,
         ],
 
         // 'users' => [

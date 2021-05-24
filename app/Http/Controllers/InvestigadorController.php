@@ -39,6 +39,16 @@ class InvestigadorController extends Controller
         return view('investigador.create');
     }
 
+    public function login()
+    {
+        return view('investigador.login',[]);
+    }
+
+    public function dashboard()
+    {
+        return View('investigador.dashboard',[]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -53,6 +63,23 @@ class InvestigadorController extends Controller
         ]);
         $investigador=Investigador::create($request->all());
         return redirect()->route('investigador.index');
+    }
+
+    public function storeApi(StoreInvestigador $request)
+    {
+        $slugGenerado=$request->apPaterno.$request->apMaterno.$request->nombre;
+        $request->merge([
+            'slug'=>Str::slug($slugGenerado,'-')
+        ]);
+        if($investigador=Investigador::create($request->all()))
+        {
+            return response()->json(["respuesta"=>"1"]);
+        }
+    }
+
+    public function registroInvestigador()
+    {
+        return view('web.solicitud',[]);
     }
 
     /**

@@ -33,22 +33,22 @@
 
           <header id="header" id="home">
               <div class="container header-top">
-                  <div class="row">
-                      <div class="col-6 top-head-left">
-                          <ul>
-                              <li><a href="#">Visitar</a></li>
-                              <li><a href="#">Solicitar investigacion</a></li>
-                          </ul>
-                      </div>
-                      <div class="col-6 top-head-right">
-                          <ul>
-                              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                            <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                          </ul>
-                      </div>			  			
-                  </div>
+                <div class="row">
+                    <div class="col-6 top-head-right">
+                        <ul>
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                          <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                          <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                          <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-6 top-head-right">
+                        <ul>
+                            <li><a href="{{route('dashboard')}}"><i class="fa fa-lock"></i> Ingresar</a></li>
+                            <li><a href="{{route('registro.investigador')}}">Registrarse</a></li>
+                        </ul>
+                    </div>		  			
+                </div>
               </div>
               <hr>
             <div class="container">
@@ -64,14 +64,7 @@
                       <li><a href="event.html">Eventos</a></li>
                       <li><a href="ticket.html">Investigacion</a></li>
                       <li><a href="blog-home.html">Blog</a></li>
-                      <li><a href="contact.html">Contactos</a></li>
-                      <li class="menu-has-children"><a href="">Solicitudes</a>
-                        <ul>
-                          <li><a href="{{route('solicitud-investigacion')}}">Investigacion</a></li>
-                          <li><a href="#">Seguimiento</a></li>
-                          <li><a href="#">Proyectos</a></li>
-                        </ul>
-                      </li>			          
+                      <li><a href="contact.html">Contactos</a></li>	          
                     </ul>
                   </nav><!-- #nav-menu-container -->		    		
                 </div>
