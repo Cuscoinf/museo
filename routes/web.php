@@ -13,6 +13,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\EspecimenController;
 use App\Http\Controllers\DepositoController;
 use App\Http\Controllers\WebController;
+use App\Http\Controllers\AuthInvestigador\LoginCotroller;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -48,7 +49,8 @@ Route::domain('sistemacuscovf.com')->group(function () {
 
 Route::domain('investigadores.sistemacuscovf.com')->group(function(){
     
-    Route::get('login',[InvestigadorController::class, 'login'])->name('investigador.login');
+    Route::get('login',[LoginCotroller::class, 'showLoginForm'])->name('investigador.login');
+    Route::post('login',[LoginCotroller::class, 'login'])->name('investigador.ingresar');
 
     Route::group(['middleware' => 'investigadores'], function (){
         Route::get('/', [InvestigadorController::class, 'dashboard'])->name('dashboard');

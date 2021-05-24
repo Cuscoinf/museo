@@ -38,12 +38,7 @@ class InvestigadorController extends Controller
     {
         return view('investigador.create');
     }
-
-    public function login()
-    {
-        return view('investigador.login',[]);
-    }
-
+    
     public function dashboard()
     {
         return View('investigador.dashboard',[]);

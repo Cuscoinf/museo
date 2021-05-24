@@ -21,7 +21,7 @@
 @section('auth_header', 'Acceso restringido')
 
 @section('auth_body')
-    <form action="{{ route('investigador.login') }}" method="post">
+    <form action="{{ route('investigador.ingresar') }}" method="post">
         {{ csrf_field() }}
 
         {{-- Email field --}}
@@ -65,7 +65,13 @@
                 </button>
             </div>
         </div>
-
+        @if($errors->has('mensaje'))
+        <div class="text-danger text-center">
+            @foreach ($errors->all() as $error)
+                <p>{{ $error }}</p>
+            @endforeach
+        </div>
+        @endif
     </form>
 @stop
 
