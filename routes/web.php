@@ -14,6 +14,7 @@ use App\Http\Controllers\EspecimenController;
 use App\Http\Controllers\DepositoController;
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\AuthInvestigador\LoginCotroller;
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -58,8 +59,8 @@ Route::domain('investigadores.sistemacuscovf.com')->group(function(){
 });
 //Auth::routes();
 Route::domain('museo.sistemacuscovf.com')->group( function () {
-    
-    
+
+    Route::get('login/admin', [LoginController::class, 'login'])->name('login.admin');
 
     Route::group(['middleware' => 'auth'], function (){
 

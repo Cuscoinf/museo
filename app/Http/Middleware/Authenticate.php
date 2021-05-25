@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Middleware;
-
+use Closure;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Middleware\Authenticate as Middleware;
 
 class Authenticate extends Middleware
@@ -12,10 +14,11 @@ class Authenticate extends Middleware
      * @param  \Illuminate\Http\Request  $request
      * @return string|null
      */
-    protected function redirectTo($request)
-    {
-        if (! $request->expectsJson()) {
-            return route('login');
+    public function handle(Request $request, Closure $next, $guard="admin")
+    {   
+        if (!Auth::guard($guard)->check()) {
+            return redirect('login/admin');
         }
+        //return $next($request);
     }
 }
