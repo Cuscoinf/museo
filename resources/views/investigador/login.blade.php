@@ -21,6 +21,9 @@
 @section('auth_header', 'Acceso restringido')
 
 @section('auth_body')
+    <div class="text-center py-4">
+        <i class="fa fa-user-circle" style="font-size: 50px; color: #999999"></i>
+    </div>
     <form action="{{ route('investigador.ingresar') }}" method="post">
         {{ csrf_field() }}
 
