@@ -77,7 +77,7 @@ return [
         ],
         'investigadores' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Investigador::class,
+            'model' => App\Models\User::class,
         ],
 
         // 'users' => [
