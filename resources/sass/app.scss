@@ -6,3 +6,16 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+.menulat{
+    border: 1px solid #cccccc;
+    padding-top: 10px;
+    border-radius: 10px;
+    background-color: white;
+    ul li{
+            list-style: none;
+        a{
+            color: #666666;
+        }
+    }
+}

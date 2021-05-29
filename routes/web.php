@@ -53,16 +53,23 @@ Route::domain('investigadores.sistemacuscovf.com')->group(function(){
     Route::get('login',[LoginCotroller::class, 'showLoginForm'])->name('investigador.login');
     Route::post('login',[LoginCotroller::class, 'login'])->name('investigador.ingresar');
 
+    Route::get('/', [InvestigadorController::class, 'dashboard'])->name('dashboard');
     Route::group(['middleware' => 'investigadores'], function (){
         Route::get('/', [InvestigadorController::class, 'dashboard'])->name('dashboard');
+        Route::post('logout', function(){
+            Auth::guard('investigadores')->logout();
+            return redirect('login');
+        })->name('logoutInvestigador');
+        
     });
 });
-//Auth::routes();
+
 Route::domain('museo.sistemacuscovf.com')->group( function () {
 
-    Route::get('login/admin', [LoginController::class, 'login'])->name('login.admin');
+    Route::get('login', [LoginController::class, 'loginMuseo'])->name('login.admin');
+    Route::post('login', [LoginController::class, 'login'])->name('admin.login');
 
-    Route::group(['middleware' => 'auth'], function (){
+    Route::group(['middleware' => 'auth:web'], function (){
 
         Route::get('/', [HomeController::class, 'index'])->name('home');
         Route::resource('area', AreaController::class);
@@ -108,14 +115,10 @@ Route::domain('museo.sistemacuscovf.com')->group( function () {
         
         /*solo para contenido statico*/
         Route::view('nosotros', 'nosotros')->name('nosotros');
-
-        //Auth::routes();
-        Auth::routes();
         Route::get('/logout', function(){
-            Auth::logout();
-            //return Redirect::to('login');
+            Auth::guard('web')->logout();
             return redirect('login');
-        });
+        })->name('logout');
 
         Route::apiResource('area',AreaController::class);
         Route::get('/getArea/{id}',[AreaController::class,'getArea'])->name('getArea');

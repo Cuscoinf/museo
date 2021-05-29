@@ -41,6 +41,6 @@ class LoginController extends Controller
 
     public function loginMuseo()
     {
-        return "FORM ACCESO";
+        return view("auth.login");
     }
 }

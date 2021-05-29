@@ -14,11 +14,12 @@ class Authenticate extends Middleware
      * @param  \Illuminate\Http\Request  $request
      * @return string|null
      */
-    public function handle(Request $request, Closure $next, $guard="admin")
+    public function handle(Request $request, Closure $next, $guard="web")
     {   
         if (!Auth::guard($guard)->check()) {
-            return redirect('login/admin');
+            //dd("Sin Sesion");
+            return redirect('login');
         }
-        //return $next($request);
+        return $next($request);
     }
 }
