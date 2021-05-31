@@ -1,23 +1,29 @@
 @extends('layouts.panelinvestigador')
 @section('contenido')
 <div class="container">
-<div class="form">
     <div class="row">
         <div class="col-md-3">
-            <div class="menulat">
-                <ul>
-                    <li><a href="solicitar-investigacion">Solicitar Investigacion</a></li>
-                    <li><a href="solicitar-deposito">Solicitar Deposito</a></li>
-                    <li><a href="depositar-especimen">Depositar Especimen</a></li>
-                    <li><a href="mi-cuenta">Mi Perfil</a></li>
-                    <li><a href="notificaciones">Notificaciones <span class="badge badge-primary">3</span> </a></li>
-                </ul>
+            <div>
+                <a style="height: 250px; color:grey; font-size:17px; border:1px solid #ccc; text-align:center; border-radius:10px; background:white; display:grid; align-items:center" href="{{route('solicitarInvestigacion')}}">
+                    Solicitar Investigacion
+                </a>
             </div>
         </div>
-        <div class="col-md-9">
-            Paneles
+        <div class="col-md-3">
+            <div>
+                <a style="height: 250px; color:grey; font-size:17px; border:1px solid #ccc; text-align:center; border-radius:10px; background:white; display:grid; align-items:center" href="{{route('solicitarDeposito')}}">Solicitar Deposito</a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div>
+                <a style="height: 250px; color:grey; font-size:17px; border:1px solid #ccc; text-align:center; border-radius:10px; background:white; display:grid; align-items:center" href="{{route('depositarEspecimen')}}">Depositar Especimen</a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div>
+                <a style="height: 250px; color:grey; font-size:17px; border:1px solid #ccc; text-align:center; border-radius:10px; background:white; display:grid; align-items:center" href="{{route('notificaciones')}}">Notificaciones</a>
+            </div>
         </div>
     </div>
-</div>
 </div>
 @stop

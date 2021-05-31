@@ -173,4 +173,22 @@ class InvestigadorController extends Controller
         $usuarioE->update($request->all());
         return redirect()->route('roles.index');
     }
+
+    //Zona de investigadores
+    public function solicitarInvestigacion()
+    {
+        return view('investigador.solicitud');
+    }
+    public function solicitarDeposito()
+    {
+        return view('investigador.deposito');
+    }
+    public function depositarEspecimen()
+    {
+        return view('investigador.deposito');
+    }
+    public function notificaciones()
+    {
+        return view('investigador.notificaciones');
+    }
 }

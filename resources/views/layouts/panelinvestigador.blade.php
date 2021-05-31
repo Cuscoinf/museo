@@ -15,6 +15,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -65,7 +66,23 @@
         </nav>
 
         <main class="py-4">
-            @yield('contenido')
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="menulat">
+                            <ul>
+                                <li class="py-2"><a href="solicitar-investigacion">Solicitar Investigacion</a></li>
+                                <li class="py-2"><a href="solicitar-deposito">Solicitar Deposito</a></li>
+                                <li class="py-2"><a href="depositar-especimen">Depositar Especimen</a></li>
+                                <li class="py-2"><a href="notificaciones">Notificaciones <span class="badge badge-primary">3</span> </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-9">
+                        @yield('contenido')
+                    </div>
+                </div>
+            </div>
         </main>
     </div>
 </body>
