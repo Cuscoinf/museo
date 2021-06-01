@@ -61,6 +61,7 @@ Route::domain('investigadores.sistemacuscovf.com')->group(function(){
         Route::get('solicitar-deposito', [InvestigadorController::class, 'solicitarDeposito'])->name('solicitarDeposito');
         Route::get('depositar-especimen', [InvestigadorController::class, 'depositarEspecimen'])->name('depositarEspecimen');
         Route::get('notificaciones', [InvestigadorController::class, 'notificaciones'])->name('notificaciones');
+        Route::get('caso-fortuito', [InvestigadorController::class, 'casoFortuito'])->name('casoFortuito');
 
         Route::post('logout', function(){
             Auth::guard('investigadores')->logout();

@@ -247,31 +247,24 @@ return [
             'route'  => 'home',
 
         ],
-        ['header' => 'USUARIOS', 'can'  => ['user-admin']],
+        ['header' => 'INVESTIGACION', 'can'  => ['user-admin']],
         [
-            'text' => 'Investigador',
+            'text' => 'Investigadores',
             'route'  => 'investigador.index',
             'icon' => 'fas fa-fw fa-user',
             'can'  => ['user-admin'],
         ],
         [
-            'text' => 'Áreas',
-            'route'  => 'area.index',
-            'icon' => 'fas fa-fw fa-user',
-            'can'  => ['user-admin','areas-admin'],
-        ],
-        [
-            'text' => 'Formaciones Academicas',
-            'route'  => 'formacion-academica.index',
-            'icon' => 'fas fa-fw fa-graduation-cap',
-            'can'  => ['user-admin','formacion-academica-admin'],
-        ],
-        ['header' => 'AUTORIZACIONES',  'can'  => ['user-admin','carta-admin']],
-        [
             'text' => 'Solicitudes de Investigacion',
             'route'  => 'solicitudes',
             'icon' => 'fas fa-fw fa-user',
             'can'  => ['user-admin','carta-admin'],
+        ],
+        [
+            'text' => 'Solicitudes de Deposito',
+            'route'  => 'investigador.deposito',
+            'icon' => 'fas fa-fw fa-user',
+            'can'  => ['user-admin'],
         ],
         [
             'text' => 'Salida a Campo',
@@ -281,12 +274,6 @@ return [
         ],
         [
             'text' => 'Organizaciones',
-            'url'  => '#',
-            'icon' => 'fas fa-fw fa-user',
-            'can'  => ['user-admin'],
-        ],
-        [
-            'text' => 'Solicitudes',
             'url'  => '#',
             'icon' => 'fas fa-fw fa-user',
             'can'  => ['user-admin'],
@@ -348,6 +335,12 @@ return [
             'icon' => 'fas fa-fw fa-user',
             'can'  => ['user-admin','roles-admin'],
 
+        ],
+        [
+            'text' => 'Áreas',
+            'route'  => 'area.index',
+            'icon' => 'fas fa-fw fa-user',
+            'can'  => ['user-admin','areas-admin'],
         ],
         [
             'text' => 'profile',

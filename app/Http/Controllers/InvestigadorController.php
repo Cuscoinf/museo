@@ -185,7 +185,11 @@ class InvestigadorController extends Controller
     }
     public function depositarEspecimen()
     {
-        return view('investigador.deposito');
+        return view('investigador.registroespecimen');
+    }
+    public function casoFortuito()
+    {
+        return view('investigador.casoFortuito');
     }
     public function notificaciones()
     {

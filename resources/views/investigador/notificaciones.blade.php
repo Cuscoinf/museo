@@ -6,12 +6,12 @@
             <div class="row">
                 <div class="col-md-10">
                     <div class="alert-body">
-                        Contenido
+                        <a href="certificado">Descargar carta de presentación</a>
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="alert-header">
-                        <span>Fecha</span>
+                        <span>31-05-2021 3:30pm</span>
                     </div>
                 </div>
             </div>
