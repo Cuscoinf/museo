@@ -52,8 +52,8 @@ Route::domain('investigadores.sistemacuscovf.com')->group(function(){
     
     Route::get('login',[LoginCotroller::class, 'showLoginForm'])->name('investigador.login');
     Route::post('login',[LoginCotroller::class, 'login'])->name('investigador.ingresar');
-
     Route::get('/', [InvestigadorController::class, 'dashboard'])->name('dashboard');
+
     Route::group(['middleware' => 'investigadores'], function (){
 
         Route::get('/', [InvestigadorController::class, 'dashboard'])->name('dashboard');
@@ -84,7 +84,10 @@ Route::domain('museo.sistemacuscovf.com')->group( function () {
         Route::resource('formacion-academica', FormacionAcademicaController::class);
         Route::resource('registro-solicitud', SolicitudController::class);
         
-        Route::get('solicitudes', [SolicitudController::class, "solicitudes"])->name("solicitudes");
+        Route::get('solicitudes-deposito', [SolicitudController::class, "solicitudes"])->name("investigador.solicitud.deposito");
+
+        Route::get('solicitudes-investigacion', [SolicitudController::class, "solicitudesInvestigacion"])->name("investigador.solicitud.investigacion");
+
         Route::get('muestra-solicitud/{id}', [SolicitudController::class, "mostrar"])->name("muestra.solicitud");
         //depositos
         Route::post('depositar',[DepositoController::class, "store"])->name("depositar");

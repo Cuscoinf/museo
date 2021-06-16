@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Carta de presentacion')
+@section('title', 'Solicitudes de investigación')
 
 @section('plugins.Sweetalert2',true)
 
@@ -24,7 +24,7 @@
                 <th>Nro Solicitud</th>
                 <th>Fecha</th>
                 <th>Investigador</th>
-                <th>Tema de investigacion</th>
+                <th>Titulo de investigacion</th>
                 <th></th>
               </tr>
             </thead>

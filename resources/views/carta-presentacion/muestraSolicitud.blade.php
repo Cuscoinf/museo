@@ -96,7 +96,7 @@
                       </table>
                       <div class="text-center" style="padding:15px">
                         <a href="" class="btn btn-success">Generar carta de presentacion</a>
-                        <a href="" class="btn btn-danger">Generar salida a campo</a>
+                        <a href="" class="btn btn-warning">Obvervar solicitud</a>
                     </div>
                   </div>
               </div>

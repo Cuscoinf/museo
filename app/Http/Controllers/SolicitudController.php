@@ -31,16 +31,28 @@ class SolicitudController extends Controller
         //
     }
 
+    public function solicitudesInvestigacion()
+    {
+        $solicitudes = Solicitud::join("proyectoInvestigacion", "proyectoInvestigacion.id","=","solicitud.proyectoInvestigacion_id")
+        ->join("investigador", "investigador.id","=", "proyectoInvestigacion.investigador_id")
+        ->select("solicitud.id","proyectoInvestigacion.serfor","solicitud.updated_at","investigador.nombre", "investigador.apPaterno","proyectoInvestigacion.titulo")
+        ->get();
+        return View("solicitudes.investigacion",[
+            "solicitudes" => $solicitudes
+        ]);
+    }
+
     public function solicitudes()
     {
         $solicitudes = Solicitud::join("proyectoInvestigacion", "proyectoInvestigacion.id","=","solicitud.proyectoInvestigacion_id")
         ->join("investigador", "investigador.id","=", "proyectoInvestigacion.investigador_id")
         ->select("solicitud.id","proyectoInvestigacion.serfor","solicitud.updated_at","investigador.nombre", "investigador.apPaterno","proyectoInvestigacion.titulo")
         ->get();
-        return View("carta-presentacion.solicitudes",[
+        return View("solicitudes.deposito",[
             "solicitudes" => $solicitudes
         ]);
     }
+    
 
     /**
      * Store a newly created resource in storage.

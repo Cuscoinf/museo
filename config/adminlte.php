@@ -256,13 +256,13 @@ return [
         ],
         [
             'text' => 'Solicitudes de Investigacion',
-            'route'  => 'solicitudes',
+            'route'  => 'investigador.solicitud.investigacion',
             'icon' => 'fas fa-fw fa-user',
             'can'  => ['user-admin','carta-admin'],
         ],
         [
             'text' => 'Solicitudes de Deposito',
-            'route'  => 'investigador.deposito',
+            'route'  => 'investigador.solicitud.deposito',
             'icon' => 'fas fa-fw fa-user',
             'can'  => ['user-admin'],
         ],
