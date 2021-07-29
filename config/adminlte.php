@@ -328,6 +328,22 @@ return [
             'icon' => 'fas fa-fw fa-box',
             'can'  => ['user-admin','user-admin'],
         ],
+        ['header' => 'REPORTES'],
+        [
+            'text' => 'Reportes de colecta',
+            'route' => '',
+            'icon' => 'fas fa-fw fa-list'
+        ],
+        [
+            'text' => 'Animales decomisados',
+            'route' => '',
+            'icon' => 'fas fa-fw fa-list'
+        ],
+        [
+            'text' => 'Investigadores',
+            'route' => '',
+            'icon' => 'fas fa-fw fa-list'
+        ],
         ['header' => 'PREFERENCIAS'],
         [
             'text' => 'Roles de Usuario',
