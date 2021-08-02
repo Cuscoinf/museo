@@ -4,9 +4,20 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+import ElementUI from 'element-ui';
+
 require('./bootstrap');
 
 window.Vue = require('vue');
+
+ElementUI.Select.computed.readonly = function () {
+    const isIE = !this.$isServer && !Number.isNaN(Number(document.documentMode));
+    return !(this.filterable || this.multiple || !isIE) && !this.visible;
+};
+
+export default ElementUI;
+
+Vue.use(ElementUI, { size: 'small' })
 
 /**
  * The following block of code may be used to automatically register your
@@ -28,6 +39,8 @@ Vue.component('select-menu', require('./components/roles/SelectMenu.vue').defaul
 Vue.component('list-permisos', require('./components/roles/ListPermisos.vue').default);
 Vue.component('form-permisos', require('./components/roles/FormPermisos.vue').default);
 Vue.component('lista-especimen', require('./components/especimen/listaEspecimen.vue').default);
+//reportes
+Vue.component('reporte-investigador', require('./components/reportes/ReporteInvestigador.vue').default);
 
 
 /**

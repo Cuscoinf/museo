@@ -40,7 +40,7 @@ Route::put('area/{area}',[AreaController::class,'update'])->name('area.update');
 Route::delete('area/{area}',[AreaController::class,'destroy'])->name('area.destroy');
 */
 
-Route::domain('sistemacuscovf.com')->group(function () {
+Route::domain('museo.emisoftserver.com')->group(function () {
     Route::get('/', [WebController::class, "index"])->name("web");
     Route::get('/registrarse',[InvestigadorController::class, "registroInvestigador"])->name("registro.investigador");
     Route::post('registro-investigador', [InvestigadorController::class, 'registroInvestigador'])->name('guardar.investigador');
@@ -48,7 +48,7 @@ Route::domain('sistemacuscovf.com')->group(function () {
 });
 
 
-Route::domain('investigadores.sistemacuscovf.com')->group(function(){
+Route::domain('investigadores.emisoftserver.com')->group(function(){
     
     Route::get('login',[LoginCotroller::class, 'showLoginForm'])->name('investigador.login');
     Route::post('login',[LoginCotroller::class, 'login'])->name('investigador.ingresar');
@@ -71,7 +71,7 @@ Route::domain('investigadores.sistemacuscovf.com')->group(function(){
     });
 });
 
-Route::domain('museo.sistemacuscovf.com')->group( function () {
+Route::domain('sistema.emisoftserver.com')->group( function () {
 
     Route::get('login', [LoginController::class, 'loginMuseo'])->name('login.admin');
     Route::post('login', [LoginController::class, 'login'])->name('admin.login');
@@ -122,6 +122,12 @@ Route::domain('museo.sistemacuscovf.com')->group( function () {
         Route::post('registro-decomisados', [EspecimenController::class, 'storeDecomisados'])->name("guardar.decomisados");
         Route::get('especimen/{area}/{id}',[EspecimenController::class, 'show'])->name('muestra.especimen');
         Route::get('/ornitologia',[EspecimenController::class, 'storeOrnitologia'])->name('ornitologia');
+
+        //Reportes
+        Route::get('/reporte/serfor',[depositoController::class, 'reporteSerfor'])->name('reporteSerfor');
+        Route::get('/reporte/investigador',[depositoController::class, 'reporteInvestigador'])->name('reporteInvestigador');
+        Route::get('/reporte/fortuitos',[depositoController::class, 'reporteFortuitos'])->name('reporteFortuitos');
+        
         
         /*solo para contenido statico*/
         Route::view('nosotros', 'nosotros')->name('nosotros');

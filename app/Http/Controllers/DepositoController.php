@@ -96,4 +96,27 @@ class DepositoController extends Controller
     {
         //
     }
+
+    /**
+     * Reportes
+     */
+
+     public function reporteSerfor()
+     {
+        
+        $registros = Deposito::all();
+
+        return View('reportes.reporteSerfor',[]);
+     }
+     
+     public function reporteInvestigador()
+     {
+        return View('reportes.reporteInvestigador');
+     }
+     
+     public function reporteFortuitos()
+     {
+        return View('reportes.reporteFortuitos');
+     }
+
 }

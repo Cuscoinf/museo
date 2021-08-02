@@ -330,18 +330,18 @@ return [
         ],
         ['header' => 'REPORTES'],
         [
-            'text' => 'Reportes de colecta',
-            'route' => '',
+            'text' => 'SERFOR Anual',
+            'route' => 'reporteSerfor',
             'icon' => 'fas fa-fw fa-list'
         ],
         [
-            'text' => 'Animales decomisados',
-            'route' => '',
+            'text' => 'Casos fortuitos',
+            'route' => 'reporteFortuitos',
             'icon' => 'fas fa-fw fa-list'
         ],
         [
-            'text' => 'Investigadores',
-            'route' => '',
+            'text' => 'Muestro Investigacion',
+            'route' => 'reporteInvestigador',
             'icon' => 'fas fa-fw fa-list'
         ],
         ['header' => 'PREFERENCIAS'],
