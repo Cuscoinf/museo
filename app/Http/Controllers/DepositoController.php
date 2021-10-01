@@ -105,8 +105,8 @@ class DepositoController extends Controller
      {
         
         $registros = Deposito::all();
-
         return View('reportes.reporteSerfor',[]);
+        
      }
      
      public function reporteInvestigador()

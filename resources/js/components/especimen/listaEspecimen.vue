@@ -148,7 +148,7 @@
         data(){
             return{
                 especimenes:[],
-                url: "https://museo.sistemacuscovf.com/",
+                url: "https://sistema.emisoftserver.com/",
             }
         },
         methods:{

@@ -60,6 +60,11 @@ class InvestigadorController extends Controller
         return redirect()->route('investigador.index');
     }
 
+    public function getData()
+    {
+        return response()->json(Investigador::all());
+    }
+
     public function storeApi(StoreInvestigador $request)
     {
         $slugGenerado=$request->apPaterno.$request->apMaterno.$request->nombre;

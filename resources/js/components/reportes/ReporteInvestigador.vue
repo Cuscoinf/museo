@@ -4,9 +4,15 @@
                 <div class="row">
                     <div class="col-md-3">
                         <label for="investigador" class="control-label">Investigador</label>
-                        <select id="investigador" class="form-control">
-                            
-                        </select>
+                        <el-select id="investigador" v-model="investigador" placeholder="Seleccione">
+                            <el-option
+                            v-for="item in investigadores"
+                            :key="item.id"
+                            :label="`${item.nombre} ${item.apPaterno} ${item.apMaterno}`"
+                            :value="item.id"
+                            >
+                            </el-option>
+                        </el-select>
                     </div>
                     <div class="col-md-3">
                         <div class="form-group">
@@ -24,22 +30,30 @@
                     </div>
                     <div class="col-md-3">
                         <label for="desde" class="control-label">Desde</label>
-                        <select id="desde" class="form-control">
-                           
-                        </select>
+                        <el-date-picker
+                        type="month"
+                        v-model="fechaDesde"
+                        value-format="yyyy-MM" 
+                        format="MM/yyyy"
+                        :clearable="false">
+                        </el-date-picker>
                     </div>
                     <div class="col-md-3">
                         <label for="hasta" class="control-label">Hasta</label>
-                        <select id="hasta" class="form-control">
-                        </select>
+                        <el-date-picker
+                        type="month"
+                        v-model="fechaHasta"
+                        value-format="yyyy-MM" format="MM/yyyy"
+                        :clearable="false">
+                        </el-date-picker>
                     </div>
                 </div>
                 <div class="row mt-3 mb-3 justify-content-center">
                     <div class="col-md-1">
-                        <button class="btn btn-primary"><i class="fa fa-search"></i> Buscar</button>
+                        <el-button type="primary" round><i class="fa fa-search"></i> Buscar</el-button>
                     </div>
                     <div class="col-md-1">
-                        <button class="btn btn-success"><i class="fa fa-print"></i> Imprimir</button>
+                        <el-button type="success" round><i class="fa fa-print"></i> Imprimir</el-button>
                     </div>
                 </div>
                 <div class="row mt-5 mb-5">
@@ -75,13 +89,26 @@ export default {
                 value: 'Por mes',
                 label: 'Por mes'
             }],
-            value: ''
+            value: '',
+            investigador:'',
+            investigadores: [],
+            fechaDesde:'',
+            fechaHasta:''
         }
+    },
+
+    mounted(){
+        axios.get('https://sistema.emisoftserver.com/dataInvestigador').then( (data) => {
+            this.investigadores = data.data
+        })
     }
 }
 </script>
 <style>
 .el-select{
     width: 100%
+}
+.el-input{
+    width: 100% !important;
 }
 </style>>

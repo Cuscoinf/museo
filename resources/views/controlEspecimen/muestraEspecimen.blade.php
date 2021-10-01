@@ -118,7 +118,7 @@
                             </tr>
                             <tr>
                                 <th>Geolocalizazion</th>
-                                <td>...carga del mapa de ubicacion...</td>
+                                <td><div id="map" style="height: 350px; width:100%; border:1px solid #ccc; padding:5px; border-radius:5px"></div></td>
                             </tr>
                         </tbody>
                         @endif
@@ -212,7 +212,7 @@
                             </tr>
                             <tr>
                                 <th>Localizacion</th>
-                                <td>...carga del mapa de ubicacion...</td>
+                                <td><div id="map" style="height: 350px; width:100%; border:1px solid #ccc; padding:5px; border-radius:5px"></div></td>
                             </tr>
                         </tbody>
                         @endif
@@ -331,8 +331,8 @@
                                 <td>{{$especimen->localidad}}</td>
                             </tr>
                             <tr>
-                                <th>Geolocalizazion</th>
-                                <td>...carga del mapa de ubicacion...</td>
+                                <th>Localizacion</th>
+                                <td><div id="map" style="height: 650px; width:100%; border:1px solid #ccc; padding:5px; border-radius:5px"></div></td>
                             </tr>
                         </tbody>
                         @endif
@@ -414,7 +414,9 @@
                             </tr>
                             <tr>
                                 <th>Localizacion</th>
-                                <td>...carga del mapa de ubicacion...</td>
+                                <td>
+                                    <div id="map" style="height: 600px; width:100%; border:1px solid #ccc; padding:5px; border-radius:5px"></div>
+                                </td>
                             </tr>
                         </tbody>
                         @endif
@@ -432,7 +434,55 @@
 @stop
 @section('js')
 <script>
+ // Initialize and add the map
+ 
+ function initMap() {
+     const contentString =
+        '<div id="content" style="width:400px">' +
+        '<div id="siteNotice">' +
+        "</div>" +
+        '<h5 class="firstHeading">Datos de especimen</h5>' +
+        '<div id="bodyContent">' +
+        "<table>"+
+        "<tr><td colspan='2'><img src='https://t2.ea.ltmcdn.com/es/razas/3/5/7/img_753_goldador-o-golden-lab_0_orig.jpg' style='height:80px; width:auto' /></td></tr>" +
+        "<tr><td><b>Especie: </b></td> <td><?php echo $especimen->especie ?></td></tr>" +
+        "<tr><td><b>Genero: </b></td> <td><?php echo $especimen->especie ?></td></tr>" +
+        "<tr><td><b>Familia: </b></td> <td><?php echo $especimen->especie ?></td></tr>" +
+        "<tr><td><b>Nombre Común: </b></td> <td><?php echo $especimen->especie ?></td></tr>" +
+        "<tr><td><b>Departamento: </b></td> <td><?php echo $especimen->especie ?></td></tr>" +
+        "<tr><td><b>Provincia: </b></td> <td><?php echo $especimen->especie ?></td></tr>" +
+        "<tr><td><b>Pais: </b></td> <td><?php echo $especimen->especie ?></td></tr>" +
+        "<tr><td><b>Distrito: </b></td> <td><?php echo $especimen->especie ?></td></tr>" +
+        "<tr><td><b>Localidad: </b></td> <td><?php echo $especimen->especie ?></td></tr>" +
+        "</table>"+
+        "</div>" +
+        "</div>";
+       const infowindow = new google.maps.InfoWindow({
+            content: contentString,
+        });
+      const captura = { lat: -13.525281306370585, lng: -71.93560712550321 };
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 18,
+        center: captura,
+      });
+      const marker = new google.maps.Marker({
+        position: captura,
+        map: map,
+      });
+      marker.addListener("click", () => {
+        infowindow.open({
+                anchor: marker,
+                map,
+                shouldFocus: false,
+            });
+        });
+    }
+
+    initMap()   
+  </script>
+<script>
     $(document).ready(function(){
+
         $(".estado").on("click", async function(){
             let $this = $(this)
             var obser = "sin Observacion";
@@ -457,7 +507,7 @@
             
             $.ajax({
                 type: "post",
-                url: "https://museo.sistemacuscovf.com/depositar",
+                url: "https://museo.emisoftserver.com/depositar",
                 data: {
                     area: "ornitologia",
                     especimenId: "{{$especimen->id}}",

@@ -128,7 +128,7 @@ return [
     'classes_content' => '',
     'classes_sidebar' => 'sidebar-dark-info elevation-4',
     'classes_sidebar_nav' => '',
-    'classes_topnav' => 'navbar-white navbar-light',
+    'classes_topnav' => 'navbar-white navbar-dark bg-dark',
     'classes_topnav_nav' => 'navbar-expand',
     'classes_topnav_container' => 'container',
 
@@ -231,118 +231,138 @@ return [
     */
 
     'menu' => [
-        [
-            'text' => 'search',
-            'search' => true,
-            'topnav' => true,
-        ],
-        [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
-        [
-            'key' =>'escritorio',
-            'text' => 'Escritorio',
-            'route'  => 'home',
+        // [
+        //     'text' => 'search',
+        //     'search' => true,
+        //     'topnav' => true,
+        // ],
+        // [
+        //     'text' => 'blog',
+        //     'url'  => 'admin/blog',
+        //     'can'  => 'manage-blog',
+        // ],
+        // [
+        //     'key' =>'escritorio',
+        //     'text' => 'Escritorio',
+        //     'route'  => 'home',
 
-        ],
-        ['header' => 'INVESTIGACION', 'can'  => ['user-admin']],
+        // ],
+        ['header' => 'Solicitudes', 'can'  => ['user-admin']],
         [
-            'text' => 'Investigadores',
+            'text' => 'Gestion de solicitudes',
             'route'  => 'investigador.index',
             'icon' => 'fas fa-fw fa-user',
             'can'  => ['user-admin'],
+            'submenu' => [
+                [
+                    'text' => 'Solicitudes de Investigacion',
+                    'route'  => 'investigador.solicitud.investigacion',
+                    'icon' => 'far fa-edit',
+                    'can'  => ['user-admin','carta-admin'],
+                ],
+                [
+                    'text' => 'Solicitudes de Deposito',
+                    'route'  => 'investigador.solicitud.deposito',
+                    'icon' => 'fas fa-envelope-open-text',
+                    'can'  => ['user-admin'],
+                ],
+                [
+                    'text' => 'Salida a Campo',
+                    'route'  => 'carta.index',
+                    'icon' => 'fas fa-fw fa-user',
+                    'can'  => ['user-admin','carta-admin'],
+                ],
+                [
+                    'text' => 'Organizaciones',
+                    'url'  => '#',
+                    'icon' => 'fas fa-fw fa-user',
+                    'can'  => ['user-admin'],
+                ],
+            ],
         ],
+        
+        ['header' => 'Especimenes',  'can'  => ['user-admin','investigador-admin']],
         [
-            'text' => 'Solicitudes de Investigacion',
-            'route'  => 'investigador.solicitud.investigacion',
-            'icon' => 'fas fa-fw fa-user',
-            'can'  => ['user-admin','carta-admin'],
-        ],
-        [
-            'text' => 'Solicitudes de Deposito',
-            'route'  => 'investigador.solicitud.deposito',
-            'icon' => 'fas fa-fw fa-user',
-            'can'  => ['user-admin'],
-        ],
-        [
-            'text' => 'Salida a Campo',
-            'route'  => 'carta.index',
-            'icon' => 'fas fa-fw fa-user',
-            'can'  => ['user-admin','carta-admin'],
-        ],
-        [
-            'text' => 'Organizaciones',
-            'url'  => '#',
-            'icon' => 'fas fa-fw fa-user',
-            'can'  => ['user-admin'],
-        ],
-        ['header' => 'REGISTRO DE ESPECIMEN',  'can'  => ['user-admin','investigador-admin']],
-        [
-            'text' => 'Herpetología',
+            'text' => 'Registro de especimenes',
             'route'  => 'especimen.index',
-            'icon' => 'fas fa-fw fa-box',
+            'icon' => 'fab fa-stack-overflow',
             'can'  => ['user-admin','investigador-h'],
+            "submenu" => [
+                [
+                    'text' => 'Herpetología',
+                    'route'  => 'especimen.index',
+                    'icon' => 'fas fa-fw fa-chevron-circle-right',
+                    'can'  => ['user-admin','investigador-h'],
+                ],
+                [
+                    'text' => 'Ornitologia',
+                    'route'  => 'especimen.ornitologia',
+                    'icon' => 'fas fa-fw fa-chevron-circle-right',
+                    'can'  => ['user-admin','investigador-o'],
+                ],
+                [
+                    'text' => 'Maztozoología',
+                    'route'  => 'especimen.maztozoologia',
+                    'icon' => 'fas fa-fw fa-chevron-circle-right',
+                    'can'  => ['user-admin','investigador-m'],
+                ],
+                [
+                    'text' => 'Animales decomisados',
+                    'route'  => 'especimen.decomisados',
+                    'icon' => 'fas fa-fw fa-chevron-circle-right',
+                    'can'  => ['user-admin','investigador-admin'],
+                ],
+            ],
         ],
         [
-            'text' => 'Ornitologia',
-            'route'  => 'especimen.ornitologia',
-            'icon' => 'fas fa-fw fa-box',
-            'can'  => ['user-admin','investigador-o'],
-        ],
-        [
-            'text' => 'Maztozoología',
-            'route'  => 'especimen.maztozoologia',
-            'icon' => 'fas fa-fw fa-box',
-            'can'  => ['user-admin','investigador-m'],
-        ],
-        [
-            'text' => 'Animales decomisados',
-            'route'  => 'especimen.decomisados',
-            'icon' => 'fas fa-fw fa-box',
-            'can'  => ['user-admin','investigador-admin'],
-        ],
-        ['header' => 'CONTROL DE ESPECIMEN',  'can'  => ['user-admin']],
-        [
-            'text' => 'Lista Maztozoologia',
+            'text' => 'Revisión de especimen',
             'url'  => 'lista-especimen/maztozoologia',
             'icon' => 'fas fa-fw fa-box',
             'can'  => ['user-admin','user-admin'],
+            "submenu" => [
+                [
+                    'text' => 'Lista Ornitologia',
+                    'url'  => 'lista-especimen/ornitologia',
+                    'icon' => 'fas fa-fw fa-box',
+                    'can'  => ['user-admin','user-admin'],
+                ],
+                [
+                    'text' => 'Lista Herpetologia',
+                    'url'  => 'lista-especimen/herpetologia',
+                    'icon' => 'fas fa-fw fa-box',
+                    'can'  => ['user-admin','user-admin'],
+                ],
+                [
+                    'text' => 'Animales decomisados',
+                    'url'  => 'lista-especimen/decomisados',
+                    'icon' => 'fas fa-fw fa-box',
+                    'can'  => ['user-admin','user-admin'],
+                ],
+            ],
         ],
-        [
-            'text' => 'Lista Ornitologia',
-            'url'  => 'lista-especimen/ornitologia',
-            'icon' => 'fas fa-fw fa-box',
-            'can'  => ['user-admin','user-admin'],
-        ],
-        [
-            'text' => 'Lista Herpetologia',
-            'url'  => 'lista-especimen/herpetologia',
-            'icon' => 'fas fa-fw fa-box',
-            'can'  => ['user-admin','user-admin'],
-        ],
-        [
-            'text' => 'Animales decomisados',
-            'url'  => 'lista-especimen/decomisados',
-            'icon' => 'fas fa-fw fa-box',
-            'can'  => ['user-admin','user-admin'],
-        ],
+        
         ['header' => 'REPORTES'],
         [
-            'text' => 'SERFOR Anual',
+            'text' => 'Reportes Museo',
             'route' => 'reporteSerfor',
-            'icon' => 'fas fa-fw fa-list'
-        ],
-        [
-            'text' => 'Casos fortuitos',
-            'route' => 'reporteFortuitos',
-            'icon' => 'fas fa-fw fa-list'
-        ],
-        [
-            'text' => 'Muestro Investigacion',
-            'route' => 'reporteInvestigador',
-            'icon' => 'fas fa-fw fa-list'
+            'icon' => 'fas fa-fw fa-chart-pie',
+            "submenu" => [
+                [
+                    'text' => 'SERFOR Anual',
+                    'route' => 'reporteSerfor',
+                    'icon' => 'fas fa-fw fa-chart-pie'
+                ],
+                [
+                    'text' => 'Casos fortuitos',
+                    'route' => 'reporteFortuitos',
+                    'icon' => 'fas fa-fw fa-chart-pie'
+                ],
+                [
+                    'text' => 'Muestro Investigacion',
+                    'route' => 'reporteInvestigador',
+                    'icon' => 'fas fa-fw fa-chart-pie'
+                ],
+            ],
         ],
         ['header' => 'PREFERENCIAS'],
         [
@@ -358,12 +378,12 @@ return [
             'icon' => 'fas fa-fw fa-user',
             'can'  => ['user-admin','areas-admin'],
         ],
-        [
-            'text' => 'profile',
-            'url'  => 'auth.register',
-            'icon' => 'fas fa-fw fa-user',
+        // [
+        //     'text' => 'profile',
+        //     'url'  => 'auth.register',
+        //     'icon' => 'fas fa-fw fa-user',
 
-        ],
+        // ],
         [
             'text' => 'Nombres especies',
             'route' => 'nombreEspecimen',
@@ -373,7 +393,7 @@ return [
         [
             'text' => 'Cerrar Session',
             'url'  => 'logout',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-fw fa-sign-out',
             'topnav_right' =>true,
 
 

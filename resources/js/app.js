@@ -17,6 +17,11 @@ ElementUI.Select.computed.readonly = function () {
 
 export default ElementUI;
 
+import lang from 'element-ui/lib/locale/lang/es'
+import locale from 'element-ui/lib/locale'
+
+locale.use(lang)
+
 Vue.use(ElementUI, { size: 'small' })
 
 /**

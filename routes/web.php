@@ -123,6 +123,8 @@ Route::domain('sistema.emisoftserver.com')->group( function () {
         Route::get('especimen/{area}/{id}',[EspecimenController::class, 'show'])->name('muestra.especimen');
         Route::get('/ornitologia',[EspecimenController::class, 'storeOrnitologia'])->name('ornitologia');
 
+        Route::get('/dataInvestigador',[InvestigadorController::class, 'getData'])->name("dataInvestigador");
+
         //Reportes
         Route::get('/reporte/serfor',[depositoController::class, 'reporteSerfor'])->name('reporteSerfor');
         Route::get('/reporte/investigador',[depositoController::class, 'reporteInvestigador'])->name('reporteInvestigador');

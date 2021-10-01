@@ -444,48 +444,38 @@
                                     <option value="Zimbabue" id="ZW">Zimbabue</option>
                                   </select>
                                 </div>
-
+  
                                 <div class="form-group">
                                   <label for="departamento">Departamento</label>
                                   <input type="text" class="form-control" id="departamento" name="departamento" value="{{old('departamento')}}">
                                 </div>
-
-                                <div class="form-group">
-                                  <label for="provincia">Provincia</label>
-                                  <input type="text" class="form-control" id="provincia"  name="provincia" value="{{old('provincia')}}">
-                                </div>
+  
+                               
                                 
                                 <div class="form-group">
                                   <label for="distrito">Distrito</label>
                                   <input type="text" class="form-control" id="distrito" name="distrito" value="{{old('distrito')}}">
                                 </div>
-                                <div class="form-group">
-                                  <label for="localidad">Localidad</label>
-                                  <input type="text" class="form-control" id="localidad" name="localidad" value="{{old('localidad')}}">
-                                </div>
-
+  
                               </div>
                               
                               <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="utmn">UTM N</label>
-                                    <input type="text" class="form-control" id="utmn" name="utmn" value="{{old('utmn')}}">
-                                </div>
-
-                                <div class="form-group">
-                                  <label for="utme">UTM E</label>
-                                  <input type="text" class="form-control" id="utme" name="utme" value="{{old('utme')}}">
+                                  <label for="provincia">Provincia</label>
+                                  <input type="text" class="form-control" id="provincia"  name="provincia" value="{{old('provincia')}}">
                                 </div>
                                 <div class="form-group">
-                                  <label for="altitud">Altitud</label>
-                                  <input type="text" class="form-control" id="altitud" name="altitud" value="{{old('altitud')}}">
+                                  <label for="localidad">Localidad</label>
+                                  <input type="text" class="form-control" id="localidad" name="localidad" value="{{old('localidad')}}">
                                 </div>
-                                
                                 <div class="form-group">
                                   <label for="fColecta">Fecha Colecta</label>
                                   <input type="text" class="form-control" id="fColecta" name="fColecta" value="{{old('fColecta')}}">
                                 </div>
-
+                              </div>
+                              <div class="col-md-12">
+                                <div id="map" style="height: 400px; width:100%; border:1px solid #ccc; padding:5px; border-radius:5px"></div>
+                                  mapa de localizacion
                               </div>
                               
                             </div>
@@ -506,3 +496,71 @@
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
 @stop
+@section('js')
+<script>
+ function initMap() {
+      
+      const contentString =
+        '<div id="content">' +
+        '<div id="siteNotice">' +
+        "</div>" +
+        '<h5 class="firstHeading">Lugar de captura</h5>' +
+        '<div id="bodyContent">' +
+        "<p>Especimen capturado en este lugar</p>" +
+        "</div>" +
+        "</div>";
+      
+
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+           const pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude,
+            };
+
+            let map = new google.maps.Map(document.getElementById("map"), {
+              zoom: 18,
+            });
+
+            const infowindow = new google.maps.InfoWindow({
+              content: contentString,
+            });
+
+            infowindow.setPosition(pos);
+            //infowindow.setContent("Location found.");
+            infowindow.open(map);
+            map.setCenter(pos);
+          },
+          () => {
+            handleLocationError(true, infowindow, map.getCenter());
+          }
+        );
+      } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infowindow, map.getCenter());
+      }
+      
+
+      // const infowindow = new google.maps.InfoWindow({
+      //       content: contentString,
+      // });
+      
+      const marker = new google.maps.Marker({
+        position: pos,
+        map: map,
+        setDraggable:true
+      });
+
+      marker.addListener("click", () => {
+        infowindow.open({
+                anchor: marker,
+                map,
+                shouldFocus: false,
+            });
+        });
+    }
+
+    initMap()   
+  </script>
+  @stop
