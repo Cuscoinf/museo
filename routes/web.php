@@ -43,7 +43,7 @@ Route::delete('area/{area}',[AreaController::class,'destroy'])->name('area.destr
 Route::domain('museo.emisoftserver.com')->group(function () {
     Route::get('/', [WebController::class, "index"])->name("web");
     Route::get('/registrarse',[InvestigadorController::class, "registroInvestigador"])->name("registro.investigador");
-    Route::post('registro-investigador', [InvestigadorController::class, 'registroInvestigador'])->name('save.investigador');
+    Route::post('registro-investigador', [InvestigadorController::class, 'registroInvestigador'])->name('guardar.investigador');
 
 });
 
