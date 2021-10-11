@@ -19,6 +19,7 @@ export default ElementUI;
 
 import lang from 'element-ui/lib/locale/lang/es'
 import locale from 'element-ui/lib/locale'
+import Vue from 'vue';
 
 locale.use(lang)
 
@@ -44,6 +45,10 @@ Vue.component('select-menu', require('./components/roles/SelectMenu.vue').defaul
 Vue.component('list-permisos', require('./components/roles/ListPermisos.vue').default);
 Vue.component('form-permisos', require('./components/roles/FormPermisos.vue').default);
 Vue.component('lista-especimen', require('./components/especimen/listaEspecimen.vue').default);
+//Registros
+Vue.component('registro-herpetologia', require('./components/especimen/RegistroHerpetologia.vue').default);
+Vue.component('registro-maztozoologia', require('./components/especimen/RegistroMaztozoologia.vue'));
+Vue.component('registro-ornitologia', require('./components/especimen/RegistroOrnitologia.vue'));
 //reportes
 Vue.component('reporte-investigador', require('./components/reportes/ReporteInvestigador.vue').default);
 

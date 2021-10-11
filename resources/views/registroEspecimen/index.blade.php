@@ -16,7 +16,11 @@
     <span aria-hidden="true">×</span></button>{{Session::get('mensaje')}}
 </div>
 @endif
-<div class="card card-dark card-tabs">
+<div id="app">
+  <registro-herpetologia></registro-herpetologia>
+</div>
+
+{{-- <div class="card card-dark card-tabs">
     <div class="card-header p-0 pt-1">
         <ul class="nav nav-tabs" id="custom-tabs-one-tab" role="tablist">
             <li class="nav-item">
@@ -25,6 +29,7 @@
         </ul>
     </div>
     <div class="card-body">
+      <el-input>
         <div class="tab-content" id="custom-tabs-one-tabContent">
           <div class="tab-pane fade show active" id="herpetologia" role="tabpanel" aria-labelledby="herpetologia-tab">
               <div class="card">
@@ -490,7 +495,7 @@
           </div>
         </div>
     </div>
-</div>
+</div> --}}
 @stop
 
 @section('css')

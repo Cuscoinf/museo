@@ -317,25 +317,25 @@ return [
         [
             'text' => 'Revisión de especimen',
             'url'  => 'lista-especimen/maztozoologia',
-            'icon' => 'fas fa-fw fa-box',
+            'icon' => 'fas fa-clipboard-list',
             'can'  => ['user-admin','user-admin'],
             "submenu" => [
                 [
                     'text' => 'Lista Ornitologia',
                     'url'  => 'lista-especimen/ornitologia',
-                    'icon' => 'fas fa-fw fa-box',
+                    'icon' => 'fas fa-fw fa-chevron-circle-right',
                     'can'  => ['user-admin','user-admin'],
                 ],
                 [
                     'text' => 'Lista Herpetologia',
                     'url'  => 'lista-especimen/herpetologia',
-                    'icon' => 'fas fa-fw fa-box',
+                    'icon' => 'fas fa-fw fa-chevron-circle-right',
                     'can'  => ['user-admin','user-admin'],
                 ],
                 [
                     'text' => 'Animales decomisados',
                     'url'  => 'lista-especimen/decomisados',
-                    'icon' => 'fas fa-fw fa-box',
+                    'icon' => 'fas fa-fw fa-chevron-circle-right',
                     'can'  => ['user-admin','user-admin'],
                 ],
             ],
@@ -350,17 +350,17 @@ return [
                 [
                     'text' => 'SERFOR Anual',
                     'route' => 'reporteSerfor',
-                    'icon' => 'fas fa-fw fa-chart-pie'
+                    'icon' => 'fas fa-fw fa-chevron-circle-right'
                 ],
                 [
                     'text' => 'Casos fortuitos',
                     'route' => 'reporteFortuitos',
-                    'icon' => 'fas fa-fw fa-chart-pie'
+                    'icon' => 'fas fa-fw fa-chevron-circle-right'
                 ],
                 [
                     'text' => 'Muestro Investigacion',
                     'route' => 'reporteInvestigador',
-                    'icon' => 'fas fa-fw fa-chart-pie'
+                    'icon' => 'fas fa-fw fa-chevron-circle-right'
                 ],
             ],
         ],
