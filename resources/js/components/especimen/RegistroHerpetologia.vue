@@ -31,34 +31,40 @@
                                         <input type="radio" id="fauna" value="fauna" name="dbespecimen">
                                     </div>
                                     <div class="col-md-6">
-                                    <label for="local">Registro local</label>
-                                    <input type="radio" id="local" value="local" name="dbespecimen">
+                                        <label for="local">Registro local</label>
+                                        <input type="radio" id="local" value="local" name="dbespecimen">
                                     </div>                                
-                                    <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label for="especie">Especie</label>
-                                        <el-input></el-input>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="especie">Especie</label>
+                                            <el-input></el-input>
+                                        </div>
                                     </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="especie">Nombre Común</label>
+                                            <el-input></el-input>
+                                        </div>
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="genero">Género</label>
                                         <el-input></el-input>
                                     </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="familia">Familia</label>
                                         <el-input></el-input>
                                     </div>
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="orden">Orden</label>
                                         <el-input></el-input>
                                     </div>
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="clase">Clase</label>
                                         <el-input></el-input>
@@ -85,7 +91,7 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="tipoCaptura">Tipo de captura</label>
-                                            <el-select v-model="value" placeholder="Select">
+                                            <el-select v-model="value" id="tipoCaptura" placeholder="Tipo de captura">
                                                 <el-option
                                                 v-for="item in tipoCaptura"
                                                 :key="item.value"
@@ -93,30 +99,29 @@
                                                 :value="item.value">
                                                 </el-option>
                                             </el-select>
-
-                                            <select name="tipoCaptura" id="tipoCaptura" class="form-control">
+                                            <!-- <select name="tipoCaptura" id="tipoCaptura" class="form-control">
                                                 <option value="Temporal">Captura temporal</option>
                                                 <option value="Con captura">Con captura</option>
                                                 <option value="Sin captura">Sin Captura</option>
-                                            </select>
+                                            </select> -->
                                         </div>
                                     </div>                                       
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="codMuseo">Codigo MHNC</label>
-                                            <input type="text" class="form-control" id="codMuseo" name="codMuseo">
+                                            <el-input id="CodMuseo"></el-input>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="campo">Cod. Campo</label>
-                                            <input type="text" class="form-control" id="campo" name="campo">
+                                            <el-input id="campo"></el-input>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="proyecto">Proyecto</label>
-                                            <input type="text" class="form-control" id="proyecto" name="proyecto">
+                                            <el-input id="proyecto"></el-input>
                                         </div>
                                     </div>
                                     </div>
@@ -124,11 +129,14 @@
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <label for="sexo">Sexo</label>
-                                            <select name="sexo" id="sexo" class="form-control">
-                                            <option value="M">Macho</option>
-                                            <option value="H">Hembra</option>
-                                            <option value="I">No definido</option>
-                                            </select>
+                                              <el-select v-model="value" id="sexo" placeholder="Sexo">
+                                                <el-option
+                                                v-for="item in sexo"
+                                                :key="item.value"
+                                                :label="item.label"
+                                                :value="item.value">
+                                                </el-option>
+                                            </el-select>
                                         </div>
                                     </div>
         
@@ -493,7 +501,7 @@ export default defineComponent({
     },
     data(){
         return {
-            options: [{
+            tipoCaptura: [{
                 value: 'Captura temporal',
                 label: 'Captura temporal'
                 }, {
@@ -503,7 +511,20 @@ export default defineComponent({
                 value: 'Sin Captura',
                 label: 'Sin Camptura'
             }],
-            value: ''
+            value: '',
+            sexo: [{
+                value: 'M',
+                label: 'Macho'
+                },
+                {
+                value: 'H',
+                label: 'Hembra',
+                },
+                {
+                value: 'I',
+                label: 'No definido',
+                },
+            ]
         }
     }
 })

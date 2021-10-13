@@ -512,6 +512,8 @@
         '<h5 class="firstHeading">Lugar de captura</h5>' +
         '<div id="bodyContent">' +
         "<p>Especimen capturado en este lugar</p>" +
+        "<label>Lugar de Colecta:</label>"+
+        "<input class='form-control' id='name' placeholder='Lugar de colecta' >"+
         "</div>" +
         "</div>";
       
@@ -533,7 +535,6 @@
             });
 
             infowindow.setPosition(pos);
-            //infowindow.setContent("Location found.");
             infowindow.open(map);
             map.setCenter(pos);
           },
@@ -542,14 +543,8 @@
           }
         );
       } else {
-          // Browser doesn't support Geolocation
           handleLocationError(false, infowindow, map.getCenter());
       }
-      
-
-      // const infowindow = new google.maps.InfoWindow({
-      //       content: contentString,
-      // });
       
       const marker = new google.maps.Marker({
         position: pos,
