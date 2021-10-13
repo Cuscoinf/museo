@@ -13,7 +13,10 @@
         </div>
     </div>
 </section>
-<section class="container" style="border:1px solid #ccc; border-radius:10px; margin-top:50px">
+<div id="app">
+    <solicitud-registro></solicitud-registro>
+</div>
+{{-- <section class="container" style="border:1px solid #ccc; border-radius:10px; margin-top:50px">
     <div class="form-solicitud" style="padding: 25px;">
         <h3 style="padding: 10px 0 0 0">Registro</h3>
         <p>Ingrese sus datos y se parte del museo de la Universidad</p>
@@ -541,5 +544,5 @@
             </div>
         </form>
     </div>
-</section>
+</section> --}}
 @endsection

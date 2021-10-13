@@ -1,5 +1,5 @@
 <template>
-    <section class="container" style="border:1px solid #ccc; border-radius:10px; margin-top:50px">
+<section class="container" style="border:1px solid #ccc; border-radius:10px; margin-top:50px">
     <div class="form-solicitud" style="padding: 25px;">
         <h3 style="padding: 10px 0 0 0">Registro</h3>
         <p>Ingrese sus datos y se parte del museo de la Universidad</p>
@@ -81,7 +81,6 @@
                     <div class="form-group">
                         <label for="pais">Pais</label>
                         <select data-placeholder="Choose a Country..." id="pais" v-model="pais" class="form-control" name="pais">
-                            <option value=""></option>
                             <option value="Afghanistan">Afghanistan</option>
                             <option value="Albania">Albania</option>
                             <option value="Algeria">Algeria</option>
@@ -533,6 +532,7 @@
 </template>
 <script>
 export default {
+    name:"solicitud-registro",
     data(){
         return {
             condicion:"",
@@ -554,7 +554,12 @@ export default {
         }
     },
     methods:{
-
+        mounted(){
+            alert('cargado');
+        },
+        registrar(){
+            console.log("test")
+        }
     }
 
 }
