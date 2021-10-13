@@ -530,9 +530,35 @@ export default defineComponent({
     methods:{
         registrar(){
             const params={
-                  idMenu: this.idmenu,
-                  idUser: this.usuarioR.id
-              };
+                'taxonomia'     : this.taxonomia,
+                'especie'       : this.especie,
+                'nombreComun'   : this.nombreComun,
+                'Genero'        : this.Genero,
+                'Familia'       : this.Familia,
+                'Orden'         : this.Orden,
+                'Clase'         : this.Clase,
+
+                'tipoCaptura'   : this.tipoCaptura,
+                'codigoMHNC'    : this.codigoMHNC,
+                'codCampo'      : this.codCampo,
+                'proyecto'      : this.proyecto,
+                'sexo'          : this.sexo,
+                'tejidoADN'     : this.tejidoADN,
+                'preservacion'  : this.preservacion,
+                'colector'      : this.colector,
+                'autor'         : this.autor,
+                'observacion'   : this.observacion,
+                'foto'          : this.foto,
+
+                'pais'          : this.pais,
+                'provincia'     : this.provincia,
+                'departamento'  : this.departamento,
+                'localidad'     : this.localidad,
+                'distrito'      : this.distrito,
+                'fechaColecta'  : this.fechaColecta,
+                'mapLatitud'    : this.mapLatitud,
+                'mapLongitud'   : this.mapLongitud
+            };
             axios.post('/guardar-herpetologia',params)
             .then(response=>{
                     this.$emit('creado');
