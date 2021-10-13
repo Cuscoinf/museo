@@ -28,7 +28,7 @@
                                 <div class="card-body row">
                                     <div class="col-md-6">
                                         <label for="fauna">Fauna Silvestre</label>
-                                        <input type="radio" id="fauna" value="fauna" name="dbespecimen">
+                                        <el-radio v-model="dbespecimen" label="1">Option A</el-radio>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="local">Registro local</label>
@@ -492,11 +492,11 @@
     </div>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent } from '@vue/composition-api'
 
 export default defineComponent({
-    setup() {
+    setup(){
         
     },
     data(){
@@ -525,6 +525,28 @@ export default defineComponent({
                 label: 'No definido',
                 },
             ]
+        }
+    },
+    methods:{
+        registrar(){
+            const params={
+                  idMenu: this.idmenu,
+                  idUser: this.usuarioR.id
+              };
+            axios.post('/guardar-herpetologia',params)
+            .then(response=>{
+                    this.$emit('creado');
+
+                    Toast.fire({
+                    icon: 'success',
+                    title: 'Menu Agregado'
+                    })
+
+            })
+            .catch(error=> {
+                console.log(console.error());
+
+            });
         }
     }
 })
