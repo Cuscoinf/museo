@@ -1,27 +1,12 @@
-@extends('layouts.museoweb')
-@section('contenido')
-<section class="banner-area relative" id="home">	
-    <div class="overlay overlay-bg"></div>
-    <div class="container">
-        <div class="row d-flex align-items-center justify-content-center">
-            <div class="about-content col-lg-12">
-                <h1 class="text-white">
-                    Registrarse
-                </h1>	
-                <p class="text-white link-nav"><a href="{{route('web')}}">Inicio </a>  <span class="lnr lnr-arrow-right"></span>  <a href="{{route('registro.investigador')}}"> Registro de investigador</a></p>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="container" style="border:1px solid #ccc; border-radius:10px; margin-top:50px">
+<template>
+    <section class="container" style="border:1px solid #ccc; border-radius:10px; margin-top:50px">
     <div class="form-solicitud" style="padding: 25px;">
         <h3 style="padding: 10px 0 0 0">Registro</h3>
         <p>Ingrese sus datos y se parte del museo de la Universidad</p>
-        <form action="{{route('guardar.investigador')}}" method="POST" style="margin: auto;">
-            @csrf
+        <form method="POST" style="margin: auto;">
             <div class="form-group">
                 <label for="condicion">Condición de registro</label>
-                <select name="condicion" id="condicion" class="form-control">
+                <select name="condicion" v-model="condicion" id="condicion" class="form-control">
                     <option value="Investigador">Investigador asociado</option>
                     <option value="Tesista">Tesista</option>
                     <option value="Investigador temporal">Investigador temporal</option>
@@ -31,25 +16,25 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="Nombres">Nombres</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre">
+                        <input type="text" v-model="nombres" class="form-control" id="nombre" name="nombre">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="apPaterno">Apellido Paterno</label>
-                        <input type="text" class="form-control" id="apPaterno" name="apPaterno">
+                        <input type="text" v-model="apPaterno" class="form-control" id="apPaterno" name="apPaterno">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="apMaterno">Apellido Materno</label>
-                        <input type="text" class="form-control" id="apMaterno" name="apMaterno">
+                        <input type="text" v-model="apMaterno" class="form-control" id="apMaterno" name="apMaterno">
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="form-group">
                         <label for="tipoDocumento">Documento</label>
-                        <select name="tipoDocumento" id="tipoDocumento" class="form-control">
+                        <select name="tipoDocumento" v-model="tipoDocumento" id="tipoDocumento" class="form-control">
                             <option value="dni">DNI</option>
                             <option value="pasaporte">Pasaporte</option>
                             <option value="extranjeria">Carne de extranjeria</option>
@@ -59,25 +44,25 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="documento">Nro</label>
-                        <input type="text" class="form-control" id="documento" name="documento">
+                        <input type="text" v-model="documento" class="form-control" id="documento" name="documento">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="email">Correo electronico</label>
-                        <input type="text" class="form-control" id="email" name="email">
+                        <input type="text" v-model="email" class="form-control" id="email" name="email">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="telefono">Telefono</label>
-                        <input type="text" class="form-control" id="telefono" name="telefono">
+                        <input type="text" v-model="telefono" class="form-control" id="telefono" name="telefono">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="genero">Genero</label>
-                        <select name="genero" id="genero" class="form-control">
+                        <select name="genero" v-model="genero" id="genero" class="form-control">
                             <option value="M">M</option>
                             <option value="F">F</option>
                         </select>
@@ -85,14 +70,17 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="estado">Estado</label>
-                        <input type="text" class="form-control" id="estado" name="estado">
+                        <label for="estado">Estado civil</label>
+                        <select name="estado" id="estado" v-model="estado">
+                            <option value="soltero">Soltero</option>
+                            <option value="casado">Casado</option>
+                        </select>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="pais">Pais</label>
-                        <select data-placeholder="Choose a Country..." id="pais" class="form-control" name="pais">
+                        <select data-placeholder="Choose a Country..." id="pais" v-model="pais" class="form-control" name="pais">
                             <option value=""></option>
                             <option value="Afghanistan">Afghanistan</option>
                             <option value="Albania">Albania</option>
@@ -300,19 +288,19 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label for="universidad">Universidad</label>
-                        <input type="text" class="form-control" id="universidad" name="universidad">
+                        <input type="text" v-model="universidad" class="form-control" id="universidad" name="universidad">
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="grado">Grado academico</label>
-                        <input type="text" class="form-control" id="grado" name="grado">
+                        <input type="text" v-model="grado" class="form-control" id="grado" name="grado">
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="paisFormacion">Pais</label>
-                        <select data-placeholder="Choose a Country..." id="paisFormacion" class="form-control" name="paisFormacion">
+                        <select data-placeholder="Choose a Country..." v-model="paisFormacion" id="paisFormacion" class="form-control" name="paisFormacion">
                             <option value=""></option>
                             <option value="Afghanistan">Afghanistan</option>
                             <option value="Albania">Albania</option>
@@ -514,7 +502,7 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="anio">Año</label>
-                        <input type="text" class="form-control" id="anio" name="anio">
+                        <input type="text" class="form-control" v-model="anio" id="anio" name="anio">
                     </div>
                 </div>
             </div>
@@ -526,13 +514,13 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="usuario">Usuario</label>
-                        <input type="text" class="form-control" readonly id="usuario" name="usuario">
+                        <input type="text" class="form-control" v-model="email" readonly id="usuario" name="usuario">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="contrasena">Contraseña</label>
-                        <input type="password" class="form-control" id="contrasena" name="contrasena">
+                        <input type="password" v-model="password" class="form-control" id="contrasena" name="contrasena">
                     </div>
                 </div>
             </div>
@@ -542,4 +530,32 @@
         </form>
     </div>
 </section>
-@endsection
+</template>
+<script>
+export default {
+    data(){
+        return {
+            condicion:"",
+            nombres:"",
+            apPaterno: "",
+            apMaterno: "",
+            tipoDocumento:"",
+            documento:"",
+            email:"",
+            telefono:"",
+            genero:"",
+            estado:"",
+            pais:"",
+            universidad:"",
+            paisFormacion:"",
+            grado:"",
+            anio:"",
+            password:""
+        }
+    },
+    methods:{
+
+    }
+
+}
+</script>

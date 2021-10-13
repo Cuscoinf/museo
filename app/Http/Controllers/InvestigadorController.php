@@ -77,49 +77,61 @@ class InvestigadorController extends Controller
         }
     }
 
-    public function registroInvestigador(Request $request)
+    public function registroInvestigador()
     {
-        /**
-         * transaccion de solicitud
-         * Registro de investigador
-         */
-        $investigador = new Investigador();
-        $investigador->condicion = $request->condicion;
-        $investigador->nombres = $request->nombre;
-        $investigador->apPaterno = $request->apPaterno;
-        $investigador->apMaterno = $request->apMaterno;
-        $investigador->tipoDocumento = $request->tipoDocumento;
-        $investigador->documento = $request->documento;
-        $investigador->email = $request->email;
-        $investigador->telefono = $request->telefono;
-        $investigador->genero = $request->genero;
-        $investigador->pais = $request->pais;
-        $investigador->estado = $request->estado;
+        return View('web.solicitud',[]);
+    }
 
-        if($investigador->save())
+    public function storeRegistroInvestigador(Request $request)
+    {
+        $respuesta = 1;
+        $mensaje = "";
+        try{
+            /**
+             * transaccion de solicitud
+             * Registro de investigador
+             */
+            $investigador = new Investigador();
+            $investigador->condicion = $request->condicion;
+            $investigador->nombres = $request->nombre;
+            $investigador->apPaterno = $request->apPaterno;
+            $investigador->apMaterno = $request->apMaterno;
+            $investigador->tipoDocumento = $request->tipoDocumento;
+            $investigador->documento = $request->documento;
+            $investigador->email = $request->email;
+            $investigador->telefono = $request->telefono;
+            $investigador->genero = $request->genero;
+            $investigador->pais = $request->pais;
+            $investigador->estado = $request->estado;
+            $investigador->save();
+    
+            /**
+             * Registro de formacion academica
+             */
+            $formacionAcademica = new FormacionAcademica();
+            $formacionAcademica->universidad = $request->universidad;
+            $formacionAcademica->grado = $request->grado;
+            $formacionAcademica->paisFormacion = $request->paisFormacion;
+            $formacionAcademica->anio = $request->anio;
+            $formacionAcademica->save();
+    
+            /**
+             * Creacion de cuenta de usuario
+             */
+            $user = new User();
+            $user->name = $request->nombres;
+            $user->rol = "investigador";
+            $user->email = $request->email;
+            $user->password = bcrypt($request->password);
+            $user->save();
+        }
+        catch(\Exception $ex)
         {
-
+            $respuesta = 0;
+            $mensaje = $ex;
         }
 
-        /**
-         * Registro de formacion academica
-         */
-        $formacionAcademica = new FormacionAcademica();
-        $formacionAcademica->universidad = $request->universidad;
-        $formacionAcademica->grado = $request->grado;
-        $formacionAcademica->paisFormacion = $request->paisFormacion;
-        $formacionAcademica->anio = $request->anio;
-        if($formacionAcademica->save())
-        {
-
-        }
-
-        /**
-         * Creacion de cuenta de usuario
-         */
-        
-
-        return view('web.solicitud',[]);
+        return response()->json(["respuesta" => $respuesta, "mensaje" => $mensaje]);
     }
 
     /**

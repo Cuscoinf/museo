@@ -448,14 +448,11 @@
                                             <label for="departamento">Departamento</label>
                                             <input type="text" class="form-control" id="departamento" name="departamento">
                                         </div>
-        
-                                    
-                                        
+
                                         <div class="form-group">
-                                        <label for="distrito">Distrito</label>
-                                        <input type="text" class="form-control" id="distrito" name="distrito">
+                                            <label for="distrito">Distrito</label>
+                                            <input type="text" class="form-control" id="distrito" name="distrito">
                                         </div>
-        
                                     </div>
                                     
                                     <div class="col-md-6">

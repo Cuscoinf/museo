@@ -10,7 +10,7 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-ElementUI.Select.computed.readonly = function () {
+ElementUI.Select.computed.readonly = function() {
     const isIE = !this.$isServer && !Number.isNaN(Number(document.documentMode));
     return !(this.filterable || this.multiple || !isIE) && !this.visible;
 };
@@ -45,6 +45,8 @@ Vue.component('select-menu', require('./components/roles/SelectMenu.vue').defaul
 Vue.component('list-permisos', require('./components/roles/ListPermisos.vue').default);
 Vue.component('form-permisos', require('./components/roles/FormPermisos.vue').default);
 Vue.component('lista-especimen', require('./components/especimen/listaEspecimen.vue').default);
+//Registro de solicitud de investigacion
+Vue.component('solicitud-registro', require('./components/solicitudes/SolicitudRegistro.vue').default);
 //Registros
 Vue.component('registro-herpetologia', require('./components/especimen/RegistroHerpetologia.vue').default);
 Vue.component('registro-maztozoologia', require('./components/especimen/RegistroMaztozoologia.vue'));
@@ -61,8 +63,8 @@ Vue.component('reporte-investigador', require('./components/reportes/ReporteInve
 
 const app = new Vue({
     el: '#app',
-    methods:{
-        guardarHerpetologia(){
+    methods: {
+        guardarHerpetologia() {
             alert("test");
         }
     }
