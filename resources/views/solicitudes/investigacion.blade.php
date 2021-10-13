@@ -10,7 +10,7 @@
 @stop
 
 @section('content')
-
+  <div id="app"></div>
     <div class="card">
         <div class="card-header">
           <h3 class="card-title">Depositos</h3>

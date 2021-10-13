@@ -42,8 +42,8 @@
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="especie">Nombre Común</label>
-                                            <el-input></el-input>
+                                            <label for="nombreComun">Nombre Común</label>
+                                            <el-input id="nombreComun"></el-input>
                                         </div>
                                     </div>
                                     <div class="col-md-4">

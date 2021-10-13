@@ -77,8 +77,48 @@ class InvestigadorController extends Controller
         }
     }
 
-    public function registroInvestigador()
+    public function registroInvestigador(Request $request)
     {
+        /**
+         * transaccion de solicitud
+         * Registro de investigador
+         */
+        $investigador = new Investigador();
+        $investigador->condicion = $request->condicion;
+        $investigador->nombres = $request->nombre;
+        $investigador->apPaterno = $request->apPaterno;
+        $investigador->apMaterno = $request->apMaterno;
+        $investigador->tipoDocumento = $request->tipoDocumento;
+        $investigador->documento = $request->documento;
+        $investigador->email = $request->email;
+        $investigador->telefono = $request->telefono;
+        $investigador->genero = $request->genero;
+        $investigador->pais = $request->pais;
+        $investigador->estado = $request->estado;
+
+        if($investigador->save())
+        {
+
+        }
+
+        /**
+         * Registro de formacion academica
+         */
+        $formacionAcademica = new FormacionAcademica();
+        $formacionAcademica->universidad = $request->universidad;
+        $formacionAcademica->grado = $request->grado;
+        $formacionAcademica->paisFormacion = $request->paisFormacion;
+        $formacionAcademica->anio = $request->anio;
+        if($formacionAcademica->save())
+        {
+
+        }
+
+        /**
+         * Creacion de cuenta de usuario
+         */
+        
+
         return view('web.solicitud',[]);
     }
 

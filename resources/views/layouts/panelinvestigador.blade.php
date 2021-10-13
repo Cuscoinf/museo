@@ -71,12 +71,12 @@
                     <div class="col-md-3">
                         <div class="menulat">
                             <ul>
-                                <li class="py-2"><a href="solicitar-investigacion">Solicitar Investigacion</a></li>
-                                <li class="py-2"><a href="solicitar-deposito">Solicitar Deposito</a></li>
-                                <li class="py-2"><a href="caso-fortuito">Casos fortuitos</a></li>
-                                <li class="py-2"><a href="animales-decomisados">Animales decomisados</a></li>
-                                <li class="py-2"><a href="depositar-especimen">Depositar Especimen</a></li>
-                                <li class="py-2"><a href="notificaciones">Notificaciones <span class="badge badge-primary">3</span> </a></li>
+                                <li class="py-2"><i class="fa fa-chevron-circle-right"></i> <a href="solicitar-investigacion">Solicitar Investigacion</a></li>
+                                <li class="py-2"><i class="fa fa-chevron-circle-right"></i> <a href="solicitar-deposito">Solicitar Deposito</a></li>
+                                <li class="py-2"><i class="fa fa-chevron-circle-right"></i> <a href="caso-fortuito">Casos fortuitos</a></li>
+                                <li class="py-2"><i class="fa fa-chevron-circle-right"></i> <a href="animales-decomisados">Animales decomisados</a></li>
+                                <li class="py-2"><i class="fa fa-chevron-circle-right"></i> <a href="depositar-especimen">Depositar Especimen</a></li>
+                                <li class="py-2"><i class="fa fa-chevron-circle-right"></i> <a href="notificaciones">Notificaciones <span class="badge badge-primary">3</span> </a></li>
                             </ul>
                         </div>
                     </div>

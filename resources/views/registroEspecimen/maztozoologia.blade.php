@@ -53,31 +53,37 @@
                               <label for="local">Registro local</label>
                               <input type="radio" value="local" id="local" name="dbespecimen">
                             </div>                                
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                               <div class="form-group">
                                   <label for="especie">Especie</label>
                                   <input type="text" class="form-control" id="especie" name="especie" value="{{old('especie')}}">
                               </div>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-4">
+                              <div class="form-group">
+                                  <label for="nombreComun">Nombre común</label>
+                                  <input type="text" class="form-control" id="nombreComun" name="nombreComun" value="{{old('nombreComun')}}">
+                              </div>
+                            </div>
+                            <div class="col-md-4">
                               <div class="form-group">
                                   <label for="genero">Género</label>
                                   <input type="text" class="form-control" id="genero" name="genero" value="{{old('genero')}}">
                               </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                               <div class="form-group">
                                   <label for="familia">Familia</label>
                                   <input type="text" class="form-control" id="familia" name="familia" value="{{old('familia')}}">
                               </div>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-4">
                               <div class="form-group">
                                   <label for="orden">Orden</label>
                                   <input type="text" class="form-control" id="orden" name="orden" value="{{old('orden')}}">
                               </div>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-4">
                               <div class="form-group">
                                   <label for="clase">Clase</label>
                                   <input type="text" class="form-control" id="clase" name="clase" value="{{old('clase')}}">

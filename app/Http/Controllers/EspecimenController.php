@@ -51,6 +51,7 @@ class EspecimenController extends Controller
         $especimen->genero = $request->genero;
         $especimen->clase = $request->clase;
         $especimen->especie = $request->especie;
+        $especimen->nombreComun = $request->nombreComun;
         $especimen->campo = $request->campo;
         $especimen->proyecto = $request->proyecto;
         $especimen->foto = $request->foto;
@@ -91,6 +92,7 @@ class EspecimenController extends Controller
         $especimen->familia = $request->familia;
         $especimen->genero = $request->genero;
         $especimen->especie = $request->especie;
+        $especimen->nombreComun = $request->nombreComun;
         $especimen->clase = $request->clase;
         $especimen->foto = $request->foto;
         $especimen->fechaColecta = date('Y-m-d',strtotime($request->fColecta));
@@ -131,6 +133,7 @@ class EspecimenController extends Controller
         $especimen->clase = $request->clase;
         $especimen->genero = $request->genero;
         $especimen->especie = $request->especie;
+        $especimen->nombreComun = $request->nombreComun;
         $especimen->foto = $request->foto;
         $especimen->fechaColecta = date('Y-m-d',strtotime($request->fColecta));
         $especimen->pais = $request->pais;
@@ -178,6 +181,7 @@ class EspecimenController extends Controller
         $especimen->familia = $request->familia;
         $especimen->genero = $request->genero;
         $especimen->especie = $request->especie;
+        $especimen->nombreComun = $request->nombreComun;
         $especimen->clase = $request->clase;
         $especimen->foto = $request->foto;
         $especimen->fechaColecta = date('Y-m-d',strtotime($request->fColecta));
