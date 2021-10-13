@@ -28,7 +28,7 @@
                                 <div class="card-body row">
                                     <div class="col-md-6">
                                         <label for="fauna">Fauna Silvestre</label>
-                                        <input type="radio" id="fauna" value="fauna" name="dbespecimen">
+                                        <el-radio v-model="dbespecimen" label="1">Option A</el-radio>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="local">Registro local</label>
@@ -489,11 +489,11 @@
     </div>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent } from '@vue/composition-api'
 
 export default defineComponent({
-    setup() {
+    setup(){
         
     },
     data(){
@@ -522,6 +522,54 @@ export default defineComponent({
                 label: 'No definido',
                 },
             ]
+        }
+    },
+    methods:{
+        registrar(){
+            const params={
+                'taxonomia'     : this.taxonomia,
+                'especie'       : this.especie,
+                'nombreComun'   : this.nombreComun,
+                'Genero'        : this.Genero,
+                'Familia'       : this.Familia,
+                'Orden'         : this.Orden,
+                'Clase'         : this.Clase,
+
+                'tipoCaptura'   : this.tipoCaptura,
+                'codigoMHNC'    : this.codigoMHNC,
+                'codCampo'      : this.codCampo,
+                'proyecto'      : this.proyecto,
+                'sexo'          : this.sexo,
+                'tejidoADN'     : this.tejidoADN,
+                'preservacion'  : this.preservacion,
+                'colector'      : this.colector,
+                'autor'         : this.autor,
+                'observacion'   : this.observacion,
+                'foto'          : this.foto,
+
+                'pais'          : this.pais,
+                'provincia'     : this.provincia,
+                'departamento'  : this.departamento,
+                'localidad'     : this.localidad,
+                'distrito'      : this.distrito,
+                'fechaColecta'  : this.fechaColecta,
+                'mapLatitud'    : this.mapLatitud,
+                'mapLongitud'   : this.mapLongitud
+            };
+            axios.post('/guardar-herpetologia',params)
+            .then(response=>{
+                    this.$emit('creado');
+
+                    Toast.fire({
+                    icon: 'success',
+                    title: 'Menu Agregado'
+                    })
+
+            })
+            .catch(error=> {
+                console.log(console.error());
+
+            });
         }
     }
 })
