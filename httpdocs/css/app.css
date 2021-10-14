@@ -10899,3 +10899,18 @@ a.text-dark:focus {
   }
 }
 
+.menulat {
+  border: 1px solid #cccccc;
+  padding-top: 10px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.menulat ul li {
+  list-style: none;
+}
+
+.menulat ul li a {
+  color: #666666;
+}
+

@@ -24,6 +24,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "@vue/composition-api": "^1.2.2"
+        "@vue/composition-api": "^1.2.2",
+        "element-ui": "^2.15.6"
     }
 }

@@ -59,7 +59,7 @@
                         <input type="text" v-model="telefono" class="form-control" id="telefono" name="telefono">
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label for="genero">Genero</label>
                         <select name="genero" v-model="genero" id="genero" class="form-control">
@@ -68,19 +68,19 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label for="estado">Estado civil</label>
-                        <select name="estado" id="estado" v-model="estado">
+                        <select name="estado" id="estado" class="form-control" v-model="estado">
                             <option value="soltero">Soltero</option>
                             <option value="casado">Casado</option>
                         </select>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label for="pais">Pais</label>
-                        <select data-placeholder="Choose a Country..." id="pais" v-model="pais" class="form-control" name="pais">
+                        <select placeholder="Choose a Country..." id="pais" v-model="pais" class="form-control" name="pais">
                             <option value="Afghanistan">Afghanistan</option>
                             <option value="Albania">Albania</option>
                             <option value="Algeria">Algeria</option>
@@ -524,12 +524,13 @@
                 </div>
             </div>
             <div class="form-group text-center py-5">
-                <button class="btn btn-primary"><i class="fa fa-user"></i> REGISTRARSE</button>
+                <button @click="registrar" class="btn btn-primary"><i class="fa fa-user"></i> REGISTRARSE</button>
             </div>
         </form>
     </div>
 </section>
 </template>
+
 <script>
 export default {
     name:"solicitud-registro",
@@ -555,10 +556,10 @@ export default {
     },
     methods:{
         mounted(){
-            alert('cargado');
+            //alert('cargado');
         },
         registrar(){
-            console.log("test")
+            console.log("inicio del registro")
         }
     }
 

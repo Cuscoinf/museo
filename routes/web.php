@@ -40,12 +40,12 @@ Route::put('area/{area}',[AreaController::class,'update'])->name('area.update');
 Route::delete('area/{area}',[AreaController::class,'destroy'])->name('area.destroy');
 */
 
-Route::domain('museo.emisoftserver.com')->group(function () {
+//Route::domain('museo.emisoftserver.com')->group(function () {
     Route::get('/', [WebController::class, "index"])->name("web");
     Route::get('/registrarse',[InvestigadorController::class, "registroInvestigador"])->name("registro.investigador");
     Route::post('registro-investigador', [InvestigadorController::class, 'registroInvestigador'])->name('guardar.investigador');
 
-});
+//});
 
 
 Route::domain('investigadores.emisoftserver.com')->group(function(){
