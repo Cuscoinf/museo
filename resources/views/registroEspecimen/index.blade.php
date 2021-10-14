@@ -503,7 +503,8 @@
 @stop
 @section('js')
 <script>
- function initMap() {
+  //script movido a vue
+  function initMap() {
       
       const contentString =
         '<div id="content">' +
@@ -562,5 +563,5 @@
     }
 
     initMap()   
-  </script>
-  @stop
+</script>
+@stop

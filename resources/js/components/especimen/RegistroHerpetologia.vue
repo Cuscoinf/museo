@@ -24,53 +24,49 @@
                                     font-weight: 600;
                                     position: relative;
                                     left: -1px;
-                                ">Taxonomía</legend>
-                                <div class="card-body row">
-                                    <div class="col-md-6">
-                                        <label for="fauna">Fauna Silvestre</label>
-                                        <el-radio v-model="dbespecimen" label="1">Option A</el-radio>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="local">Registro local</label>
-                                        <input type="radio" id="local" value="local" name="dbespecimen">
-                                    </div>                                
-                                    <div class="col-md-4">
+                                    ">Taxonomía</legend>
+                                    <div class="card-body row">
+                                        <div class="col-md-12">                            
+                                                <el-radio v-model="taxonomia" label="1">Fauna Silvestre</el-radio>
+                                                <el-radio v-model="taxonomia" label="2">Registro local</el-radio>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="especie">Especie</label>
+                                                <el-input v-model="especie" clearable></el-input>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="nombreComun">Nombre Común</label>
+                                                <el-input v-model="nombreComun" clearable></el-input>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
                                         <div class="form-group">
-                                            <label for="especie">Especie</label>
-                                            <el-input></el-input>
+                                            <label for="genero">Género</label>
+                                            <el-input v-model="genero" clearable></el-input>
+                                        </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="familia">Familia</label>
+                                            <el-input v-model="familia" clearable></el-input>
+                                        </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="orden">Orden</label>
+                                            <el-input v-model="orden" clearable></el-input>
+                                        </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="clase">Clase</label>
+                                            <el-input v-model="clase" clearable></el-input>
+                                        </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="nombreComun">Nombre Común</label>
-                                            <el-input id="nombreComun"></el-input>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="genero">Género</label>
-                                        <el-input></el-input>
-                                    </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="familia">Familia</label>
-                                        <el-input></el-input>
-                                    </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="orden">Orden</label>
-                                        <el-input></el-input>
-                                    </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="clase">Clase</label>
-                                        <el-input></el-input>
-                                    </div>
-                                    </div>
-                                </div>
                                 </fieldset>
                             </div>
                             <div class="card-body row">
@@ -91,7 +87,7 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="tipoCaptura">Tipo de captura</label>
-                                            <el-select v-model="value" id="tipoCaptura" placeholder="Tipo de captura">
+                                            <el-select v-model="tipoCaptura" id="tipoCaptura" placeholder="Tipo de captura">
                                                 <el-option
                                                 v-for="item in tipoCaptura"
                                                 :key="item.value"
@@ -109,19 +105,19 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="codMuseo">Codigo MHNC</label>
-                                            <el-input id="CodMuseo"></el-input>
+                                            <el-input v-model="codMuseo" clearable></el-input>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="campo">Cod. Campo</label>
-                                            <el-input id="campo"></el-input>
+                                            <el-input v-model="campo" clearable></el-input>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="proyecto">Proyecto</label>
-                                            <el-input id="proyecto"></el-input>
+                                            <el-input v-model="proyecto" clearable></el-input>
                                         </div>
                                     </div>
                                     </div>
@@ -129,7 +125,7 @@
                                     <div class="col-md-2">
                                         <div class="form-group">
                                             <label for="sexo">Sexo</label>
-                                              <el-select v-model="value" id="sexo" placeholder="Sexo">
+                                              <el-select v-model="sexo" placeholder="Sexo">
                                                 <el-option
                                                 v-for="item in sexo"
                                                 :key="item.value"
@@ -143,43 +139,43 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="tejidoAdn">Tejido ADN</label>
-                                            <input type="text" class="form-control" id="tejidoAdn" name="tejidoAdn">
+                                            <el-input v-model="tejidoAdn" clearable></el-input>
                                         </div>
                                     </div>
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label for="tejidoCod">Tejido COD</label>
-                                            <input type="text" class="form-control" id="tejidoCod" name="tejidoCod">
+                                            <el-input v-model="tejidoCod" clearable></el-input>
                                         </div>
                                     </div>
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="preservacion">Preservación</label>
-                                            <input type="text" class="form-control" id="preservacion" name="preservacion">
+                                            <el-input v-model="preservacion" clearable></el-input>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="colector">Colector</label>
-                                            <input type="text" class="form-control" id="colector" name="colector">
+                                            <el-input v-model="colector" clearable></el-input>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="autor">Autor</label>
-                                            <input type="text" class="form-control" id="autor" name="autor">
+                                            <el-input v-model="autor" clearable></el-input>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="colector">Observacion</label>
-                                            <textarea type="text" class="form-control" id="colector" name="colector"> </textarea>
+                                            <el-input v-model="observacion" clearable></el-input>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="foto">Foto</label>
-                                            <input type="file" id="foto" placeholder="Ingrese Foto" name="foto" style="display: none">
+                                            <el-input v-model="foto" clearable class="d-none"></el-input>
                                             <button class="btn btn-primary" style="display: block"><i class="fa fa-upload"></i> Cargar Foto</button>
                                         </div>
                                     </div>
@@ -203,7 +199,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="pais">Pais</label>
-                                            <select name="pais" class="form-control" id="pais">
+                                            <select class="form-control" v-model="pais" id="pais">
                                                 <option value="Afganistán" id="AF">Afganistán</option>
                                                 <option value="Albania" id="AL">Albania</option>
                                                 <option value="Alemania" id="DE">Alemania</option>
@@ -446,27 +442,27 @@
         
                                         <div class="form-group">
                                             <label for="departamento">Departamento</label>
-                                            <input type="text" class="form-control" id="departamento" name="departamento">
+                                            <el-input v-model="departamento" clearable></el-input>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="distrito">Distrito</label>
-                                            <input type="text" class="form-control" id="distrito" name="distrito">
+                                            <el-input v-model="distrito" clearable></el-input>
                                         </div>
                                     </div>
                                     
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                        <label for="provincia">Provincia</label>
-                                        <input type="text" class="form-control" id="provincia"  name="provincia">
+                                            <label for="provincia">Provincia</label>
+                                            <el-input v-model="provincia" clearable></el-input>
                                         </div>
                                         <div class="form-group">
-                                        <label for="localidad">Localidad</label>
-                                        <input type="text" class="form-control" id="localidad" name="localidad">
+                                            <label for="localidad">Localidad</label>
+                                            <el-input v-model="localidad" clearable></el-input>
                                         </div>
                                         <div class="form-group">
-                                        <label for="fColecta">Fecha Colecta</label>
-                                        <input type="text" class="form-control" id="fColecta" name="fColecta">
+                                            <label for="fColecta">Fecha Colecta</label>
+                                            <el-date-picker v-model="fColecta" type="date"></el-date-picker>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
@@ -479,7 +475,7 @@
                                 </div>
                             </div>
                             <div class="card-footer text-center">
-                                <button class="btn btn-success" type="submit" v-on:click="guardarHerpetologia()">REGISTRAR ESPECIMEN</button>
+                                <button class="btn btn-success" type="button" v-on:click="guardarHerpetologia()">REGISTRAR ESPECIMEN HERPETOLOGIA</button>
                             </div>
                         </form>
                     </div>
@@ -488,6 +484,7 @@
         </div>
     </div>
 </template>
+
 
 <script>
 import { defineComponent } from '@vue/composition-api'
@@ -498,49 +495,79 @@ export default defineComponent({
     },
     data(){
         return {
-            tipoCaptura: [{
-                value: 'Captura temporal',
-                label: 'Captura temporal'
-                }, {
-                value: 'Con captura',
-                label: 'Con captura'
-                }, {
-                value: 'Sin Captura',
-                label: 'Sin Camptura'
-            }],
-            value: '',
+            taxonomia   : '1',
+            especie     : '',
+            nombreComun : '',
+            genero      : '',
+            familia     : '',
+            orden       : '',
+            clase       : '',
+
+            tipoCaptura : [{
+                    value: 'Captura temporal',
+                    label: 'Captura temporal'
+                    }, {
+                    value: 'Con captura',
+                    label: 'Con captura'
+                    }, {
+                    value: 'Sin Captura',
+                    label: 'Sin Camptura'
+                }],
+            codMuseo    : '',
+            campo       : '',
+            proyecto    : '',
             sexo: [{
-                value: 'M',
-                label: 'Macho'
-                },
-                {
-                value: 'H',
-                label: 'Hembra',
-                },
-                {
-                value: 'I',
-                label: 'No definido',
-                },
-            ]
+                    value: 'M',
+                    label: 'Macho'
+                    },
+                    {
+                    value: 'H',
+                    label: 'Hembra',
+                    },
+                    {
+                    value: 'I',
+                    label: 'No definido',
+                }],
+            tejidoAdn   : '',
+            tejidoCod   : '',
+            preservacion: '',
+            colector    : '',
+            autor       : '',
+            observacion : '',
+            foto        : '',
+
+            pais        : '',
+            provincia   : '',
+            departamento: '',
+            localidad   : '',
+            distrito    : '',
+            fColecta    : '',
+            utmn        : '',
+            utme        : '',
         }
     },
+    mounted() {
+        console.log('Formulario interpretado.');
+    },
     methods:{
-        registrar(){
+        guardarHerpetologia(){
             const params={
                 'taxonomia'     : this.taxonomia,
                 'especie'       : this.especie,
                 'nombreComun'   : this.nombreComun,
-                'Genero'        : this.Genero,
-                'Familia'       : this.Familia,
-                'Orden'         : this.Orden,
-                'Clase'         : this.Clase,
+                'genero'        : this.genero,
+                'familia'       : this.familia,
+                'orden'         : this.orden,
+                'clase'         : this.clase,
 
                 'tipoCaptura'   : this.tipoCaptura,
-                'codigoMHNC'    : this.codigoMHNC,
-                'codCampo'      : this.codCampo,
+                'codMuseo'      : this.codMuseo,
+                'campo'         : this.campo,
                 'proyecto'      : this.proyecto,
+
                 'sexo'          : this.sexo,
-                'tejidoADN'     : this.tejidoADN,
+                'tejidoAdn'     : this.tejidoAdn,
+                'tejidoCod'     : this.tejidoCod,
                 'preservacion'  : this.preservacion,
                 'colector'      : this.colector,
                 'autor'         : this.autor,
@@ -552,19 +579,18 @@ export default defineComponent({
                 'departamento'  : this.departamento,
                 'localidad'     : this.localidad,
                 'distrito'      : this.distrito,
-                'fechaColecta'  : this.fechaColecta,
-                'mapLatitud'    : this.mapLatitud,
-                'mapLongitud'   : this.mapLongitud
+                'fColecta'      : this.fColecta,
+                'utmn'          : this.utmn,
+                'utme'          : this.utme
             };
             axios.post('/guardar-herpetologia',params)
             .then(response=>{
-                    this.$emit('creado');
+                this.$emit('creado');
 
-                    Toast.fire({
+                Toast.fire({
                     icon: 'success',
                     title: 'Menu Agregado'
-                    })
-
+                })
             })
             .catch(error=> {
                 console.log(console.error());
