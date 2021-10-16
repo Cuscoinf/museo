@@ -40,12 +40,12 @@ Route::put('area/{area}',[AreaController::class,'update'])->name('area.update');
 Route::delete('area/{area}',[AreaController::class,'destroy'])->name('area.destroy');
 */
 
-//Route::domain('museo.emisoftserver.com')->group(function () {
+Route::domain('museo.emisoftserver.com')->group(function () {
     Route::get('/', [WebController::class, "index"])->name("web");
     Route::get('/registrarse',[InvestigadorController::class, "registroInvestigador"])->name("registro.investigador");
     Route::post('registro-investigador', [InvestigadorController::class, 'registroInvestigador'])->name('guardar.investigador');
-
-//});
+    Route::post('solicitud-registro',[InvestigadorController::class, 'storeRegistroInvestigador'])->name('guardar.solicitud.registro');
+});
 
 
 Route::domain('investigadores.emisoftserver.com')->group(function(){
@@ -71,7 +71,7 @@ Route::domain('investigadores.emisoftserver.com')->group(function(){
     });
 });
 
-Route::domain('sistema.emisoftserver.com')->group( function () {
+//Route::domain('sistema.emisoftserver.com')->group( function () {
 
     Route::get('login', [LoginController::class, 'loginMuseo'])->name('login.admin');
     Route::post('login', [LoginController::class, 'login'])->name('admin.login');
@@ -84,6 +84,7 @@ Route::domain('sistema.emisoftserver.com')->group( function () {
         Route::resource('formacion-academica', FormacionAcademicaController::class);
         Route::resource('registro-solicitud', SolicitudController::class);
         
+        Route::get('solicitudes-registro', [SolicitudController::class, 'solicitudesRegistro'])->name('solicitudes.registro');
         Route::get('solicitudes-deposito', [SolicitudController::class, "solicitudes"])->name("investigador.solicitud.deposito");
 
         Route::get('solicitudes-investigacion', [SolicitudController::class, "solicitudesInvestigacion"])->name("investigador.solicitud.investigacion");
@@ -150,4 +151,4 @@ Route::domain('sistema.emisoftserver.com')->group( function () {
     
     });
 
-});
+//});

@@ -255,6 +255,12 @@ return [
             'can'  => ['user-admin'],
             'submenu' => [
                 [
+                    'text' => 'Solicitudes de Registro',
+                    'route'  => 'solicitudes.registro',
+                    'icon' => 'fas faw fa-users',
+                    'can'  => ['user-admin'],
+                ],
+                [
                     'text' => 'Solicitudes de Investigacion',
                     'route'  => 'investigador.solicitud.investigacion',
                     'icon' => 'far fa-edit',

@@ -93,16 +93,18 @@ class InvestigadorController extends Controller
              */
             $investigador = new Investigador();
             $investigador->condicion = $request->condicion;
-            $investigador->nombres = $request->nombre;
+            $investigador->nombre = $request->nombres;
             $investigador->apPaterno = $request->apPaterno;
             $investigador->apMaterno = $request->apMaterno;
             $investigador->tipoDocumento = $request->tipoDocumento;
-            $investigador->documento = $request->documento;
+            $investigador->nroDocumento = $request->documento;
             $investigador->email = $request->email;
+            $investigador->tipoUsuario = "investigador";
             $investigador->telefono = $request->telefono;
             $investigador->genero = $request->genero;
             $investigador->pais = $request->pais;
             $investigador->estado = $request->estado;
+            $investigador->slug = $request->apPaterno."".$request->apMaterno;
             $investigador->save();
     
             /**
@@ -110,9 +112,10 @@ class InvestigadorController extends Controller
              */
             $formacionAcademica = new FormacionAcademica();
             $formacionAcademica->universidad = $request->universidad;
-            $formacionAcademica->grado = $request->grado;
-            $formacionAcademica->paisFormacion = $request->paisFormacion;
-            $formacionAcademica->anio = $request->anio;
+            $formacionAcademica->gradoAcademico = $request->grado;
+            $formacionAcademica->pais = $request->paisFormacion;
+            $formacionAcademica->anioTitulacion = $request->anio;
+            $formacionAcademica->slug = $request->grado;
             $formacionAcademica->save();
     
             /**

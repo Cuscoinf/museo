@@ -3,7 +3,7 @@
     <div class="form-solicitud" style="padding: 25px;">
         <h3 style="padding: 10px 0 0 0">Registro</h3>
         <p>Ingrese sus datos y se parte del museo de la Universidad</p>
-        <form method="POST" style="margin: auto;">
+        <form method="POST" style="margin: auto;" @submit="registrar">
             <div class="form-group">
                 <label for="condicion">Condición de registro</label>
                 <select name="condicion" v-model="condicion" id="condicion" class="form-control">
@@ -524,7 +524,7 @@
                 </div>
             </div>
             <div class="form-group text-center py-5">
-                <button @click="registrar" class="btn btn-primary"><i class="fa fa-user"></i> REGISTRARSE</button>
+                <button class="btn btn-primary"><i class="fa fa-user"></i> REGISTRARSE</button>
             </div>
         </form>
     </div>
@@ -540,13 +540,13 @@ export default {
             nombres:"",
             apPaterno: "",
             apMaterno: "",
-            tipoDocumento:"",
+            tipoDocumento:"DNI",
             documento:"",
             email:"",
             telefono:"",
-            genero:"",
-            estado:"",
-            pais:"",
+            genero:"M",
+            estado:"Soltero",
+            pais:"Peru",
             universidad:"",
             paisFormacion:"",
             grado:"",
@@ -558,8 +558,32 @@ export default {
         mounted(){
             //alert('cargado');
         },
-        registrar(){
-            console.log("inicio del registro")
+        registrar(e){
+            e.preventDefault();
+            const params = {
+                condicion:this.condicion,
+                nombres:this.nombres,
+                apPaterno: this.apPaterno,
+                apMaterno: this.apMaterno,
+                tipoDocumento: this.tipoDocumento,
+                documento: this.documento,
+                email:this.email,
+                telefono:this.telefono,
+                genero:this.genero,
+                pais:this.pais,
+                estado:this.estado,
+
+                universidad:this.universidad,
+                grado:this.grado,
+                paisFormacion:this.paisFormacion,
+                anio:this.anio,
+
+                password:this.password,
+            }
+
+            axios.post("/solicitud-registro", params).then((resp)=>{
+                console.log(resp);
+            })
         }
     }
 

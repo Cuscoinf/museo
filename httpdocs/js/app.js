@@ -6733,14 +6733,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = (Object(_vue_composition_api__WEBPACK_IMPORTED_MODULE_0__["defineComponent"])({
   setup: function setup() {},
   data: function data() {
     return {
+      taxonomia: '1',
+      especie: '',
+      nombreComun: '',
+      genero: '',
+      familia: '',
+      orden: '',
+      clase: '',
       tipoCaptura: [{
         value: 'Captura temporal',
         label: 'Captura temporal'
@@ -6751,7 +6755,9 @@ __webpack_require__.r(__webpack_exports__);
         value: 'Sin Captura',
         label: 'Sin Camptura'
       }],
-      value: '',
+      codMuseo: '',
+      campo: '',
+      proyecto: '',
       sexo: [{
         value: 'M',
         label: 'Macho'
@@ -6761,27 +6767,46 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         value: 'I',
         label: 'No definido'
-      }]
+      }],
+      tejidoAdn: '',
+      tejidoCod: '',
+      preservacion: '',
+      colector: '',
+      autor: '',
+      observacion: '',
+      foto: '',
+      pais: '',
+      provincia: '',
+      departamento: '',
+      localidad: '',
+      distrito: '',
+      fColecta: '',
+      utmn: '',
+      utme: ''
     };
   },
+  mounted: function mounted() {
+    console.log('Formulario interpretado.');
+  },
   methods: {
-    registrar: function registrar() {
+    guardarHerpetologia: function guardarHerpetologia() {
       var _this = this;
 
       var params = {
         'taxonomia': this.taxonomia,
         'especie': this.especie,
         'nombreComun': this.nombreComun,
-        'Genero': this.Genero,
-        'Familia': this.Familia,
-        'Orden': this.Orden,
-        'Clase': this.Clase,
+        'genero': this.genero,
+        'familia': this.familia,
+        'orden': this.orden,
+        'clase': this.clase,
         'tipoCaptura': this.tipoCaptura,
-        'codigoMHNC': this.codigoMHNC,
-        'codCampo': this.codCampo,
+        'codMuseo': this.codMuseo,
+        'campo': this.campo,
         'proyecto': this.proyecto,
         'sexo': this.sexo,
-        'tejidoADN': this.tejidoADN,
+        'tejidoAdn': this.tejidoAdn,
+        'tejidoCod': this.tejidoCod,
         'preservacion': this.preservacion,
         'colector': this.colector,
         'autor': this.autor,
@@ -6792,9 +6817,9 @@ __webpack_require__.r(__webpack_exports__);
         'departamento': this.departamento,
         'localidad': this.localidad,
         'distrito': this.distrito,
-        'fechaColecta': this.fechaColecta,
-        'mapLatitud': this.mapLatitud,
-        'mapLongitud': this.mapLongitud
+        'fColecta': this.fColecta,
+        'utmn': this.utmn,
+        'utme': this.utme
       };
       axios.post('/guardar-herpetologia', params).then(function (response) {
         _this.$emit('creado');
@@ -8008,13 +8033,13 @@ __webpack_require__.r(__webpack_exports__);
       nombres: "",
       apPaterno: "",
       apMaterno: "",
-      tipoDocumento: "",
+      tipoDocumento: "DNI",
       documento: "",
       email: "",
       telefono: "",
-      genero: "",
-      estado: "",
-      pais: "",
+      genero: "M",
+      estado: "Soltero",
+      pais: "Peru",
       universidad: "",
       paisFormacion: "",
       grado: "",
@@ -8025,8 +8050,29 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     mounted: function mounted() {//alert('cargado');
     },
-    registrar: function registrar() {
-      console.log("inicio del registro");
+    registrar: function registrar(e) {
+      e.preventDefault();
+      var params = {
+        condicion: this.condicion,
+        nombres: this.nombres,
+        apPaterno: this.apPaterno,
+        apMaterno: this.apMaterno,
+        tipoDocumento: this.tipoDocumento,
+        documento: this.documento,
+        email: this.email,
+        telefono: this.telefono,
+        genero: this.genero,
+        pais: this.pais,
+        estado: this.estado,
+        universidad: this.universidad,
+        grado: this.grado,
+        paisFormacion: this.paisFormacion,
+        anio: this.anio,
+        password: this.password
+      };
+      axios.post("/solicitud-registro", params).then(function (resp) {
+        console.log(resp);
+      });
     }
   }
 });
@@ -107066,31 +107112,40 @@ var render = function() {
                           _c("div", { staticClass: "card-body row" }, [
                             _c(
                               "div",
-                              { staticClass: "col-md-6" },
+                              { staticClass: "col-md-12" },
                               [
-                                _c("label", { attrs: { for: "fauna" } }, [
-                                  _vm._v("Fauna Silvestre")
-                                ]),
-                                _vm._v(" "),
                                 _c(
                                   "el-radio",
                                   {
                                     attrs: { label: "1" },
                                     model: {
-                                      value: _vm.dbespecimen,
+                                      value: _vm.taxonomia,
                                       callback: function($$v) {
-                                        _vm.dbespecimen = $$v
+                                        _vm.taxonomia = $$v
                                       },
-                                      expression: "dbespecimen"
+                                      expression: "taxonomia"
                                     }
                                   },
-                                  [_vm._v("Option A")]
+                                  [_vm._v("Fauna Silvestre")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "el-radio",
+                                  {
+                                    attrs: { label: "2" },
+                                    model: {
+                                      value: _vm.taxonomia,
+                                      callback: function($$v) {
+                                        _vm.taxonomia = $$v
+                                      },
+                                      expression: "taxonomia"
+                                    }
+                                  },
+                                  [_vm._v("Registro local")]
                                 )
                               ],
                               1
                             ),
-                            _vm._v(" "),
-                            _vm._m(1),
                             _vm._v(" "),
                             _c("div", { staticClass: "col-md-4" }, [
                               _c(
@@ -107101,7 +107156,16 @@ var render = function() {
                                     _vm._v("Especie")
                                   ]),
                                   _vm._v(" "),
-                                  _c("el-input")
+                                  _c("el-input", {
+                                    attrs: { clearable: "" },
+                                    model: {
+                                      value: _vm.especie,
+                                      callback: function($$v) {
+                                        _vm.especie = $$v
+                                      },
+                                      expression: "especie"
+                                    }
+                                  })
                                 ],
                                 1
                               )
@@ -107119,7 +107183,14 @@ var render = function() {
                                   ),
                                   _vm._v(" "),
                                   _c("el-input", {
-                                    attrs: { id: "nombreComun" }
+                                    attrs: { clearable: "" },
+                                    model: {
+                                      value: _vm.nombreComun,
+                                      callback: function($$v) {
+                                        _vm.nombreComun = $$v
+                                      },
+                                      expression: "nombreComun"
+                                    }
                                   })
                                 ],
                                 1
@@ -107135,7 +107206,16 @@ var render = function() {
                                     _vm._v("Género")
                                   ]),
                                   _vm._v(" "),
-                                  _c("el-input")
+                                  _c("el-input", {
+                                    attrs: { clearable: "" },
+                                    model: {
+                                      value: _vm.genero,
+                                      callback: function($$v) {
+                                        _vm.genero = $$v
+                                      },
+                                      expression: "genero"
+                                    }
+                                  })
                                 ],
                                 1
                               )
@@ -107150,7 +107230,16 @@ var render = function() {
                                     _vm._v("Familia")
                                   ]),
                                   _vm._v(" "),
-                                  _c("el-input")
+                                  _c("el-input", {
+                                    attrs: { clearable: "" },
+                                    model: {
+                                      value: _vm.familia,
+                                      callback: function($$v) {
+                                        _vm.familia = $$v
+                                      },
+                                      expression: "familia"
+                                    }
+                                  })
                                 ],
                                 1
                               )
@@ -107165,7 +107254,16 @@ var render = function() {
                                     _vm._v("Orden")
                                   ]),
                                   _vm._v(" "),
-                                  _c("el-input")
+                                  _c("el-input", {
+                                    attrs: { clearable: "" },
+                                    model: {
+                                      value: _vm.orden,
+                                      callback: function($$v) {
+                                        _vm.orden = $$v
+                                      },
+                                      expression: "orden"
+                                    }
+                                  })
                                 ],
                                 1
                               )
@@ -107180,7 +107278,16 @@ var render = function() {
                                     _vm._v("Clase")
                                   ]),
                                   _vm._v(" "),
-                                  _c("el-input")
+                                  _c("el-input", {
+                                    attrs: { clearable: "" },
+                                    model: {
+                                      value: _vm.clase,
+                                      callback: function($$v) {
+                                        _vm.clase = $$v
+                                      },
+                                      expression: "clase"
+                                    }
+                                  })
                                 ],
                                 1
                               )
@@ -107234,11 +107341,11 @@ var render = function() {
                                           placeholder: "Tipo de captura"
                                         },
                                         model: {
-                                          value: _vm.value,
+                                          value: _vm.tipoCaptura,
                                           callback: function($$v) {
-                                            _vm.value = $$v
+                                            _vm.tipoCaptura = $$v
                                           },
-                                          expression: "value"
+                                          expression: "tipoCaptura"
                                         }
                                       },
                                       _vm._l(_vm.tipoCaptura, function(item) {
@@ -107269,7 +107376,14 @@ var render = function() {
                                     ),
                                     _vm._v(" "),
                                     _c("el-input", {
-                                      attrs: { id: "CodMuseo" }
+                                      attrs: { clearable: "" },
+                                      model: {
+                                        value: _vm.codMuseo,
+                                        callback: function($$v) {
+                                          _vm.codMuseo = $$v
+                                        },
+                                        expression: "codMuseo"
+                                      }
                                     })
                                   ],
                                   1
@@ -107285,7 +107399,16 @@ var render = function() {
                                       _vm._v("Cod. Campo")
                                     ]),
                                     _vm._v(" "),
-                                    _c("el-input", { attrs: { id: "campo" } })
+                                    _c("el-input", {
+                                      attrs: { clearable: "" },
+                                      model: {
+                                        value: _vm.campo,
+                                        callback: function($$v) {
+                                          _vm.campo = $$v
+                                        },
+                                        expression: "campo"
+                                      }
+                                    })
                                   ],
                                   1
                                 )
@@ -107303,7 +107426,14 @@ var render = function() {
                                     ),
                                     _vm._v(" "),
                                     _c("el-input", {
-                                      attrs: { id: "proyecto" }
+                                      attrs: { clearable: "" },
+                                      model: {
+                                        value: _vm.proyecto,
+                                        callback: function($$v) {
+                                          _vm.proyecto = $$v
+                                        },
+                                        expression: "proyecto"
+                                      }
                                     })
                                   ],
                                   1
@@ -107324,16 +107454,13 @@ var render = function() {
                                     _c(
                                       "el-select",
                                       {
-                                        attrs: {
-                                          id: "sexo",
-                                          placeholder: "Sexo"
-                                        },
+                                        attrs: { placeholder: "Sexo" },
                                         model: {
-                                          value: _vm.value,
+                                          value: _vm.sexo,
                                           callback: function($$v) {
-                                            _vm.value = $$v
+                                            _vm.sexo = $$v
                                           },
-                                          expression: "value"
+                                          expression: "sexo"
                                         }
                                       },
                                       _vm._l(_vm.sexo, function(item) {
@@ -107352,25 +107479,2561 @@ var render = function() {
                                 )
                               ]),
                               _vm._v(" "),
-                              _vm._m(2),
+                              _c("div", { staticClass: "col-md-3" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group" },
+                                  [
+                                    _c(
+                                      "label",
+                                      { attrs: { for: "tejidoAdn" } },
+                                      [_vm._v("Tejido ADN")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("el-input", {
+                                      attrs: { clearable: "" },
+                                      model: {
+                                        value: _vm.tejidoAdn,
+                                        callback: function($$v) {
+                                          _vm.tejidoAdn = $$v
+                                        },
+                                        expression: "tejidoAdn"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              ]),
                               _vm._v(" "),
-                              _vm._m(3),
+                              _c("div", { staticClass: "col-md-3" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group" },
+                                  [
+                                    _c(
+                                      "label",
+                                      { attrs: { for: "tejidoCod" } },
+                                      [_vm._v("Tejido COD")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("el-input", {
+                                      attrs: { clearable: "" },
+                                      model: {
+                                        value: _vm.tejidoCod,
+                                        callback: function($$v) {
+                                          _vm.tejidoCod = $$v
+                                        },
+                                        expression: "tejidoCod"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              ]),
                               _vm._v(" "),
-                              _vm._m(4),
+                              _c("div", { staticClass: "col-md-4" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group" },
+                                  [
+                                    _c(
+                                      "label",
+                                      { attrs: { for: "preservacion" } },
+                                      [_vm._v("Preservación")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("el-input", {
+                                      attrs: { clearable: "" },
+                                      model: {
+                                        value: _vm.preservacion,
+                                        callback: function($$v) {
+                                          _vm.preservacion = $$v
+                                        },
+                                        expression: "preservacion"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              ]),
                               _vm._v(" "),
-                              _vm._m(5),
+                              _c("div", { staticClass: "col-md-6" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group" },
+                                  [
+                                    _c(
+                                      "label",
+                                      { attrs: { for: "colector" } },
+                                      [_vm._v("Colector")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("el-input", {
+                                      attrs: { clearable: "" },
+                                      model: {
+                                        value: _vm.colector,
+                                        callback: function($$v) {
+                                          _vm.colector = $$v
+                                        },
+                                        expression: "colector"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              ]),
                               _vm._v(" "),
-                              _vm._m(6),
+                              _c("div", { staticClass: "col-md-6" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group" },
+                                  [
+                                    _c("label", { attrs: { for: "autor" } }, [
+                                      _vm._v("Autor")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("el-input", {
+                                      attrs: { clearable: "" },
+                                      model: {
+                                        value: _vm.autor,
+                                        callback: function($$v) {
+                                          _vm.autor = $$v
+                                        },
+                                        expression: "autor"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              ]),
                               _vm._v(" "),
-                              _vm._m(7),
+                              _c("div", { staticClass: "col-md-12" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group" },
+                                  [
+                                    _c(
+                                      "label",
+                                      { attrs: { for: "colector" } },
+                                      [_vm._v("Observacion")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("el-input", {
+                                      attrs: { clearable: "" },
+                                      model: {
+                                        value: _vm.observacion,
+                                        callback: function($$v) {
+                                          _vm.observacion = $$v
+                                        },
+                                        expression: "observacion"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              ]),
                               _vm._v(" "),
-                              _vm._m(8)
+                              _c("div", { staticClass: "col-md-12" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group" },
+                                  [
+                                    _c("label", { attrs: { for: "foto" } }, [
+                                      _vm._v("Foto")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("el-input", {
+                                      staticClass: "d-none",
+                                      attrs: { clearable: "" },
+                                      model: {
+                                        value: _vm.foto,
+                                        callback: function($$v) {
+                                          _vm.foto = $$v
+                                        },
+                                        expression: "foto"
+                                      }
+                                    }),
+                                    _vm._v(" "),
+                                    _vm._m(1)
+                                  ],
+                                  1
+                                )
+                              ])
                             ])
                           ]
                         )
                       ]),
                       _vm._v(" "),
-                      _vm._m(9)
+                      _c("div", { staticClass: "col-md-4" }, [
+                        _c(
+                          "fieldset",
+                          { staticStyle: { border: "1px solid #ccc" } },
+                          [
+                            _c(
+                              "legend",
+                              {
+                                staticStyle: {
+                                  display: "inline-block",
+                                  width: "auto",
+                                  padding: "1px 8px",
+                                  border: "1px solid #ccc",
+                                  "border-radius": "5px",
+                                  "font-size": "14px",
+                                  "font-weight": "600",
+                                  position: "relative",
+                                  left: "-1px"
+                                }
+                              },
+                              [_vm._v("Lugar de colecta")]
+                            ),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "card-body row" }, [
+                              _c("div", { staticClass: "col-md-6" }, [
+                                _c("div", { staticClass: "form-group" }, [
+                                  _c("label", { attrs: { for: "pais" } }, [
+                                    _vm._v("Pais")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "select",
+                                    {
+                                      directives: [
+                                        {
+                                          name: "model",
+                                          rawName: "v-model",
+                                          value: _vm.pais,
+                                          expression: "pais"
+                                        }
+                                      ],
+                                      staticClass: "form-control",
+                                      attrs: { id: "pais" },
+                                      on: {
+                                        change: function($event) {
+                                          var $$selectedVal = Array.prototype.filter
+                                            .call(
+                                              $event.target.options,
+                                              function(o) {
+                                                return o.selected
+                                              }
+                                            )
+                                            .map(function(o) {
+                                              var val =
+                                                "_value" in o
+                                                  ? o._value
+                                                  : o.value
+                                              return val
+                                            })
+                                          _vm.pais = $event.target.multiple
+                                            ? $$selectedVal
+                                            : $$selectedVal[0]
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Afganistán",
+                                            id: "AF"
+                                          }
+                                        },
+                                        [_vm._v("Afganistán")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Albania", id: "AL" }
+                                        },
+                                        [_vm._v("Albania")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Alemania", id: "DE" }
+                                        },
+                                        [_vm._v("Alemania")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Andorra", id: "AD" }
+                                        },
+                                        [_vm._v("Andorra")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Angola", id: "AO" }
+                                        },
+                                        [_vm._v("Angola")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Anguila", id: "AI" }
+                                        },
+                                        [_vm._v("Anguila")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Antártida",
+                                            id: "AQ"
+                                          }
+                                        },
+                                        [_vm._v("Antártida")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Antigua y Barbuda",
+                                            id: "AG"
+                                          }
+                                        },
+                                        [_vm._v("Antigua y Barbuda")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Antillas holandesas",
+                                            id: "AN"
+                                          }
+                                        },
+                                        [_vm._v("Antillas holandesas")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Arabia Saudí",
+                                            id: "SA"
+                                          }
+                                        },
+                                        [_vm._v("Arabia Saudí")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Argelia", id: "DZ" }
+                                        },
+                                        [_vm._v("Argelia")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Argentina",
+                                            id: "AR"
+                                          }
+                                        },
+                                        [_vm._v("Argentina")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Armenia", id: "AM" }
+                                        },
+                                        [_vm._v("Armenia")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        { attrs: { value: "Aruba", id: "AW" } },
+                                        [_vm._v("Aruba")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Australia",
+                                            id: "AU"
+                                          }
+                                        },
+                                        [_vm._v("Australia")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Austria", id: "AT" }
+                                        },
+                                        [_vm._v("Austria")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Azerbaiyán",
+                                            id: "AZ"
+                                          }
+                                        },
+                                        [_vm._v("Azerbaiyán")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Bahamas", id: "BS" }
+                                        },
+                                        [_vm._v("Bahamas")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Bahrein", id: "BH" }
+                                        },
+                                        [_vm._v("Bahrein")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Bangladesh",
+                                            id: "BD"
+                                          }
+                                        },
+                                        [_vm._v("Bangladesh")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Barbados", id: "BB" }
+                                        },
+                                        [_vm._v("Barbados")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Bélgica", id: "BE" }
+                                        },
+                                        [_vm._v("Bélgica")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Belice", id: "BZ" }
+                                        },
+                                        [_vm._v("Belice")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        { attrs: { value: "Benín", id: "BJ" } },
+                                        [_vm._v("Benín")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Bermudas", id: "BM" }
+                                        },
+                                        [_vm._v("Bermudas")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Bhután", id: "BT" }
+                                        },
+                                        [_vm._v("Bhután")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Bielorrusia",
+                                            id: "BY"
+                                          }
+                                        },
+                                        [_vm._v("Bielorrusia")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Birmania", id: "MM" }
+                                        },
+                                        [_vm._v("Birmania")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Bolivia", id: "BO" }
+                                        },
+                                        [_vm._v("Bolivia")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Bosnia y Herzegovina",
+                                            id: "BA"
+                                          }
+                                        },
+                                        [_vm._v("Bosnia y Herzegovina")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Botsuana", id: "BW" }
+                                        },
+                                        [_vm._v("Botsuana")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Brasil", id: "BR" }
+                                        },
+                                        [_vm._v("Brasil")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Brunei", id: "BN" }
+                                        },
+                                        [_vm._v("Brunei")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Bulgaria", id: "BG" }
+                                        },
+                                        [_vm._v("Bulgaria")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Burkina Faso",
+                                            id: "BF"
+                                          }
+                                        },
+                                        [_vm._v("Burkina Faso")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Burundi", id: "BI" }
+                                        },
+                                        [_vm._v("Burundi")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Cabo Verde",
+                                            id: "CV"
+                                          }
+                                        },
+                                        [_vm._v("Cabo Verde")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Camboya", id: "KH" }
+                                        },
+                                        [_vm._v("Camboya")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Camerún", id: "CM" }
+                                        },
+                                        [_vm._v("Camerún")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Canadá", id: "CA" }
+                                        },
+                                        [_vm._v("Canadá")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        { attrs: { value: "Chad", id: "TD" } },
+                                        [_vm._v("Chad")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        { attrs: { value: "Chile", id: "CL" } },
+                                        [_vm._v("Chile")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        { attrs: { value: "China", id: "CN" } },
+                                        [_vm._v("China")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Chipre", id: "CY" }
+                                        },
+                                        [_vm._v("Chipre")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Ciudad estado del Vaticano",
+                                            id: "VA"
+                                          }
+                                        },
+                                        [_vm._v("Ciudad estado del Vaticano")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Colombia", id: "CO" }
+                                        },
+                                        [_vm._v("Colombia")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Comores", id: "KM" }
+                                        },
+                                        [_vm._v("Comores")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        { attrs: { value: "Congo", id: "CG" } },
+                                        [_vm._v("Congo")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        { attrs: { value: "Corea", id: "KR" } },
+                                        [_vm._v("Corea")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Corea del Norte",
+                                            id: "KP"
+                                          }
+                                        },
+                                        [_vm._v("Corea del Norte")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Costa del Marfíl",
+                                            id: "CI"
+                                          }
+                                        },
+                                        [_vm._v("Costa del Marfíl")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Costa Rica",
+                                            id: "CR"
+                                          }
+                                        },
+                                        [_vm._v("Costa Rica")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Croacia", id: "HR" }
+                                        },
+                                        [_vm._v("Croacia")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        { attrs: { value: "Cuba", id: "CU" } },
+                                        [_vm._v("Cuba")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Dinamarca",
+                                            id: "DK"
+                                          }
+                                        },
+                                        [_vm._v("Dinamarca")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Djibouri", id: "DJ" }
+                                        },
+                                        [_vm._v("Djibouri")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Dominica", id: "DM" }
+                                        },
+                                        [_vm._v("Dominica")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Ecuador", id: "EC" }
+                                        },
+                                        [_vm._v("Ecuador")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Egipto", id: "EG" }
+                                        },
+                                        [_vm._v("Egipto")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "El Salvador",
+                                            id: "SV"
+                                          }
+                                        },
+                                        [_vm._v("El Salvador")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Emiratos Arabes Unidos",
+                                            id: "AE"
+                                          }
+                                        },
+                                        [_vm._v("Emiratos Arabes Unidos")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Eritrea", id: "ER" }
+                                        },
+                                        [_vm._v("Eritrea")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Eslovaquia",
+                                            id: "SK"
+                                          }
+                                        },
+                                        [_vm._v("Eslovaquia")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Eslovenia",
+                                            id: "SI"
+                                          }
+                                        },
+                                        [_vm._v("Eslovenia")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "España", id: "ES" }
+                                        },
+                                        [_vm._v("España")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Estados Unidos",
+                                            id: "US"
+                                          }
+                                        },
+                                        [_vm._v("Estados Unidos")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Estonia", id: "EE" }
+                                        },
+                                        [_vm._v("Estonia")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        { attrs: { value: "c", id: "ET" } },
+                                        [_vm._v("Etiopía")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value:
+                                              "Ex-República Yugoslava de Macedonia",
+                                            id: "MK"
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "Ex-República Yugoslava de Macedonia"
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Filipinas",
+                                            id: "PH"
+                                          }
+                                        },
+                                        [_vm._v("Filipinas")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Finlandia",
+                                            id: "FI"
+                                          }
+                                        },
+                                        [_vm._v("Finlandia")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Francia", id: "FR" }
+                                        },
+                                        [_vm._v("Francia")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        { attrs: { value: "Gabón", id: "GA" } },
+                                        [_vm._v("Gabón")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Gambia", id: "GM" }
+                                        },
+                                        [_vm._v("Gambia")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Georgia", id: "GE" }
+                                        },
+                                        [_vm._v("Georgia")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value:
+                                              "Georgia del Sur y las islas Sandwich del Sur",
+                                            id: "GS"
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "Georgia del Sur y las islas Sandwich del Sur"
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        { attrs: { value: "Ghana", id: "GH" } },
+                                        [_vm._v("Ghana")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Gibraltar",
+                                            id: "GI"
+                                          }
+                                        },
+                                        [_vm._v("Gibraltar")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Granada", id: "GD" }
+                                        },
+                                        [_vm._v("Granada")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Grecia", id: "GR" }
+                                        },
+                                        [_vm._v("Grecia")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Groenlandia",
+                                            id: "GL"
+                                          }
+                                        },
+                                        [_vm._v("Groenlandia")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Guadalupe",
+                                            id: "GP"
+                                          }
+                                        },
+                                        [_vm._v("Guadalupe")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        { attrs: { value: "Guam", id: "GU" } },
+                                        [_vm._v("Guam")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Guatemala",
+                                            id: "GT"
+                                          }
+                                        },
+                                        [_vm._v("Guatemala")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Guayana", id: "GY" }
+                                        },
+                                        [_vm._v("Guayana")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Guayana francesa",
+                                            id: "GF"
+                                          }
+                                        },
+                                        [_vm._v("Guayana francesa")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Guinea", id: "GN" }
+                                        },
+                                        [_vm._v("Guinea")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Guinea Ecuatorial",
+                                            id: "GQ"
+                                          }
+                                        },
+                                        [_vm._v("Guinea Ecuatorial")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Guinea-Bissau",
+                                            id: "GW"
+                                          }
+                                        },
+                                        [_vm._v("Guinea-Bissau")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        { attrs: { value: "Haití", id: "HT" } },
+                                        [_vm._v("Haití")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Holanda", id: "NL" }
+                                        },
+                                        [_vm._v("Holanda")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Honduras", id: "HN" }
+                                        },
+                                        [_vm._v("Honduras")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Hong Kong R. A. E",
+                                            id: "HK"
+                                          }
+                                        },
+                                        [_vm._v("Hong Kong R. A. E")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Hungría", id: "HU" }
+                                        },
+                                        [_vm._v("Hungría")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        { attrs: { value: "India", id: "IN" } },
+                                        [_vm._v("India")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Indonesia",
+                                            id: "ID"
+                                          }
+                                        },
+                                        [_vm._v("Indonesia")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        { attrs: { value: "Irak", id: "IQ" } },
+                                        [_vm._v("Irak")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        { attrs: { value: "Irán", id: "IR" } },
+                                        [_vm._v("Irán")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Irlanda", id: "IE" }
+                                        },
+                                        [_vm._v("Irlanda")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Isla Bouvet",
+                                            id: "BV"
+                                          }
+                                        },
+                                        [_vm._v("Isla Bouvet")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Isla Christmas",
+                                            id: "CX"
+                                          }
+                                        },
+                                        [_vm._v("Isla Christmas")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value:
+                                              "Isla Heard e Islas McDonald",
+                                            id: "HM"
+                                          }
+                                        },
+                                        [_vm._v("Isla Heard e Islas McDonald")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Islandia", id: "IS" }
+                                        },
+                                        [_vm._v("Islandia")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Islas Caimán",
+                                            id: "KY"
+                                          }
+                                        },
+                                        [_vm._v("Islas Caimán")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Islas Cook",
+                                            id: "CK"
+                                          }
+                                        },
+                                        [_vm._v("Islas Cook")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Islas de Cocos o Keeling",
+                                            id: "CC"
+                                          }
+                                        },
+                                        [_vm._v("Islas de Cocos o Keeling")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Islas Faroe",
+                                            id: "FO"
+                                          }
+                                        },
+                                        [_vm._v("Islas Faroe")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Islas Fiyi",
+                                            id: "FJ"
+                                          }
+                                        },
+                                        [_vm._v("Islas Fiyi")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value:
+                                              "Islas Malvinas Islas Falkland",
+                                            id: "FK"
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "Islas Malvinas Islas Falkland"
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Islas Marianas del norte",
+                                            id: "MP"
+                                          }
+                                        },
+                                        [_vm._v("Islas Marianas del norte")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Islas Marshall",
+                                            id: "MH"
+                                          }
+                                        },
+                                        [_vm._v("Islas Marshall")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value:
+                                              "Islas menores de Estados Unidos",
+                                            id: "UM"
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "Islas menores de Estados Unidos"
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Islas Palau",
+                                            id: "PW"
+                                          }
+                                        },
+                                        [_vm._v("Islas Palau")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Islas Salomón",
+                                            d: "SB"
+                                          }
+                                        },
+                                        [_vm._v("Islas Salomón")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Islas Tokelau",
+                                            id: "TK"
+                                          }
+                                        },
+                                        [_vm._v("Islas Tokelau")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Islas Turks y Caicos",
+                                            id: "TC"
+                                          }
+                                        },
+                                        [_vm._v("Islas Turks y Caicos")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Islas Vírgenes EE.UU.",
+                                            id: "VI"
+                                          }
+                                        },
+                                        [_vm._v("Islas Vírgenes EE.UU.")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Islas Vírgenes Reino Unido",
+                                            id: "VG"
+                                          }
+                                        },
+                                        [_vm._v("Islas Vírgenes Reino Unido")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Israel", id: "IL" }
+                                        },
+                                        [_vm._v("Israel")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Italia", id: "IT" }
+                                        },
+                                        [_vm._v("Italia")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Jamaica", id: "JM" }
+                                        },
+                                        [_vm._v("Jamaica")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        { attrs: { value: "Japón", id: "JP" } },
+                                        [_vm._v("Japón")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Jordania", id: "JO" }
+                                        },
+                                        [_vm._v("Jordania")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Kazajistán",
+                                            id: "KZ"
+                                          }
+                                        },
+                                        [_vm._v("Kazajistán")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        { attrs: { value: "Kenia", id: "KE" } },
+                                        [_vm._v("Kenia")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Kirguizistán",
+                                            id: "KG"
+                                          }
+                                        },
+                                        [_vm._v("Kirguizistán")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Kiribati", id: "KI" }
+                                        },
+                                        [_vm._v("Kiribati")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Kuwait", id: "KW" }
+                                        },
+                                        [_vm._v("Kuwait")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        { attrs: { value: "Laos", id: "LA" } },
+                                        [_vm._v("Laos")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Lesoto", id: "LS" }
+                                        },
+                                        [_vm._v("Lesoto")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Letonia", id: "LV" }
+                                        },
+                                        [_vm._v("Letonia")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Líbano", id: "LB" }
+                                        },
+                                        [_vm._v("Líbano")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Liberia", id: "LR" }
+                                        },
+                                        [_vm._v("Liberia")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        { attrs: { value: "Libia", id: "LY" } },
+                                        [_vm._v("Libia")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Liechtenstein",
+                                            id: "LI"
+                                          }
+                                        },
+                                        [_vm._v("Liechtenstein")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Lituania", id: "LT" }
+                                        },
+                                        [_vm._v("Lituania")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Luxemburgo",
+                                            id: "LU"
+                                          }
+                                        },
+                                        [_vm._v("Luxemburgo")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Macao R. A. E",
+                                            id: "MO"
+                                          }
+                                        },
+                                        [_vm._v("Macao R. A. E")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Madagascar",
+                                            id: "MG"
+                                          }
+                                        },
+                                        [_vm._v("Madagascar")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Malasia", id: "MY" }
+                                        },
+                                        [_vm._v("Malasia")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Malawi", id: "MW" }
+                                        },
+                                        [_vm._v("Malawi")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Maldivas", id: "MV" }
+                                        },
+                                        [_vm._v("Maldivas")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        { attrs: { value: "Malí", id: "ML" } },
+                                        [_vm._v("Malí")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        { attrs: { value: "Malta", id: "MT" } },
+                                        [_vm._v("Malta")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Marruecos",
+                                            id: "MA"
+                                          }
+                                        },
+                                        [_vm._v("Marruecos")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Martinica",
+                                            id: "MQ"
+                                          }
+                                        },
+                                        [_vm._v("Martinica")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Mauricio", id: "MU" }
+                                        },
+                                        [_vm._v("Mauricio")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Mauritania",
+                                            id: "MR"
+                                          }
+                                        },
+                                        [_vm._v("Mauritania")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Mayotte", id: "YT" }
+                                        },
+                                        [_vm._v("Mayotte")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "México", id: "MX" }
+                                        },
+                                        [_vm._v("México")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Micronesia",
+                                            id: "FM"
+                                          }
+                                        },
+                                        [_vm._v("Micronesia")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Moldavia", id: "MD" }
+                                        },
+                                        [_vm._v("Moldavia")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Mónaco", id: "MC" }
+                                        },
+                                        [_vm._v("Mónaco")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Mongolia", id: "MN" }
+                                        },
+                                        [_vm._v("Mongolia")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Montserrat",
+                                            id: "MS"
+                                          }
+                                        },
+                                        [_vm._v("Montserrat")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Mozambique",
+                                            id: "MZ"
+                                          }
+                                        },
+                                        [_vm._v("Mozambique")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Namibia", id: "NA" }
+                                        },
+                                        [_vm._v("Namibia")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        { attrs: { value: "Nauru", id: "NR" } },
+                                        [_vm._v("Nauru")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        { attrs: { value: "Nepal", id: "NP" } },
+                                        [_vm._v("Nepal")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Nicaragua",
+                                            id: "NI"
+                                          }
+                                        },
+                                        [_vm._v("Nicaragua")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        { attrs: { value: "Níger", id: "NE" } },
+                                        [_vm._v("Níger")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Nigeria", id: "NG" }
+                                        },
+                                        [_vm._v("Nigeria")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        { attrs: { value: "Niue", id: "NU" } },
+                                        [_vm._v("Niue")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Norfolk", id: "NF" }
+                                        },
+                                        [_vm._v("Norfolk")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Noruega", id: "NO" }
+                                        },
+                                        [_vm._v("Noruega")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Nueva Caledonia",
+                                            id: "NC"
+                                          }
+                                        },
+                                        [_vm._v("Nueva Caledonia")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Nueva Zelanda",
+                                            id: "NZ"
+                                          }
+                                        },
+                                        [_vm._v("Nueva Zelanda")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        { attrs: { value: "Omán", id: "OM" } },
+                                        [_vm._v("Omán")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Panamá", id: "PA" }
+                                        },
+                                        [_vm._v("Panamá")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Papua Nueva Guinea",
+                                            id: "PG"
+                                          }
+                                        },
+                                        [_vm._v("Papua Nueva Guinea")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Paquistán",
+                                            id: "PK"
+                                          }
+                                        },
+                                        [_vm._v("Paquistán")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Paraguay", id: "PY" }
+                                        },
+                                        [_vm._v("Paraguay")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Perú",
+                                            selected: "",
+                                            id: "PE"
+                                          }
+                                        },
+                                        [_vm._v("Perú")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Pitcairn", id: "PN" }
+                                        },
+                                        [_vm._v("Pitcairn")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Polinesia francesa",
+                                            id: "PF"
+                                          }
+                                        },
+                                        [_vm._v("Polinesia francesa")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Polonia", id: "PL" }
+                                        },
+                                        [_vm._v("Polonia")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Portugal", id: "PT" }
+                                        },
+                                        [_vm._v("Portugal")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Puerto Rico",
+                                            id: "PR"
+                                          }
+                                        },
+                                        [_vm._v("Puerto Rico")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        { attrs: { value: "Qatar", id: "QA" } },
+                                        [_vm._v("Qatar")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Reino Unido",
+                                            id: "UK"
+                                          }
+                                        },
+                                        [_vm._v("Reino Unido")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "República Centroafricana",
+                                            id: "CF"
+                                          }
+                                        },
+                                        [_vm._v("República Centroafricana")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "República Checa",
+                                            id: "CZ"
+                                          }
+                                        },
+                                        [_vm._v("República Checa")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "República de Sudáfrica",
+                                            id: "ZA"
+                                          }
+                                        },
+                                        [_vm._v("República de Sudáfrica")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value:
+                                              "República Democrática del Congo Zaire",
+                                            id: "CD"
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "República Democrática del Congo Zaire"
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "República Dominicana",
+                                            id: "DO"
+                                          }
+                                        },
+                                        [_vm._v("República Dominicana")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Reunión", id: "RE" }
+                                        },
+                                        [_vm._v("Reunión")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Ruanda", id: "RW" }
+                                        },
+                                        [_vm._v("Ruanda")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Rumania", id: "RO" }
+                                        },
+                                        [_vm._v("Rumania")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        { attrs: { value: "Rusia", id: "RU" } },
+                                        [_vm._v("Rusia")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        { attrs: { value: "Samoa", id: "WS" } },
+                                        [_vm._v("Samoa")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Samoa occidental",
+                                            id: "AS"
+                                          }
+                                        },
+                                        [_vm._v("Samoa occidental")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "San Kitts y Nevis",
+                                            id: "KN"
+                                          }
+                                        },
+                                        [_vm._v("San Kitts y Nevis")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "San Marino",
+                                            id: "SM"
+                                          }
+                                        },
+                                        [_vm._v("San Marino")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "San Pierre y Miquelon",
+                                            id: "PM"
+                                          }
+                                        },
+                                        [_vm._v("San Pierre y Miquelon")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value:
+                                              "San Vicente e Islas Granadinas",
+                                            id: "VC"
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "San Vicente e Islas Granadinas"
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Santa Helena",
+                                            id: "SH"
+                                          }
+                                        },
+                                        [_vm._v("Santa Helena")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Santa Lucía",
+                                            id: "LC"
+                                          }
+                                        },
+                                        [_vm._v("Santa Lucía")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Santo Tomé y Príncipe",
+                                            id: "ST"
+                                          }
+                                        },
+                                        [_vm._v("Santo Tomé y Príncipe")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Senegal", id: "SN" }
+                                        },
+                                        [_vm._v("Senegal")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Serbia y Montenegro",
+                                            id: "YU"
+                                          }
+                                        },
+                                        [_vm._v("Serbia y Montenegro")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Sychelles",
+                                            id: "SC"
+                                          }
+                                        },
+                                        [_vm._v("Seychelles")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Sierra Leona",
+                                            id: "SL"
+                                          }
+                                        },
+                                        [_vm._v("Sierra Leona")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Singapur", id: "SG" }
+                                        },
+                                        [_vm._v("Singapur")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        { attrs: { value: "Siria", id: "SY" } },
+                                        [_vm._v("Siria")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Somalia", id: "SO" }
+                                        },
+                                        [_vm._v("Somalia")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Sri Lanka",
+                                            id: "LK"
+                                          }
+                                        },
+                                        [_vm._v("Sri Lanka")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Suazilandia",
+                                            id: "SZ"
+                                          }
+                                        },
+                                        [_vm._v("Suazilandia")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        { attrs: { value: "Sudán", id: "SD" } },
+                                        [_vm._v("Sudán")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Suecia", id: "SE" }
+                                        },
+                                        [_vm._v("Suecia")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        { attrs: { value: "Suiza", id: "CH" } },
+                                        [_vm._v("Suiza")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Surinam", id: "SR" }
+                                        },
+                                        [_vm._v("Surinam")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Svalbard", id: "SJ" }
+                                        },
+                                        [_vm._v("Svalbard")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Tailandia",
+                                            id: "TH"
+                                          }
+                                        },
+                                        [_vm._v("Tailandia")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Taiwán", id: "TW" }
+                                        },
+                                        [_vm._v("Taiwán")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Tanzania", id: "TZ" }
+                                        },
+                                        [_vm._v("Tanzania")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Tayikistán",
+                                            id: "TJ"
+                                          }
+                                        },
+                                        [_vm._v("Tayikistán")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value:
+                                              "Territorios británicos del océano Indico",
+                                            id: "IO"
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "Territorios británicos del océano Indico"
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value:
+                                              "Territorios franceses del sur",
+                                            id: "TF"
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "Territorios franceses del sur"
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Timor Oriental",
+                                            id: "TP"
+                                          }
+                                        },
+                                        [_vm._v("Timor Oriental")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        { attrs: { value: "Togo", id: "TG" } },
+                                        [_vm._v("Togo")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        { attrs: { value: "Tonga", id: "TO" } },
+                                        [_vm._v("Tonga")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Trinidad y Tobago",
+                                            id: "TT"
+                                          }
+                                        },
+                                        [_vm._v("Trinidad y Tobago")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        { attrs: { value: "Túnez", id: "TN" } },
+                                        [_vm._v("Túnez")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Turkmenistán",
+                                            id: "TM"
+                                          }
+                                        },
+                                        [_vm._v("Turkmenistán")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Turquía", id: "TR" }
+                                        },
+                                        [_vm._v("Turquía")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Tuvalu", id: "TV" }
+                                        },
+                                        [_vm._v("Tuvalu")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Ucrania", id: "UA" }
+                                        },
+                                        [_vm._v("Ucrania")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Uganda", id: "UG" }
+                                        },
+                                        [_vm._v("Uganda")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Uruguay", id: "UY" }
+                                        },
+                                        [_vm._v("Uruguay")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Uzbekistán",
+                                            id: "UZ"
+                                          }
+                                        },
+                                        [_vm._v("Uzbekistán")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Vanuatu", id: "VU" }
+                                        },
+                                        [_vm._v("Vanuatu")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Venezuela",
+                                            id: "VE"
+                                          }
+                                        },
+                                        [_vm._v("Venezuela")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Vietnam", id: "VN" }
+                                        },
+                                        [_vm._v("Vietnam")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: {
+                                            value: "Wallis y Futuna",
+                                            id: "WF"
+                                          }
+                                        },
+                                        [_vm._v("Wallis y Futuna")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        { attrs: { value: "Yemen", id: "YE" } },
+                                        [_vm._v("Yemen")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Zambia", id: "ZM" }
+                                        },
+                                        [_vm._v("Zambia")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "option",
+                                        {
+                                          attrs: { value: "Zimbabue", id: "ZW" }
+                                        },
+                                        [_vm._v("Zimbabue")]
+                                      )
+                                    ]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group" },
+                                  [
+                                    _c(
+                                      "label",
+                                      { attrs: { for: "departamento" } },
+                                      [_vm._v("Departamento")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("el-input", {
+                                      attrs: { clearable: "" },
+                                      model: {
+                                        value: _vm.departamento,
+                                        callback: function($$v) {
+                                          _vm.departamento = $$v
+                                        },
+                                        expression: "departamento"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group" },
+                                  [
+                                    _c(
+                                      "label",
+                                      { attrs: { for: "distrito" } },
+                                      [_vm._v("Distrito")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("el-input", {
+                                      attrs: { clearable: "" },
+                                      model: {
+                                        value: _vm.distrito,
+                                        callback: function($$v) {
+                                          _vm.distrito = $$v
+                                        },
+                                        expression: "distrito"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-md-6" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group" },
+                                  [
+                                    _c(
+                                      "label",
+                                      { attrs: { for: "provincia" } },
+                                      [_vm._v("Provincia")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("el-input", {
+                                      attrs: { clearable: "" },
+                                      model: {
+                                        value: _vm.provincia,
+                                        callback: function($$v) {
+                                          _vm.provincia = $$v
+                                        },
+                                        expression: "provincia"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group" },
+                                  [
+                                    _c(
+                                      "label",
+                                      { attrs: { for: "localidad" } },
+                                      [_vm._v("Localidad")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("el-input", {
+                                      attrs: { clearable: "" },
+                                      model: {
+                                        value: _vm.localidad,
+                                        callback: function($$v) {
+                                          _vm.localidad = $$v
+                                        },
+                                        expression: "localidad"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group" },
+                                  [
+                                    _c(
+                                      "label",
+                                      { attrs: { for: "fColecta" } },
+                                      [_vm._v("Fecha Colecta")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("el-date-picker", {
+                                      attrs: { type: "date" },
+                                      model: {
+                                        value: _vm.fColecta,
+                                        callback: function($$v) {
+                                          _vm.fColecta = $$v
+                                        },
+                                        expression: "fColecta"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _vm._m(2)
+                            ])
+                          ]
+                        )
+                      ])
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "card-footer text-center" }, [
@@ -107378,14 +110041,14 @@ var render = function() {
                         "button",
                         {
                           staticClass: "btn btn-success",
-                          attrs: { type: "submit" },
+                          attrs: { type: "button" },
                           on: {
                             click: function($event) {
                               return _vm.guardarHerpetologia()
                             }
                           }
                         },
-                        [_vm._v("REGISTRAR ESPECIMEN")]
+                        [_vm._v("REGISTRAR ESPECIMEN HERPETOLOGIA")]
                       )
                     ])
                   ]
@@ -107436,1343 +110099,30 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-6" }, [
-      _c("label", { attrs: { for: "local" } }, [_vm._v("Registro local")]),
-      _vm._v(" "),
-      _c("input", {
-        attrs: {
-          type: "radio",
-          id: "local",
-          value: "local",
-          name: "dbespecimen"
-        }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-3" }, [
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "tejidoAdn" } }, [_vm._v("Tejido ADN")]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "text", id: "tejidoAdn", name: "tejidoAdn" }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-3" }, [
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "tejidoCod" } }, [_vm._v("Tejido COD")]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "text", id: "tejidoCod", name: "tejidoCod" }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-4" }, [
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "preservacion" } }, [
-          _vm._v("Preservación")
-        ]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "text", id: "preservacion", name: "preservacion" }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-6" }, [
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "colector" } }, [_vm._v("Colector")]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "text", id: "colector", name: "colector" }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-6" }, [
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "autor" } }, [_vm._v("Autor")]),
-        _vm._v(" "),
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "text", id: "autor", name: "autor" }
-        })
-      ])
-    ])
+    return _c(
+      "button",
+      { staticClass: "btn btn-primary", staticStyle: { display: "block" } },
+      [_c("i", { staticClass: "fa fa-upload" }), _vm._v(" Cargar Foto")]
+    )
   },
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-md-12" }, [
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "colector" } }, [_vm._v("Observacion")]),
-        _vm._v(" "),
-        _c("textarea", {
-          staticClass: "form-control",
-          attrs: { type: "text", id: "colector", name: "colector" }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-12" }, [
-      _c("div", { staticClass: "form-group" }, [
-        _c("label", { attrs: { for: "foto" } }, [_vm._v("Foto")]),
-        _vm._v(" "),
-        _c("input", {
-          staticStyle: { display: "none" },
-          attrs: {
-            type: "file",
-            id: "foto",
-            placeholder: "Ingrese Foto",
-            name: "foto"
-          }
-        }),
-        _vm._v(" "),
-        _c(
-          "button",
-          { staticClass: "btn btn-primary", staticStyle: { display: "block" } },
-          [_c("i", { staticClass: "fa fa-upload" }), _vm._v(" Cargar Foto")]
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-md-4" }, [
-      _c("fieldset", { staticStyle: { border: "1px solid #ccc" } }, [
-        _c(
-          "legend",
-          {
-            staticStyle: {
-              display: "inline-block",
-              width: "auto",
-              padding: "1px 8px",
-              border: "1px solid #ccc",
-              "border-radius": "5px",
-              "font-size": "14px",
-              "font-weight": "600",
-              position: "relative",
-              left: "-1px"
-            }
-          },
-          [_vm._v("Lugar de colecta")]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "card-body row" }, [
-          _c("div", { staticClass: "col-md-6" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "pais" } }, [_vm._v("Pais")]),
-              _vm._v(" "),
-              _c(
-                "select",
-                {
-                  staticClass: "form-control",
-                  attrs: { name: "pais", id: "pais" }
-                },
-                [
-                  _c("option", { attrs: { value: "Afganistán", id: "AF" } }, [
-                    _vm._v("Afganistán")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Albania", id: "AL" } }, [
-                    _vm._v("Albania")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Alemania", id: "DE" } }, [
-                    _vm._v("Alemania")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Andorra", id: "AD" } }, [
-                    _vm._v("Andorra")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Angola", id: "AO" } }, [
-                    _vm._v("Angola")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Anguila", id: "AI" } }, [
-                    _vm._v("Anguila")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Antártida", id: "AQ" } }, [
-                    _vm._v("Antártida")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    { attrs: { value: "Antigua y Barbuda", id: "AG" } },
-                    [_vm._v("Antigua y Barbuda")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    { attrs: { value: "Antillas holandesas", id: "AN" } },
-                    [_vm._v("Antillas holandesas")]
-                  ),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Arabia Saudí", id: "SA" } }, [
-                    _vm._v("Arabia Saudí")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Argelia", id: "DZ" } }, [
-                    _vm._v("Argelia")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Argentina", id: "AR" } }, [
-                    _vm._v("Argentina")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Armenia", id: "AM" } }, [
-                    _vm._v("Armenia")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Aruba", id: "AW" } }, [
-                    _vm._v("Aruba")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Australia", id: "AU" } }, [
-                    _vm._v("Australia")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Austria", id: "AT" } }, [
-                    _vm._v("Austria")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Azerbaiyán", id: "AZ" } }, [
-                    _vm._v("Azerbaiyán")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Bahamas", id: "BS" } }, [
-                    _vm._v("Bahamas")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Bahrein", id: "BH" } }, [
-                    _vm._v("Bahrein")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Bangladesh", id: "BD" } }, [
-                    _vm._v("Bangladesh")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Barbados", id: "BB" } }, [
-                    _vm._v("Barbados")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Bélgica", id: "BE" } }, [
-                    _vm._v("Bélgica")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Belice", id: "BZ" } }, [
-                    _vm._v("Belice")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Benín", id: "BJ" } }, [
-                    _vm._v("Benín")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Bermudas", id: "BM" } }, [
-                    _vm._v("Bermudas")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Bhután", id: "BT" } }, [
-                    _vm._v("Bhután")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Bielorrusia", id: "BY" } }, [
-                    _vm._v("Bielorrusia")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Birmania", id: "MM" } }, [
-                    _vm._v("Birmania")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Bolivia", id: "BO" } }, [
-                    _vm._v("Bolivia")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    { attrs: { value: "Bosnia y Herzegovina", id: "BA" } },
-                    [_vm._v("Bosnia y Herzegovina")]
-                  ),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Botsuana", id: "BW" } }, [
-                    _vm._v("Botsuana")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Brasil", id: "BR" } }, [
-                    _vm._v("Brasil")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Brunei", id: "BN" } }, [
-                    _vm._v("Brunei")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Bulgaria", id: "BG" } }, [
-                    _vm._v("Bulgaria")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Burkina Faso", id: "BF" } }, [
-                    _vm._v("Burkina Faso")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Burundi", id: "BI" } }, [
-                    _vm._v("Burundi")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Cabo Verde", id: "CV" } }, [
-                    _vm._v("Cabo Verde")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Camboya", id: "KH" } }, [
-                    _vm._v("Camboya")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Camerún", id: "CM" } }, [
-                    _vm._v("Camerún")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Canadá", id: "CA" } }, [
-                    _vm._v("Canadá")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Chad", id: "TD" } }, [
-                    _vm._v("Chad")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Chile", id: "CL" } }, [
-                    _vm._v("Chile")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "China", id: "CN" } }, [
-                    _vm._v("China")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Chipre", id: "CY" } }, [
-                    _vm._v("Chipre")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    {
-                      attrs: { value: "Ciudad estado del Vaticano", id: "VA" }
-                    },
-                    [_vm._v("Ciudad estado del Vaticano")]
-                  ),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Colombia", id: "CO" } }, [
-                    _vm._v("Colombia")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Comores", id: "KM" } }, [
-                    _vm._v("Comores")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Congo", id: "CG" } }, [
-                    _vm._v("Congo")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Corea", id: "KR" } }, [
-                    _vm._v("Corea")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    { attrs: { value: "Corea del Norte", id: "KP" } },
-                    [_vm._v("Corea del Norte")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    { attrs: { value: "Costa del Marfíl", id: "CI" } },
-                    [_vm._v("Costa del Marfíl")]
-                  ),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Costa Rica", id: "CR" } }, [
-                    _vm._v("Costa Rica")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Croacia", id: "HR" } }, [
-                    _vm._v("Croacia")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Cuba", id: "CU" } }, [
-                    _vm._v("Cuba")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Dinamarca", id: "DK" } }, [
-                    _vm._v("Dinamarca")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Djibouri", id: "DJ" } }, [
-                    _vm._v("Djibouri")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Dominica", id: "DM" } }, [
-                    _vm._v("Dominica")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Ecuador", id: "EC" } }, [
-                    _vm._v("Ecuador")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Egipto", id: "EG" } }, [
-                    _vm._v("Egipto")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "El Salvador", id: "SV" } }, [
-                    _vm._v("El Salvador")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    { attrs: { value: "Emiratos Arabes Unidos", id: "AE" } },
-                    [_vm._v("Emiratos Arabes Unidos")]
-                  ),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Eritrea", id: "ER" } }, [
-                    _vm._v("Eritrea")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Eslovaquia", id: "SK" } }, [
-                    _vm._v("Eslovaquia")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Eslovenia", id: "SI" } }, [
-                    _vm._v("Eslovenia")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "España", id: "ES" } }, [
-                    _vm._v("España")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    { attrs: { value: "Estados Unidos", id: "US" } },
-                    [_vm._v("Estados Unidos")]
-                  ),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Estonia", id: "EE" } }, [
-                    _vm._v("Estonia")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "c", id: "ET" } }, [
-                    _vm._v("Etiopía")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    {
-                      attrs: {
-                        value: "Ex-República Yugoslava de Macedonia",
-                        id: "MK"
-                      }
-                    },
-                    [_vm._v("Ex-República Yugoslava de Macedonia")]
-                  ),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Filipinas", id: "PH" } }, [
-                    _vm._v("Filipinas")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Finlandia", id: "FI" } }, [
-                    _vm._v("Finlandia")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Francia", id: "FR" } }, [
-                    _vm._v("Francia")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Gabón", id: "GA" } }, [
-                    _vm._v("Gabón")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Gambia", id: "GM" } }, [
-                    _vm._v("Gambia")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Georgia", id: "GE" } }, [
-                    _vm._v("Georgia")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    {
-                      attrs: {
-                        value: "Georgia del Sur y las islas Sandwich del Sur",
-                        id: "GS"
-                      }
-                    },
-                    [_vm._v("Georgia del Sur y las islas Sandwich del Sur")]
-                  ),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Ghana", id: "GH" } }, [
-                    _vm._v("Ghana")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Gibraltar", id: "GI" } }, [
-                    _vm._v("Gibraltar")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Granada", id: "GD" } }, [
-                    _vm._v("Granada")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Grecia", id: "GR" } }, [
-                    _vm._v("Grecia")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Groenlandia", id: "GL" } }, [
-                    _vm._v("Groenlandia")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Guadalupe", id: "GP" } }, [
-                    _vm._v("Guadalupe")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Guam", id: "GU" } }, [
-                    _vm._v("Guam")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Guatemala", id: "GT" } }, [
-                    _vm._v("Guatemala")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Guayana", id: "GY" } }, [
-                    _vm._v("Guayana")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    { attrs: { value: "Guayana francesa", id: "GF" } },
-                    [_vm._v("Guayana francesa")]
-                  ),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Guinea", id: "GN" } }, [
-                    _vm._v("Guinea")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    { attrs: { value: "Guinea Ecuatorial", id: "GQ" } },
-                    [_vm._v("Guinea Ecuatorial")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    { attrs: { value: "Guinea-Bissau", id: "GW" } },
-                    [_vm._v("Guinea-Bissau")]
-                  ),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Haití", id: "HT" } }, [
-                    _vm._v("Haití")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Holanda", id: "NL" } }, [
-                    _vm._v("Holanda")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Honduras", id: "HN" } }, [
-                    _vm._v("Honduras")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    { attrs: { value: "Hong Kong R. A. E", id: "HK" } },
-                    [_vm._v("Hong Kong R. A. E")]
-                  ),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Hungría", id: "HU" } }, [
-                    _vm._v("Hungría")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "India", id: "IN" } }, [
-                    _vm._v("India")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Indonesia", id: "ID" } }, [
-                    _vm._v("Indonesia")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Irak", id: "IQ" } }, [
-                    _vm._v("Irak")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Irán", id: "IR" } }, [
-                    _vm._v("Irán")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Irlanda", id: "IE" } }, [
-                    _vm._v("Irlanda")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Isla Bouvet", id: "BV" } }, [
-                    _vm._v("Isla Bouvet")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    { attrs: { value: "Isla Christmas", id: "CX" } },
-                    [_vm._v("Isla Christmas")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    {
-                      attrs: { value: "Isla Heard e Islas McDonald", id: "HM" }
-                    },
-                    [_vm._v("Isla Heard e Islas McDonald")]
-                  ),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Islandia", id: "IS" } }, [
-                    _vm._v("Islandia")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Islas Caimán", id: "KY" } }, [
-                    _vm._v("Islas Caimán")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Islas Cook", id: "CK" } }, [
-                    _vm._v("Islas Cook")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    { attrs: { value: "Islas de Cocos o Keeling", id: "CC" } },
-                    [_vm._v("Islas de Cocos o Keeling")]
-                  ),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Islas Faroe", id: "FO" } }, [
-                    _vm._v("Islas Faroe")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Islas Fiyi", id: "FJ" } }, [
-                    _vm._v("Islas Fiyi")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    {
-                      attrs: {
-                        value: "Islas Malvinas Islas Falkland",
-                        id: "FK"
-                      }
-                    },
-                    [_vm._v("Islas Malvinas Islas Falkland")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    { attrs: { value: "Islas Marianas del norte", id: "MP" } },
-                    [_vm._v("Islas Marianas del norte")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    { attrs: { value: "Islas Marshall", id: "MH" } },
-                    [_vm._v("Islas Marshall")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    {
-                      attrs: {
-                        value: "Islas menores de Estados Unidos",
-                        id: "UM"
-                      }
-                    },
-                    [_vm._v("Islas menores de Estados Unidos")]
-                  ),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Islas Palau", id: "PW" } }, [
-                    _vm._v("Islas Palau")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Islas Salomón", d: "SB" } }, [
-                    _vm._v("Islas Salomón")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    { attrs: { value: "Islas Tokelau", id: "TK" } },
-                    [_vm._v("Islas Tokelau")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    { attrs: { value: "Islas Turks y Caicos", id: "TC" } },
-                    [_vm._v("Islas Turks y Caicos")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    { attrs: { value: "Islas Vírgenes EE.UU.", id: "VI" } },
-                    [_vm._v("Islas Vírgenes EE.UU.")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    {
-                      attrs: { value: "Islas Vírgenes Reino Unido", id: "VG" }
-                    },
-                    [_vm._v("Islas Vírgenes Reino Unido")]
-                  ),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Israel", id: "IL" } }, [
-                    _vm._v("Israel")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Italia", id: "IT" } }, [
-                    _vm._v("Italia")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Jamaica", id: "JM" } }, [
-                    _vm._v("Jamaica")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Japón", id: "JP" } }, [
-                    _vm._v("Japón")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Jordania", id: "JO" } }, [
-                    _vm._v("Jordania")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Kazajistán", id: "KZ" } }, [
-                    _vm._v("Kazajistán")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Kenia", id: "KE" } }, [
-                    _vm._v("Kenia")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Kirguizistán", id: "KG" } }, [
-                    _vm._v("Kirguizistán")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Kiribati", id: "KI" } }, [
-                    _vm._v("Kiribati")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Kuwait", id: "KW" } }, [
-                    _vm._v("Kuwait")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Laos", id: "LA" } }, [
-                    _vm._v("Laos")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Lesoto", id: "LS" } }, [
-                    _vm._v("Lesoto")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Letonia", id: "LV" } }, [
-                    _vm._v("Letonia")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Líbano", id: "LB" } }, [
-                    _vm._v("Líbano")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Liberia", id: "LR" } }, [
-                    _vm._v("Liberia")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Libia", id: "LY" } }, [
-                    _vm._v("Libia")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    { attrs: { value: "Liechtenstein", id: "LI" } },
-                    [_vm._v("Liechtenstein")]
-                  ),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Lituania", id: "LT" } }, [
-                    _vm._v("Lituania")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Luxemburgo", id: "LU" } }, [
-                    _vm._v("Luxemburgo")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    { attrs: { value: "Macao R. A. E", id: "MO" } },
-                    [_vm._v("Macao R. A. E")]
-                  ),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Madagascar", id: "MG" } }, [
-                    _vm._v("Madagascar")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Malasia", id: "MY" } }, [
-                    _vm._v("Malasia")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Malawi", id: "MW" } }, [
-                    _vm._v("Malawi")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Maldivas", id: "MV" } }, [
-                    _vm._v("Maldivas")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Malí", id: "ML" } }, [
-                    _vm._v("Malí")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Malta", id: "MT" } }, [
-                    _vm._v("Malta")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Marruecos", id: "MA" } }, [
-                    _vm._v("Marruecos")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Martinica", id: "MQ" } }, [
-                    _vm._v("Martinica")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Mauricio", id: "MU" } }, [
-                    _vm._v("Mauricio")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Mauritania", id: "MR" } }, [
-                    _vm._v("Mauritania")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Mayotte", id: "YT" } }, [
-                    _vm._v("Mayotte")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "México", id: "MX" } }, [
-                    _vm._v("México")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Micronesia", id: "FM" } }, [
-                    _vm._v("Micronesia")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Moldavia", id: "MD" } }, [
-                    _vm._v("Moldavia")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Mónaco", id: "MC" } }, [
-                    _vm._v("Mónaco")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Mongolia", id: "MN" } }, [
-                    _vm._v("Mongolia")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Montserrat", id: "MS" } }, [
-                    _vm._v("Montserrat")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Mozambique", id: "MZ" } }, [
-                    _vm._v("Mozambique")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Namibia", id: "NA" } }, [
-                    _vm._v("Namibia")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Nauru", id: "NR" } }, [
-                    _vm._v("Nauru")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Nepal", id: "NP" } }, [
-                    _vm._v("Nepal")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Nicaragua", id: "NI" } }, [
-                    _vm._v("Nicaragua")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Níger", id: "NE" } }, [
-                    _vm._v("Níger")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Nigeria", id: "NG" } }, [
-                    _vm._v("Nigeria")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Niue", id: "NU" } }, [
-                    _vm._v("Niue")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Norfolk", id: "NF" } }, [
-                    _vm._v("Norfolk")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Noruega", id: "NO" } }, [
-                    _vm._v("Noruega")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    { attrs: { value: "Nueva Caledonia", id: "NC" } },
-                    [_vm._v("Nueva Caledonia")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    { attrs: { value: "Nueva Zelanda", id: "NZ" } },
-                    [_vm._v("Nueva Zelanda")]
-                  ),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Omán", id: "OM" } }, [
-                    _vm._v("Omán")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Panamá", id: "PA" } }, [
-                    _vm._v("Panamá")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    { attrs: { value: "Papua Nueva Guinea", id: "PG" } },
-                    [_vm._v("Papua Nueva Guinea")]
-                  ),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Paquistán", id: "PK" } }, [
-                    _vm._v("Paquistán")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Paraguay", id: "PY" } }, [
-                    _vm._v("Paraguay")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    { attrs: { value: "Perú", selected: "", id: "PE" } },
-                    [_vm._v("Perú")]
-                  ),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Pitcairn", id: "PN" } }, [
-                    _vm._v("Pitcairn")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    { attrs: { value: "Polinesia francesa", id: "PF" } },
-                    [_vm._v("Polinesia francesa")]
-                  ),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Polonia", id: "PL" } }, [
-                    _vm._v("Polonia")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Portugal", id: "PT" } }, [
-                    _vm._v("Portugal")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Puerto Rico", id: "PR" } }, [
-                    _vm._v("Puerto Rico")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Qatar", id: "QA" } }, [
-                    _vm._v("Qatar")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Reino Unido", id: "UK" } }, [
-                    _vm._v("Reino Unido")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    { attrs: { value: "República Centroafricana", id: "CF" } },
-                    [_vm._v("República Centroafricana")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    { attrs: { value: "República Checa", id: "CZ" } },
-                    [_vm._v("República Checa")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    { attrs: { value: "República de Sudáfrica", id: "ZA" } },
-                    [_vm._v("República de Sudáfrica")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    {
-                      attrs: {
-                        value: "República Democrática del Congo Zaire",
-                        id: "CD"
-                      }
-                    },
-                    [_vm._v("República Democrática del Congo Zaire")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    { attrs: { value: "República Dominicana", id: "DO" } },
-                    [_vm._v("República Dominicana")]
-                  ),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Reunión", id: "RE" } }, [
-                    _vm._v("Reunión")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Ruanda", id: "RW" } }, [
-                    _vm._v("Ruanda")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Rumania", id: "RO" } }, [
-                    _vm._v("Rumania")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Rusia", id: "RU" } }, [
-                    _vm._v("Rusia")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Samoa", id: "WS" } }, [
-                    _vm._v("Samoa")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    { attrs: { value: "Samoa occidental", id: "AS" } },
-                    [_vm._v("Samoa occidental")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    { attrs: { value: "San Kitts y Nevis", id: "KN" } },
-                    [_vm._v("San Kitts y Nevis")]
-                  ),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "San Marino", id: "SM" } }, [
-                    _vm._v("San Marino")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    { attrs: { value: "San Pierre y Miquelon", id: "PM" } },
-                    [_vm._v("San Pierre y Miquelon")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    {
-                      attrs: {
-                        value: "San Vicente e Islas Granadinas",
-                        id: "VC"
-                      }
-                    },
-                    [_vm._v("San Vicente e Islas Granadinas")]
-                  ),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Santa Helena", id: "SH" } }, [
-                    _vm._v("Santa Helena")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Santa Lucía", id: "LC" } }, [
-                    _vm._v("Santa Lucía")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    { attrs: { value: "Santo Tomé y Príncipe", id: "ST" } },
-                    [_vm._v("Santo Tomé y Príncipe")]
-                  ),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Senegal", id: "SN" } }, [
-                    _vm._v("Senegal")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    { attrs: { value: "Serbia y Montenegro", id: "YU" } },
-                    [_vm._v("Serbia y Montenegro")]
-                  ),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Sychelles", id: "SC" } }, [
-                    _vm._v("Seychelles")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Sierra Leona", id: "SL" } }, [
-                    _vm._v("Sierra Leona")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Singapur", id: "SG" } }, [
-                    _vm._v("Singapur")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Siria", id: "SY" } }, [
-                    _vm._v("Siria")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Somalia", id: "SO" } }, [
-                    _vm._v("Somalia")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Sri Lanka", id: "LK" } }, [
-                    _vm._v("Sri Lanka")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Suazilandia", id: "SZ" } }, [
-                    _vm._v("Suazilandia")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Sudán", id: "SD" } }, [
-                    _vm._v("Sudán")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Suecia", id: "SE" } }, [
-                    _vm._v("Suecia")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Suiza", id: "CH" } }, [
-                    _vm._v("Suiza")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Surinam", id: "SR" } }, [
-                    _vm._v("Surinam")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Svalbard", id: "SJ" } }, [
-                    _vm._v("Svalbard")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Tailandia", id: "TH" } }, [
-                    _vm._v("Tailandia")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Taiwán", id: "TW" } }, [
-                    _vm._v("Taiwán")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Tanzania", id: "TZ" } }, [
-                    _vm._v("Tanzania")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Tayikistán", id: "TJ" } }, [
-                    _vm._v("Tayikistán")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    {
-                      attrs: {
-                        value: "Territorios británicos del océano Indico",
-                        id: "IO"
-                      }
-                    },
-                    [_vm._v("Territorios británicos del océano Indico")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    {
-                      attrs: {
-                        value: "Territorios franceses del sur",
-                        id: "TF"
-                      }
-                    },
-                    [_vm._v("Territorios franceses del sur")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    { attrs: { value: "Timor Oriental", id: "TP" } },
-                    [_vm._v("Timor Oriental")]
-                  ),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Togo", id: "TG" } }, [
-                    _vm._v("Togo")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Tonga", id: "TO" } }, [
-                    _vm._v("Tonga")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    { attrs: { value: "Trinidad y Tobago", id: "TT" } },
-                    [_vm._v("Trinidad y Tobago")]
-                  ),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Túnez", id: "TN" } }, [
-                    _vm._v("Túnez")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Turkmenistán", id: "TM" } }, [
-                    _vm._v("Turkmenistán")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Turquía", id: "TR" } }, [
-                    _vm._v("Turquía")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Tuvalu", id: "TV" } }, [
-                    _vm._v("Tuvalu")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Ucrania", id: "UA" } }, [
-                    _vm._v("Ucrania")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Uganda", id: "UG" } }, [
-                    _vm._v("Uganda")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Uruguay", id: "UY" } }, [
-                    _vm._v("Uruguay")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Uzbekistán", id: "UZ" } }, [
-                    _vm._v("Uzbekistán")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Vanuatu", id: "VU" } }, [
-                    _vm._v("Vanuatu")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Venezuela", id: "VE" } }, [
-                    _vm._v("Venezuela")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Vietnam", id: "VN" } }, [
-                    _vm._v("Vietnam")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "option",
-                    { attrs: { value: "Wallis y Futuna", id: "WF" } },
-                    [_vm._v("Wallis y Futuna")]
-                  ),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Yemen", id: "YE" } }, [
-                    _vm._v("Yemen")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Zambia", id: "ZM" } }, [
-                    _vm._v("Zambia")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "Zimbabue", id: "ZW" } }, [
-                    _vm._v("Zimbabue")
-                  ])
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "departamento" } }, [
-                _vm._v("Departamento")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                staticClass: "form-control",
-                attrs: {
-                  type: "text",
-                  id: "departamento",
-                  name: "departamento"
-                }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "distrito" } }, [_vm._v("Distrito")]),
-              _vm._v(" "),
-              _c("input", {
-                staticClass: "form-control",
-                attrs: { type: "text", id: "distrito", name: "distrito" }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-6" }, [
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "provincia" } }, [
-                _vm._v("Provincia")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                staticClass: "form-control",
-                attrs: { type: "text", id: "provincia", name: "provincia" }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "localidad" } }, [
-                _vm._v("Localidad")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                staticClass: "form-control",
-                attrs: { type: "text", id: "localidad", name: "localidad" }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "fColecta" } }, [
-                _vm._v("Fecha Colecta")
-              ]),
-              _vm._v(" "),
-              _c("input", {
-                staticClass: "form-control",
-                attrs: { type: "text", id: "fColecta", name: "fColecta" }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-12" }, [
-            _c("div", {
-              staticStyle: {
-                height: "400px",
-                width: "100%",
-                border: "1px solid #ccc",
-                padding: "5px",
-                "border-radius": "5px"
-              },
-              attrs: { id: "map" }
-            }),
-            _vm._v(
-              "\n                                    mapa de localizacion\n                                "
-            )
-          ])
-        ])
-      ])
+      _c("div", {
+        staticStyle: {
+          height: "400px",
+          width: "100%",
+          border: "1px solid #ccc",
+          padding: "5px",
+          "border-radius": "5px"
+        },
+        attrs: { id: "map" }
+      }),
+      _vm._v(
+        "\n                                    mapa de localizacion\n                                "
+      )
     ])
   }
 ]
@@ -109963,7 +111313,11 @@ var render = function() {
           _vm._v(" "),
           _c(
             "form",
-            { staticStyle: { margin: "auto" }, attrs: { method: "POST" } },
+            {
+              staticStyle: { margin: "auto" },
+              attrs: { method: "POST" },
+              on: { submit: _vm.registrar }
+            },
             [
               _c("div", { staticClass: "form-group" }, [
                 _c("label", { attrs: { for: "condicion" } }, [
@@ -112228,19 +113582,7 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "form-group text-center py-5" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-primary",
-                    on: { click: _vm.registrar }
-                  },
-                  [
-                    _c("i", { staticClass: "fa fa-user" }),
-                    _vm._v(" REGISTRARSE")
-                  ]
-                )
-              ])
+              _vm._m(2)
             ]
           )
         ]
@@ -112268,6 +113610,17 @@ var staticRenderFns = [
       { staticClass: "col-md-12", staticStyle: { "margin-top": "40px" } },
       [_c("p", [_vm._v("Cuenta de acceso")]), _vm._v(" "), _c("hr")]
     )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group text-center py-5" }, [
+      _c("button", { staticClass: "btn btn-primary" }, [
+        _c("i", { staticClass: "fa fa-user" }),
+        _vm._v(" REGISTRARSE")
+      ])
+    ])
   }
 ]
 render._withStripped = true

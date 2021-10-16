@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Investigador;
+use App\Models\FormacionAcademica;
 use App\Models\Area;
 use App\Models\Solicitud;
 
@@ -51,6 +52,23 @@ class SolicitudController extends Controller
         return View("solicitudes.deposito",[
             "solicitudes" => $solicitudes
         ]);
+    }
+
+    public function solicitudesRegistro()
+    {
+        $solicitudes = Investigador::join('users', 'investigador.email', '=', 'users.email')
+        ->join('formacion_academica', 'formacion_academica.id', '=', 'investigador.formacion_academica_id')
+        ->where('users.estado','=','0')
+        ->select('investigador.nombre', 'investigador.condicion',
+         'investigador.apPaterno', 'investigador.apMaterno', 'investigador.email', 'users.estado',
+         'formacion_academica.gradoAcademico', 'formacion_academica.universidad'
+         )
+        ->get();
+
+        return View('solicitudes.registros', [
+            "solicitudes" => $solicitudes,
+        ]);
+
     }
     
 
